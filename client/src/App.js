@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import {useLocation, useNavigate} from "react-router-dom";
+import React from 'react';
+import Root from './pages/root.js'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <h1 className="xl:text-3xl lg:text-2xl text-xl font-bold underline">
-      Hello world!
-    </h1>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Root/>}/>
+        </Routes>
+      </div>
+      </Router>
   );
 }
 
