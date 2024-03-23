@@ -1,9 +1,17 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
-const Root = () => {
-  return (
-    <div className='xl:text-[500px] lg:text-[300px] md:text-[200px] text-[100px]'>root</div>
-  )
+function Root() {
+  const Navigate=useNavigate();
+
+  const Login=()=>{
+      Navigate("/login")
+  }
+return (
+  <div>
+    <div className='xl:text-[300px] lg:text-[200px] md:text-[100px] text-[50px]'>root</div>
+    <div className="cursor-pointer" onClick={Login}>Login Page</div>
+  </div>
+);
 }
-
-export default Root
+export default Root;
