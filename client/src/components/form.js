@@ -36,11 +36,7 @@ function Form() {
         </div>
         <div className=' mt-6 flex justify-center items-center'>
             <p className='font-medium  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] '>Don't have an account?</p>
-<<<<<<< HEAD
             <button onClick={Signup} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2' >Sign Up</button>
-=======
-            <button onClick={Signup} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2'>Sign Up</button>
->>>>>>> 4b8c02ae35fd56fc5ae5f94e23da190a4748b094
         </div>
       </div>
     </div>
