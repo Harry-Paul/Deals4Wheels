@@ -1,6 +1,6 @@
 import React from 'react'
 
-function form1() {
+function Form1() {
   return (
     <div className='bg-white py-10 px-20 rounded-3xl' >
       <h1 className='xl:text-[33px] lg:text-[31px] md:text-[28px] text-[24px] font-semibold'>Welcome Back </h1>
@@ -37,4 +37,4 @@ function form1() {
   )
 }
 
-export default form1
+export default Form1
