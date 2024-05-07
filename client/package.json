@@ -14,7 +14,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
+<<<<<<< HEAD
+=======
     "react-google-login": "^5.2.2",
+>>>>>>> 4b8c02ae35fd56fc5ae5f94e23da190a4748b094
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
