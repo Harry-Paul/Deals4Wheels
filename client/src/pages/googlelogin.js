@@ -6,6 +6,7 @@ export const Googlelogin = () => {
     <div>
         <Googlelogin/>
         <div>Harry</div>
+        <div>Cino</div>
         <div>Aravind</div>
     </div>
   )

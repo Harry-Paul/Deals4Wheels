@@ -36,8 +36,8 @@ function Form() {
         </div>
         <div className=' mt-6 flex justify-center items-center'>
             <p className='font-medium  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] '>Don't have an account?</p>
+            <button onClick={Signup} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2' >Sign Up</button>
 
-            <button onClick={Signup} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2'>Sign Up</button>
         </div>
       </div>
     </div>
