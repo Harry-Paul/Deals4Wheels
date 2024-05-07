@@ -13,11 +13,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Root/>}/>
           <Route exact path="/login" element={<Login/>}/>
-<<<<<<< HEAD
           <Route exact path="/signup" element={<Signup/>}/>
-=======
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
->>>>>>> 73a2e862edcac797f8e77e65c9be3cd57d06fc3a
         </Routes>
       </div>
       </Router>

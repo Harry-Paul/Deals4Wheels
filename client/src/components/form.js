@@ -5,7 +5,7 @@ function Form() {
   const Navigate=useNavigate();
 
   const Signup=()=>{
-      Navigate("../pages/Signup")
+    Navigate("../pages/Signup")
   return (
     <div className='bg-white py-10 px-20 rounded-3xl' >
       <h1 className='xl:text-[33px] lg:text-[31px] md:text-[28px] text-[24px] font-semibold'>Welcome Back </h1>
