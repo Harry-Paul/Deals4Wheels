@@ -5,6 +5,7 @@ export const Googlelogin = () => {
   return (
     <div>
         <Googlelogin/>
+        <div>Harry</div>
     </div>
   )
 }
