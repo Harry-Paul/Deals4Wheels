@@ -5,7 +5,8 @@ function Form() {
   const Navigate=useNavigate();
 
   const Signup=()=>{
-    Navigate("../pages/Signup")
+    Navigate("/signup")
+  }
   return (
     <div className='bg-white py-10 px-20 rounded-3xl' >
       <h1 className='xl:text-[33px] lg:text-[31px] md:text-[28px] text-[24px] font-semibold'>Welcome Back </h1>
@@ -35,7 +36,7 @@ function Form() {
         </div>
         <div className=' mt-6 flex justify-center items-center'>
             <p className='font-medium  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] '>Don't have an account?</p>
-            <button className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2 onClick={Signup}'>Sign Up</button>
+            <button onClick={Signup} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2'>Sign Up</button>
         </div>
       </div>
     </div>

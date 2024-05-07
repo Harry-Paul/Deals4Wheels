@@ -10,7 +10,7 @@ const Signup = () => {
       </div>
       <div className='flex w-full h-screen rounded-3xl'>
         <div className='w-full flex lg:w-1/2 items-center justify-center'>
-          <Form/>
+          <Form1/>
         </div>
         <div className='hidden lg:flex  w-1/2 items-center justify-center'>
           <img className='' src={car} alt=""></img>
