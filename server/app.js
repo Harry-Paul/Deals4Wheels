@@ -1,24 +1,33 @@
 const express = require("express");
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express();
+
+require("dotenv").config;
+const bodyParser = require("body-parser");
+const _ = require("lodash");
+const https = require("https");
+const router = express.Router();
+const cors = require("cors");
+const corsOptions = require('./config/corsOptions');
+const ObjectID = require('mongodb').ObjectId;
+const cookieParser = require('cookie-parser')
+const jwt = require("jsonwebtoken");
+const connectDB = require("./config/dbConn");
+const fsPromises = require("fs").promises;
+const path = require("path")
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+connectDB();
+app.use(bodyParser.json({limit: '50mb', type: 'application/json'}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
 app.use(express.json());
+app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 
+// app.use('/', require('./routes/root'))
 
-async function send(){
-    const res = await fetch("https://libretranslate.com/translate", {
-	method: "POST",
-	body: JSON.stringify({
-		q: "how are you",
-		source: "auto",
-		target: "zh",
-		format: "text",
-		api_key: ""
-	}),
-	headers: { "Content-Type": "application/json" }
+app.use('/auth', require('./routes/authRoutes'))
+
+app.listen(4000,function(){
+    console.log("Server is running");
 });
-console.log(await res.json());
-}
-
-send()
