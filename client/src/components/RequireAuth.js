@@ -12,7 +12,6 @@ const RequireAuth = (id) => {
     
     console.log(location)
     console.log(auth)
-    console.log("lkj")
     useLayoutEffect(()=>{
         if(!auth.email){
             console.log("rty")
@@ -26,9 +25,8 @@ const RequireAuth = (id) => {
                         const accessToken=result.data.accessToken;
                         const email=result.data.email;
                         const password=result.data.password;
-                        const roles=result.data.roles;
                         console.log(accessToken)
-                        setAuth({email, password,roles,accessToken})
+                        setAuth({email, password,accessToken})
                         navigate(location.pathname,{state:location.state})
                     })
                     .catch(err=> {
