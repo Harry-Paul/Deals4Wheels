@@ -1,11 +1,6 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
 
-function Form() {
-  const Navigate=useNavigate();
-
-  const Signup=()=>{
-      Navigate("../pages/Signup")
+function form1() {
   return (
     <div className='bg-white py-10 px-20 rounded-3xl' >
       <h1 className='xl:text-[33px] lg:text-[31px] md:text-[28px] text-[24px] font-semibold'>Welcome Back </h1>
@@ -42,4 +37,4 @@ function Form() {
   )
 }
 
-export default Form;
+export default form1
