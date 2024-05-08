@@ -7,6 +7,11 @@ function Form() {
   const Signup=()=>{
     Navigate("/signup")
   }
+
+  const Home=()=>{
+    Navigate("/home")
+  }
+
   return (
     <div className='bg-white py-10 px-20 rounded-3xl' >
       <h1 className='xl:text-[33px] lg:text-[31px] md:text-[28px] text-[24px] font-semibold'>Welcome Back </h1>
@@ -28,7 +33,7 @@ function Form() {
             <button className=' xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium text-violet-500'>Forgot Password</button>
         </div>
         <div className='mt-6 flex flex-col gap-y-4'>
-            <button className='active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all py-2 rounded-xl bg-violet-500 text-white xl:text-[17px] lg:text-[16px] md:text-[15px] text-[14px] font-bold'>Sign In</button>
+            <button onClick={Home} className='active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all py-2 rounded-xl bg-violet-500 text-white xl:text-[17px] lg:text-[16px] md:text-[15px] text-[14px] font-bold'>Sign In</button>
             <button className=' xl:text-[16px] lg:text-[14px] md:text-[12px] text-[12px] py-1.5 active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all flex items-center justify-center gap-2'>
                 
                 Sign in with Google
