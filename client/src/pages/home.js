@@ -5,6 +5,7 @@ import sell from '../hooks/sell.png'
 import calculate from '../hooks/calculate.png'
 import live from '../hooks/live.png'
 import upcomming from '../hooks/upcomming.png'
+import Navbar from '../components/Navbar'
 
 const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
 {img: <img className='w-11 h-11' src={sell}/>,button:"Sell"}, 
@@ -20,7 +21,9 @@ const arr2=[{img:<img className='w-9 h-9' src={buy}/>,model:"Swift",brand:"Marut
 
 const Home = () => {
     return (
-      <div className='bg-gray-200'>
+      <div>
+        <Navbar/>
+        <div className='bg-gray-200'>
         <div className='bg-gray-200 ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
         Deal<a className='text-red-700'>4</a>Wheels
         </div>
@@ -42,6 +45,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </div>
+      
     )
   };
   
