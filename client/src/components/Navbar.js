@@ -83,7 +83,7 @@ const Navbar = () => {
     
       
   return (
-    <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-black md:h-[60px] h-[40px] ">
+    <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-black md:h-[80px] h-[40px] ">
         <header className="flex flex-row md:h-[60px] h-[40px] px-5 items-center">
         <div className=' lg:text-2xl lg:py-[10px] text-white cursor-pointer' onClick={home}>
         <div className='ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
