@@ -24,9 +24,6 @@ const Home = () => {
       <div>
         <Navbar/>
         <div className='bg-gray-200'>
-        <div className='bg-gray-200 ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
-        Deal<a className='text-red-700'>4</a>Wheels
-        </div>
         <div>
           <div className='mt-5 bg-white'>
           <img className='w-full' src={bg3} alt=""></img>

@@ -86,7 +86,9 @@ const Navbar = () => {
     <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-black md:h-[60px] h-[40px] ">
         <header className="flex flex-row md:h-[60px] h-[40px] px-5 items-center">
         <div className=' lg:text-2xl lg:py-[10px] text-white cursor-pointer' onClick={home}>
-          <img className="h-[30px]" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1695469260/house_v6mvjt.png" />
+        <div className='ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
+      Deal<a className='text-red-700'>4</a>Wheels
+      </div>
         </div>
         
         <div className="mobile-menu block md:hidden ml-auto">

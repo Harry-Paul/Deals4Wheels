@@ -8,9 +8,6 @@ const Signup = () => {
     <div>
       <Navbar/>
       <div className='bg-gray-200'>
-      <div className='ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
-      Deal<a className='text-red-700'>4</a>Wheels
-      </div>
       <div className='flex w-full h-screen rounded-3xl'>
         <div className='w-full flex lg:w-1/2 items-center justify-center'>
           <Form1/>
