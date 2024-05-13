@@ -19,9 +19,9 @@ const Navbar = () => {
   const { auth } = useAuth();
   const { setAuth } = useAuth();
   const email = auth?.email;
-  const password = auth?.password;
-  const roles = auth?.roles;
   const accessToken = auth?.accessToken;
+  const pic=auth?.pic;
+  console.log(pic)
 
     const [option, setOption] = useState("buy");
 
@@ -140,7 +140,7 @@ const Navbar = () => {
             {auth.email && 
             <Menu className="ml-auto ">
               <MenuHandler>
-                <div>LOGO</div>
+                <img className="h-10 rounded-3xl mt-3" src={pic}></img>
               </MenuHandler>
               <MenuList className="z-20  text-xl">
                 <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={favourites}>Favourites</MenuItem>

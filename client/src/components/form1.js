@@ -1,4 +1,5 @@
 import React from 'react'
+import Googlelogin from '../components/googlelogin'
 
 function Form1() {
   return (
@@ -19,9 +20,7 @@ function Form1() {
         
         <div className='mt-6 flex flex-col gap-y-4'>
             <button className='active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all py-2 rounded-xl bg-violet-500 text-white xl:text-[17px] lg:text-[16px] md:text-[15px] text-[14px] font-bold'>Sign up</button>
-            <button className=' xl:text-[16px] lg:text-[14px] md:text-[12px] text-[12px] py-1.5 active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all flex items-center justify-center gap-2'>  
-                Sign up with Google
-            </button>
+            <Googlelogin/>
         </div>
         <div className=' mt-6 flex justify-center items-center'>
             <p className='font-medium  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] '>Already have an account?</p>

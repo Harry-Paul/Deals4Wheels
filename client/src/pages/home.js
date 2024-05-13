@@ -6,20 +6,26 @@ import calculate from '../hooks/calculate.png'
 import live from '../hooks/live.png'
 import upcomming from '../hooks/upcomming.png'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom'
 
-const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
-{img: <img className='w-11 h-11' src={sell}/>,button:"Sell"}, 
-{img: <img className='w-10 h-11' src={calculate}/>,button:"Calculate Price"}, 
-{img: <img className='w-11 h-11' src={live}/>,button:"Live Auction"}, 
-{img: <img className='w-11 h-11' src={upcomming}/>,button:"Upcomming Auction"}];
-
-const arr2=[{img:<img className='w-9 h-9' src={buy}/>,model:"Swift",brand:"Maruti Suzuki",varient:"VXi",transmission:"Manual",fuel:"Petrol"}, 
-{img: <img className='w-11 h-11' src={sell}/>,model:"Alto",brand:"Maruti Suzuki",varient:"ZXi",transmission:"Manual",fuel:"Petrol"}, 
-{img: <img className='w-10 h-11' src={calculate}/>,model:"Taigun",brand:"volkswagen",varient:"TSI",transmission:"Manual",fuel:"Petrol"}, 
-{img: <img className='w-11 h-11' src={live}/>,model:"Etios",brand:"Toyota",varient:"G",transmission:"Manual",fuel:"Diesel"}, 
-{img: <img className='w-11 h-11' src={upcomming}/>,model:"Santro",brand:"Hyundai",varient:"Magna",transmission:"Manual",fuel:"Petrol"}];
 
 const Home = () => {
+
+  const navigate=useNavigate()
+  const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
+  {img: <img className='w-11 h-11' src={sell}/>,button:"Sell"}, 
+  {img: <img onClick={()=>{navigate("/predict")}} className='w-10 h-11' src={calculate}/>,button:"Calculate Price"}, 
+  {img: <img className='w-11 h-11' src={live}/>,button:"Live Auction"}, 
+  {img: <img className='w-11 h-11' src={upcomming}/>,button:"Upcomming Auction"}];
+  
+  const arr2=[{img:<img className='w-9 h-9' src={buy}/>,model:"Swift",brand:"Maruti Suzuki",varient:"VXi",transmission:"Manual",fuel:"Petrol"}, 
+  {img: <img className='w-11 h-11' src={sell}/>,model:"Alto",brand:"Maruti Suzuki",varient:"ZXi",transmission:"Manual",fuel:"Petrol"}, 
+  {img: <img className='w-10 h-11' src={calculate}/>,model:"Taigun",brand:"volkswagen",varient:"TSI",transmission:"Manual",fuel:"Petrol"}, 
+  {img: <img className='w-11 h-11' src={live}/>,model:"Etios",brand:"Toyota",varient:"G",transmission:"Manual",fuel:"Diesel"}, 
+  {img: <img className='w-11 h-11' src={upcomming}/>,model:"Santro",brand:"Hyundai",varient:"Magna",transmission:"Manual",fuel:"Petrol"}];
+  
+
+
     return (
       <div>
         <Navbar/>

@@ -17,6 +17,7 @@ return (
     <div className="cursor-pointer" onClick={Login}>Login Page</div>
     <div className="cursor-pointer" onClick={Home}>Home Page</div>
     <div onClick={()=>{navigate("/googlelogin")}}>Google Login</div>
+    <div onClick={()=>{navigate("/predict")}}>Predict</div>
   </div>
 );
 }

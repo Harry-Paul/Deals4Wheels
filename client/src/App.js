@@ -4,6 +4,7 @@ import Root from './pages/root.js'
 import Login from './pages/login.js'
 import Signup from './pages/signup.js'
 import Home from './pages/home.js'
+import { Predict } from "./pages/predict.js";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Googlelogin from "./components/googlelogin.js";
 
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/signup" element={<Signup/>}/>
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
+          <Route exact path="/predict" element={<Predict/>}/>
         </Routes>
       </div>
       </Router>
