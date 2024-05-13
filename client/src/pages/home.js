@@ -11,8 +11,15 @@ import etios from '../hooks/etios.jpg'
 import santro from '../hooks/santro.jpeg'
 import taigun from '../hooks/taigun.jpg'
 import alto from '../hooks/alto.jpg'
+import { useNavigate } from 'react-router-dom'
 
-const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
+
+
+
+const Home = () => {
+
+  const navigate=useNavigate()
+  const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
 {img: <img className='w-11 h-11' src={sell}/>,button:"Sell"}, 
 /**{img: <img className='w-10 h-11' src={calculate}/>,button:"Calculate Price"},*/ 
 {img: <img className='w-11 h-11' src={live}/>,button:"Live Auction"}, 
@@ -27,7 +34,8 @@ const arr2=[{img:<img className='w-5/6' src={swift}/>,model:"Swift",brand:"Marut
 {img: <img className='w-5/6' src={alto}/>,model:"Alto",brand:"Maruti Suzuki",varient:"ZXi",transmission:"Manual",fuel:"Petrol",price:"3,56,000"}, 
 {img: <img className='w-5/6' src={taigun}/>,model:"Taigun",brand:"Volkswagen",varient:"TSI",transmission:"Manual",fuel:"Petrol",price:"14,87,000"}];
 
-const Home = () => {
+
+
     return (
       <div>
         <Navbar/>

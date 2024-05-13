@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/auth', require('./routes/authRoutes'))
 
-app.use('/predcit', require('./routes/predict'))
+app.use('/predict', require('./routes/predict'))
 
 app.listen(4000,function(){
     console.log("Server is running");

@@ -17,6 +17,7 @@ const Googlelogin = () => {
           onSuccess={credentialResponse => {
             console.log(jwtDecode(credentialResponse?.credential));
             const email=jwtDecode(credentialResponse?.credential).email
+            const pic=jwtDecode(credentialResponse?.credential).picture
             axios.post('/auth/googlesignin',{email},
               {
                 headers: {
@@ -29,7 +30,7 @@ const Googlelogin = () => {
               console.log(result)
               const accessToken=result.data.accessToken;
               const password=""
-              setAuth({email,password,accessToken})
+              setAuth({email,accessToken,pic})
             })
             .catch(err=>{
               console.log(err)
