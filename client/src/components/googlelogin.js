@@ -26,6 +26,7 @@ const Googlelogin = () => {
               }
             )
             .then(result=>{
+              console.log(result)
               const accessToken=result.data.accessToken;
               const password=""
               setAuth({email,password,accessToken})
