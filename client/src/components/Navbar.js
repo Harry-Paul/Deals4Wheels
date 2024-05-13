@@ -9,7 +9,6 @@ import {
 import axios from "../api/axios"
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import accountLogo from "./user_3177440.png"
 import MenuOverlay from "./MenuOverlay";
 import {HiMenu} from "react-icons/hi"
 import {IoIosCloseCircleOutline} from "react-icons/io"
@@ -139,7 +138,7 @@ const Navbar = () => {
             {auth.email && 
             <Menu className="ml-auto ">
               <MenuHandler>
-                <img className="h-[40px] mr-0 md:ml-[100px] cursor-pointer" src={accountLogo} />
+                <div>LOGO</div>
               </MenuHandler>
               <MenuList className="z-20  text-xl">
                 <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={favourites}>Favourites</MenuItem>

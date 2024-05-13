@@ -124,15 +124,22 @@ const signup=async(req,res)=>{
             res.json("Signed up")
         }
     })
+    .catch(err=>{
+        console.log(err)
+    })
+    
 }
 
 const googlesignin=async(req,res)=>{
     const{email}=req.body;
     console.log(email)
-    User.findOne({email:email})
+    start();
+    function start(){
+        User.findOne({email:email})
     .then(user=>{
         if(!user){
             User.create({email:email,password:"abc",signintype:"google"})
+            start();
         }
         const accessToken = jwt.sign(
             {
@@ -156,15 +163,15 @@ const googlesignin=async(req,res)=>{
             sameSite: 'None',
             maxAge: 7*24*60*1000
         })
-        User.findOne({email:email})
-        .then(user=>{
+
             run();
                 async function run(){
                     await user.updateOne({refreshToken:rToken})
                 }
-        })
         return res.json({"auth": true, "token": accessToken});
     })
+    }
+    
 }
 
 module.exports = {signin, refresh, logout,signup, googlesignin};
