@@ -7,6 +7,7 @@ import Home from './pages/home.js'
 import { Predict } from "./pages/predict.js";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Googlelogin from "./components/googlelogin.js";
+import Sell from "./pages/sell.js";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
           <Route exact path="/predict" element={<Predict/>}/>
+          <Route exact path="/sell" element={<Sell/>}/>
         </Routes>
       </div>
       </Router>

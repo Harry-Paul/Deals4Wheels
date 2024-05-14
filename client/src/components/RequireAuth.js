@@ -24,9 +24,8 @@ const RequireAuth = (id) => {
                         console.log(result)
                         const accessToken=result.data.accessToken;
                         const email=result.data.email;
-                        const password=result.data.password;
                         console.log(accessToken)
-                        setAuth({email, password,accessToken})
+                        setAuth({email, accessToken})
                         navigate(location.pathname,{state:location.state})
                     })
                     .catch(err=> {

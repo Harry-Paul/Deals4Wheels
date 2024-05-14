@@ -104,7 +104,7 @@ const Navbar = () => {
                 }
             </div>
           <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
-          
+          <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
             <div className="md:px-10">
               <button class="peer px-5 py-2 text-white">BUY</button>
               <div class="hidden absolute peer-hover:flex hover:flex
