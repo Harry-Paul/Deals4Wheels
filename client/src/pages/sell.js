@@ -36,11 +36,28 @@ export default function Sell() {
     useLayoutEffect(()=>{
         var date= new Date();
         let year=date.getFullYear()
-        let month=(date.getMonth()<10 ? "0":""+date.getMonth())
-        let str=year+"-"+month+"-"+date.getDate()+"T"+date.getHours()+":"+date.getMinutes()
+        let month=date.getMonth()
+        let day=date.getDate()
+        let hours=date.getHours()
+        let minutes=date.getMinutes()
+        if(month<10){
+            month="0"+month
+        }
+        if(day<10){
+            day="0"+day
+        }
+        if(hours<10){
+            hours="0"+hours
+        }
+        if(minutes<10){
+            minutes="0"+minutes
+        }
+        let str=year+"-"+month+"-"+day+"T"+hours+":"+minutes
         setCurrentTime(str)
-        console.log(month)
-    })
+        setStartTime(str)
+        setEndTime(str)
+        console.log(str)
+    },[])
 
     const handleFileInputChange = (e) => {
         const prev = [...prevImg]
@@ -157,16 +174,16 @@ export default function Sell() {
                             type="datetime-local"
                             id="meeting-time"
                             name="meeting-time"
-                            value={currentTime}
+                            value={startTime}
                             min={currentTime} />
                     </div>
                     <div class="py-[10px]">
                         <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;End Time : </label>
-                        <input onChange={(e)=>{setEndTime(e.target.value);console.log(currentTime)}}
+                        <input onChange={(e)=>{setEndTime(e.target.value);console.log(endTime)}}
                             type="datetime-local"
                             id="meeting-time"
                             name="meeting-time"
-                            value='2024-05-24T23:52'
+                            value={endTime}
                             min={currentTime} />
                     </div>
                     <div class="py-[10px] flex flex-wrap">
@@ -199,7 +216,7 @@ export default function Sell() {
                         ))}
                     </div>
                     <div className="flex justify-center">
-                    <button className="bg-slate-800 text-white hover:bg-slate-400 hover:text-black p-3 m-5" onClick={submit}>Submit</button>
+                    <button className="bg-black text-white hover:bg-slate-400 hover:text-black p-3 m-5 rounded-xl" onClick={submit}>Submit</button>
                     
                 </div>
                 </div>
