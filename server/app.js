@@ -30,6 +30,8 @@ app.use('/auth', require('./routes/authRoutes'))
 
 app.use('/predict', require('./routes/predict'))
 
+app.use('/sell', require('./routes/sell'))
+
 app.listen(4000,function(){
     console.log("Server is running");
 });

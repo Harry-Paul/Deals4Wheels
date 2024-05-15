@@ -5,7 +5,7 @@ const Car = require('../model/car');
 const cloudinary = require("../utils/cloudinary");
 
 const handleSell = async (req,res) => {
-    const{brand,model,variant,transmission,engine,power,kilometers,owner,status,price,startTime,endTime,description,imgArray}=req.body;
+    const{email,brand,model,variant,transmission,kilometers,owner,status,price,startTime,endTime,description,imgArray}=req.body;
     
    
             let images=[];
@@ -37,7 +37,7 @@ const handleSell = async (req,res) => {
             function upload(images){
                 console.log(images);
                 const activity=0
-                Car.create({brand,model,variant,transmission,engine,power,kilometers,owner,status,price,startTime,endTime,description,images})
+                Car.create({email,activity,brand,model,variant,transmission,kilometers,owner,status,price,startTime,endTime,description,images})
                 res.json("Created")
             }
 }

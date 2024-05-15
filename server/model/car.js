@@ -21,14 +21,6 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    engine:{
-        type:String,
-        required:true
-    },
-    power:{
-        type:String,
-        required:true
-    },
     kilometers:{
         type:String,
         required:true
@@ -42,7 +34,7 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     price:{
-        type:Number,
+        type:String,
         required:true
     },
     startTime:{
@@ -50,6 +42,10 @@ const propSchema = new mongoose.Schema({
     },
     endTime:{
         type:Date,
+    },
+    date:{
+        type:Date,
+        required:true
     },
     activity:{
         type:Number,
