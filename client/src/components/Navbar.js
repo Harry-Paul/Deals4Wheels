@@ -20,8 +20,8 @@ const Navbar = () => {
   const { setAuth } = useAuth();
   const email = auth?.email;
   const accessToken = auth?.accessToken;
-  const pic=auth?.pic;
-  console.log(pic)
+  const pic=auth.pic;
+  console.log(auth)
 
     const [option, setOption] = useState("buy");
 
