@@ -26,7 +26,7 @@ export default function Sell() {
     const [description, setDescription] = useState('');
     const [currentTime, setCurrentTime]=useState('')
     const [style,setStyle]=useState('py-[10px] hidden')
-    
+    const [style1,setStyle1]=useState("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white shadow-xl")
 
     const [selectedFile, setSelectedFile] = useState();
     const [fileInputState, setFileInputState] = useState('');
@@ -112,28 +112,23 @@ export default function Sell() {
         <>
             {<Navbar />}
 
-<<<<<<< HEAD
             <form onSubmit={submit} className="grid  lg:grid-cols-2 md:pt-[42px] mt-[50px] bg-gray-300">
-                <div className="mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white">
-=======
-            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:mt-[100px] mt-[50px] bg-gray-300">
-                <div className="mt-9 mx-auto px-8  rounded-3xl bg-white">
+                <div className={style1} >
 
->>>>>>> bce023de9b4de16c1b8b0e4d625f97480b6a2db4
                     <div class="py-[10px]">
-                        <label className="" for="propname">Brand : </label>
+                        <label className="" for="propname">&nbsp; Brand : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder="Brand" name="Brand" id="" required />
                     </div>
                     <div class="py-[10px]">
-                        <label className="" for="street">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Model : </label>
+                        <label className="" for="street">&nbsp; Model : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setModel(e.target.value) }} placeholder="Model" name="Model" id="" required />
                     </div>
                     <div class="py-[10px]">
-                        <label className="" for="city">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Variant : </label>
+                        <label className="" for="city">&nbsp;  Variant : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setVariant(e.target.value) }} placeholder="Variant" name="Variant" id="" required />
                     </div>
                     <div class="py-[10px]">
-                        <label className="" for="beds">&nbsp; &nbsp; &nbsp;Kilometers : </label>
+                        <label className="" for="beds">&nbsp; Kilometers : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
                     </div>
                     <div className="flex flex-wrap py-[15px]">
@@ -159,16 +154,13 @@ export default function Sell() {
                     <div className="flex flex-wrap py-[15px]">
                         <label className="" for="type">&nbsp; Status : </label>
                         <div className="">
-                            <select onClick={(e)=>{setStatus(e.target.value);if(status==="Auction"){setStyle("py-[10px]")}}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="Manual" >Fixed Price</option>
+                            <select onClick={(e)=>{setStatus(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px]");setStyle1("mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white")}else if(e.target.value==="fixed"){setStyle('hidden');setStyle1("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white")} }} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="fixed" >Fixed Price</option>
                                 <option value="Auction" >Auction</option>
                             </select>
                         </div>
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Price : </label>
-                        <input className="border-2 px-2" type="text" onChange={(e) => { setPrice(e.target.value) }} placeholder="Price" name="Price" id="" required />
-                    </div>
+                    
                     <div class={style}>
                         <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Start Time : </label>
                         <input onChange={(e)=>setStartTime(e.target.value)}
@@ -187,6 +179,10 @@ export default function Sell() {
                             value={endTime}
                             min={currentTime} />
                     </div>
+                    <div class="py-[10px]">
+                        <label className="" for="price">&nbsp; &nbsp; &nbsp; Price : </label>
+                        <input className="border-2 px-2" type="text" onChange={(e) => { setPrice(e.target.value) }} placeholder="Price" name="Price" id="" required />
+                    </div>
                     <div class="py-[10px] flex flex-wrap">
                         <label className="" for="description">&nbsp; &nbsp; &nbsp; Description : </label>
                         <textarea className="p-4 mx-1 border-2" type="text" onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" name="Description" id="" required />
@@ -202,7 +198,7 @@ export default function Sell() {
                         type="file"
                         name="image"
                         onChange={handleFileInputChange}
-                        className="ml-5 p-5"
+                        className="ml-[90px] p-5"
                     />
                     <div className=" flex flex-wrap justify-center">
                         {prevSrc && prevSrc?.map((img) => (
