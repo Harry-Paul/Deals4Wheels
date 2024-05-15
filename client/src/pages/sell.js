@@ -112,8 +112,9 @@ export default function Sell() {
         <>
             <Navbar />
 
-            <form onSubmit={submit} className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px] ">
-                <div className="mx-auto">
+            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:mt-[100px] mt-[50px] bg-gray-300">
+                <div className="mt-9 mx-auto px-8  rounded-3xl bg-white">
+
                     <div class="py-[10px]">
                         <label className="" for="propname">Brand : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder="Brand" name="Brand" id="" required />
@@ -125,14 +126,6 @@ export default function Sell() {
                     <div class="py-[10px]">
                         <label className="" for="city">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Variant : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setVariant(e.target.value) }} placeholder="Variant" name="Variant" id="" required />
-                    </div>
-                    <div class="py-[10px]">
-                        <label className="" for="state">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Engine : </label>
-                        <input className="border-2 px-2" type="text" onChange={(e) => { setEngine(e.target.value) }} placeholder="Engine" name="Engine" id="" required />
-                    </div>
-                    <div class="py-[10px]">
-                        <label className="" for="country">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Power : </label>
-                        <input className="border-2 px-2" type="text" onChange={(e) => { setPower(e.target.value) }} placeholder="Power" name="Power" id="" required />
                     </div>
                     <div class="py-[10px]">
                         <label className="" for="beds">&nbsp; &nbsp; &nbsp;Kilometers : </label>
