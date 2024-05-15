@@ -10,7 +10,7 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     model:{
-        type:Number,
+        type:String,
         required:true
     },
     variant:{

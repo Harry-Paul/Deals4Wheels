@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
     },
     signintype:{
         type:String,
-        required:true
     }
 })
 

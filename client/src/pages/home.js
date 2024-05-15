@@ -1,4 +1,5 @@
-import React from 'react'
+import {React, useLayoutEffect} from 'react'
+import axios from '../api/axios'
 import buy from '../hooks/buy.png'
 import bg3 from '../hooks/bg3.jpg'
 import sell from '../hooks/sell.png'
@@ -16,7 +17,18 @@ import { useNavigate } from 'react-router-dom'
 
 
 
+
 const Home = () => {
+
+  useLayoutEffect(()=>{
+    axios.post("/home")
+    .then(result=>{
+      
+    })
+    .catch(err=>{
+
+    })
+  },[])
 
   const navigate=useNavigate()
   const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 

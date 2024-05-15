@@ -39,7 +39,7 @@ const signin = async (req,res) => {
                     await user.updateOne({refreshToken:rToken})
                 }
                 console.log("log in Success")
-                return res.json({"auth": true, "token": accessToken, "role":user.role});
+                return res.json({"auth": true, "token": accessToken});
             }
             else{
                 return res.json({"auth": false});
@@ -114,6 +114,7 @@ const logout = async (req, res) => {
 
 const signup=async(req,res)=>{
     const{email,password}=req.body;
+    console.log(req.body)
     User.findOne({email: email})
     .then(user =>{
         if(user){
