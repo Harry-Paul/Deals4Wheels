@@ -14,17 +14,18 @@ export default function Sell() {
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
     const [variant, setVariant] = useState('');
-    const [transmission, setTransmission] = useState('');
+    const [transmission, setTransmission] = useState('Manual');
     const [engine, setEngine] = useState('');
     const [power, setPower] = useState('');
     const [kilometers, setKilometers] = useState('');
-    const [owner, setOwner] = useState('');
+    const [owner, setOwner] = useState('First');
     const [status, setStatus] = useState('Fixed Price');
     const [price, setPrice] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [description, setDescription] = useState('');
     const [currentTime, setCurrentTime]=useState('')
+    const [style,setStyle]=useState('py-[10px] hidden')
     
 
     const [selectedFile, setSelectedFile] = useState();
@@ -84,7 +85,8 @@ export default function Sell() {
     };
 
 
-    const submit=()=>{
+    const submit=(e)=>{
+        e.preventDefault()
         if(brand==='' || model==='' ||variant==='' || engine==='' || power==='' || kilometers==='' || price==='' || (status==="auction" && startTime==='') || (status==="auction" && endTime==='') ){
             alert("Fill out required fields")
         }
@@ -93,7 +95,8 @@ export default function Sell() {
                 imgArray.push(src);
             })
             console.log(imgArray)
-            axios.post('/sell',{brand,model,variant,transmission,engine,power,kilometers,owner,status,price,startTime,endTime,description,imgArray})
+            console.log({email,brand,model,variant,transmission,engine,power,kilometers,owner,status,price,startTime,endTime,description,imgArray})
+            axios.post('/sell',{email,brand,model,variant,transmission,engine,power,kilometers,owner,status,price,startTime,endTime,description,imgArray})
             .then(result=>{
                 console.log(result.data)
             })
@@ -109,7 +112,7 @@ export default function Sell() {
         <>
             <Navbar />
 
-            <form onSubmit={submit} className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px]">
+            <form onSubmit={submit} className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px] ">
                 <div className="mx-auto">
                     <div class="py-[10px]">
                         <label className="" for="propname">Brand : </label>
@@ -158,9 +161,9 @@ export default function Sell() {
                     <div className="flex flex-wrap py-[15px]">
                         <label className="" for="type">&nbsp; Status : </label>
                         <div className="">
-                            <select onClick={(e)=>{setStatus(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <select onClick={(e)=>{setStatus(e.target.value);if(status==="Auction"){setStyle("py-[10px]")}}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Manual" >Fixed Price</option>
-                                <option value="Second" >Auction</option>
+                                <option value="Auction" >Auction</option>
                             </select>
                         </div>
                     </div>
@@ -168,7 +171,7 @@ export default function Sell() {
                         <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Price : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setPrice(e.target.value) }} placeholder="Price" name="Price" id="" required />
                     </div>
-                    <div class="py-[10px]">
+                    <div class={style}>
                         <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Start Time : </label>
                         <input onChange={(e)=>setStartTime(e.target.value)}
                             type="datetime-local"
@@ -177,7 +180,7 @@ export default function Sell() {
                             value={startTime}
                             min={currentTime} />
                     </div>
-                    <div class="py-[10px]">
+                    <div class={style}>
                         <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;End Time : </label>
                         <input onChange={(e)=>{setEndTime(e.target.value);console.log(endTime)}}
                             type="datetime-local"
