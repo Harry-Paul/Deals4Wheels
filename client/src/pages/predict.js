@@ -2,6 +2,7 @@ import React, { useState,useEffect,useLayoutEffect } from 'react'
 import axios from '../api/axios'
 import useAuth from "../hooks/useAuth";
 import Navbar from '../components/Navbar';
+import robo from '../hooks/robo.gif'
 
 
 export const Predict = () => {
@@ -41,7 +42,7 @@ export const Predict = () => {
     <div>
       <Navbar/>
         <form className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px]">
-          <div className="mx-auto">
+          <div className="py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
             <div class="py-[10px]">
               <label className="" >Year : </label>
                 <input className="border-2 px-2" type="text" onChange={(e) => { setYear(e.target.value) }} placeholder="Year" name="Year" id="" required />
@@ -138,6 +139,9 @@ export const Predict = () => {
               </div>
             </div>
             <button onClick={Submit}>SUBMIT</button>
+          </div>
+          <div>
+          <img className='' src={robo} alt=""></img>
           </div>
         </form>
         <div>Predicted Result: {pred}</div>
