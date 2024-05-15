@@ -107,10 +107,10 @@ export default function Sell() {
 
     return (
         <>
-            <Navbar />
+            {<Navbar />}
 
-            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:mt-[100px] mt-[50px] bg-gray-300">
-                <div className="mt-9 mx-auto px-8  rounded-3xl bg-white">
+            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:pt-[42px] mt-[50px] bg-gray-300">
+                <div className="mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white">
                     <div class="py-[10px]">
                         <label className="" for="propname">Brand : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder="Brand" name="Brand" id="" required />
@@ -187,7 +187,7 @@ export default function Sell() {
                     
                 </div>
 
-                <div className="mx-auto md:mt-10 mt-5">
+                <div className="mx-auto md:mt-[100px] mt-10">
                     <h1 className="px-4 text-center font-bold md:text-4xl text-2xl" >Upload Images</h1>
                     <input
                         type="file"
@@ -195,11 +195,11 @@ export default function Sell() {
                         onChange={handleFileInputChange}
                         className="ml-5 p-5"
                     />
-                    <div className="flex flex-wrap justify-center">
+                    <div className=" flex flex-wrap justify-center">
                         {prevSrc && prevSrc?.map((img) => (
                             <div className=" m-2">
                             <img
-                                className="object-cover h-[100px] w-[150px]"
+                                className="ml-[10px] object-cover h-[100px] w-[150px]"
                                 src={img}
                                 alt="chosen"
 
