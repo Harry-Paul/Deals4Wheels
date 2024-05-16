@@ -97,11 +97,12 @@ export default function Sell() {
             axios.post('/sell',{email,brand,model,variant,transmission,kilometers,owner,status,price,starttime,endtime,description,imgArray})
             .then(result=>{
                 console.log(result.data)
+                navigate("/home")
             })
             .catch(err=>{
                 console.log(err)
             })
-            navigate()
+            
         }
     }
 

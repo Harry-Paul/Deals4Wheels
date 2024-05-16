@@ -1,4 +1,4 @@
-import {React, useLayoutEffect} from 'react'
+import {React, useLayoutEffect, useState} from 'react'
 import axios from '../api/axios'
 import buy from '../hooks/buy.png'
 import bg3 from '../hooks/bg3.jpg'
@@ -19,14 +19,17 @@ import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
+  const[cont,setCont]=useState([])
 
   useLayoutEffect(()=>{
-    axios.post("/home")
+    const type="Home"
+    axios.post("/car",{type})
     .then(result=>{
-      
+      console.log(result.data)
+      setCont(result.data.cont)
     })
     .catch(err=>{
-
+      console.log(console.log(err))
     })
   },[])
 

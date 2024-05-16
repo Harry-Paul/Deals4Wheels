@@ -32,6 +32,8 @@ app.use('/predict', require('./routes/predict'))
 
 app.use('/sell', require('./routes/sell'))
 
+app.use('/car', require('./routes/car'))
+
 app.listen(4000,function(){
     console.log("Server is running");
 });
