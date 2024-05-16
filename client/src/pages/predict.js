@@ -41,7 +41,7 @@ export const Predict = () => {
   return (
     <div>
       <Navbar/>
-        <form className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px]">
+        <form className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50">
           <div className="py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
             <div class="py-[10px]">
               <label className="" >Year : </label>
@@ -54,14 +54,6 @@ export const Predict = () => {
             <div className="py-[10px]">
               <label className="" >Mileage : </label>
                 <input className="border-2 px-2" type="text" onChange={(e) => { setMileage(e.target.value) }} placeholder="Mileage" name="Mileage" id="" required />
-            </div>
-            <div className="py-[10px]">
-              <label className="" >Engine : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setEngine(e.target.value) }} placeholder="Engine" name="Engine" id="" required />
-            </div>
-            <div className="py-[10px]">
-              <label className="" >Power: </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setPower(e.target.value) }} placeholder="Engine" name="Engine" id="" required />
             </div>
             <div className="py-[10px]">
               <label className="" >Seats : </label>

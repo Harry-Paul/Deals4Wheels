@@ -152,7 +152,7 @@ export default function Sell() {
                     <div className="flex flex-wrap py-[15px]">
                         <label className="" for="type">&nbsp; Status : </label>
                         <div className="">
-                            <select onClick={(e)=>{setStatus(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px]")}}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select onClick={(e)=>{setStatus(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px]");setStyle1("mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white")}else if(e.target.value==="fixed"){setStyle('hidden');setStyle1("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white")} }} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Manual" >Fixed Price</option>
                                 <option value="Auction" >Auction</option>
                             </select>
