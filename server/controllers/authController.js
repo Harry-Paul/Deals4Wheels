@@ -134,13 +134,14 @@ const signup=async(req,res)=>{
 const googlesignin=async(req,res)=>{
     const{email}=req.body;
     console.log(email)
-    start();
-    function start(){
+    start(email);
+    function start(email){
+        console.log("abc")
         User.findOne({email:email})
-    .then(user=>{
+        .then(user=>{
         if(!user){
             User.create({email:email,password:"abc",signintype:"google"})
-            start();
+            start(email);
         }
         else{
             const accessToken = jwt.sign(
