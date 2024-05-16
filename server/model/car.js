@@ -29,7 +29,7 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    status:{
+    type:{
         type:String,
         required:true
     },

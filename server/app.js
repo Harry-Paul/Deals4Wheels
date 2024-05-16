@@ -24,7 +24,6 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 
-// app.use('/', require('./routes/root'))
 
 app.use('/auth', require('./routes/authRoutes'))
 

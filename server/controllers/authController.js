@@ -142,34 +142,37 @@ const googlesignin=async(req,res)=>{
             User.create({email:email,password:"abc",signintype:"google"})
             start();
         }
-        const accessToken = jwt.sign(
-            {
-                "UserInfo": {
-                    "username": email,
-                    "type": "google"
-                }
-            },
-            `${process.env.ACCESS_TOKEN_SECRET}`,
-            {expiresIn: "500s"}
-        );
-        const rToken = jwt.sign(
-            {id: email},
-            `${process.env.REFRESH_TOKEN_SECRET}`,
-            {expiresIn: "1d"}
-        );
-
-        res.cookie('jwt', rToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'None',
-            maxAge: 7*24*60*1000
-        })
-
-            run();
-                async function run(){
-                    await user.updateOne({refreshToken:rToken})
-                }
-        return res.json({"auth": true, "token": accessToken});
+        else{
+            const accessToken = jwt.sign(
+                {
+                    "UserInfo": {
+                        "username": email,
+                        "type": "google"
+                    }
+                },
+                `${process.env.ACCESS_TOKEN_SECRET}`,
+                {expiresIn: "500s"}
+            );
+            const rToken = jwt.sign(
+                {id: email},
+                `${process.env.REFRESH_TOKEN_SECRET}`,
+                {expiresIn: "1d"}
+            );
+    
+            res.cookie('jwt', rToken, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'None',
+                maxAge: 7*24*60*1000
+            })
+    
+                run();
+                    async function run(){
+                        await User.updateOne({email:email},{refreshToken:rToken})
+                    }
+            return res.json({"auth": true, "token": accessToken});
+        }
+        
     })
     }
     
