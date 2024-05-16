@@ -18,6 +18,7 @@ export default function Sell() {
     const [kilometers, setKilometers] = useState('');
     const [owner, setOwner] = useState('First');
     const [type, setType] = useState('Fixed Price');
+    const [fuel, setFuel] = useState('Petrol');
     const [price, setPrice] = useState('');
     const [starttime, setStartTime] = useState('');
     const [endtime, setEndTime] = useState('');
@@ -93,8 +94,8 @@ export default function Sell() {
                 imgArray.push(src);
             })
             console.log(imgArray)
-            console.log({email,brand,model,variant,transmission,kilometers,owner,type,price,starttime,endtime,description,imgArray})
-            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,owner,type,price,starttime,endtime,description,imgArray})
+            console.log({email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
+            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
             .then(result=>{
                 console.log(result.data)
                 navigate("/home")
@@ -147,6 +148,17 @@ export default function Sell() {
                                 <option value="Second" >Second</option>
                                 <option value="Third" >Third</option>
                                 <option value="Fourth & above" >Fourth & above</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap py-[15px]">
+                        <label className="" for="type">&nbsp; Fuel Type : </label>
+                        <div className="">
+                            <select onClick={(e)=>{setFuel(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="Petrol" >Petrol</option>
+                                <option value="Diesel" >Diesel</option>
+                                <option value="Electric" >Electric</option>
+                                <option value="CNG" >CNG</option>
                             </select>
                         </div>
                     </div>

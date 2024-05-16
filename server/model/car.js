@@ -17,6 +17,10 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    fuel:{
+        type:String,
+        required:true
+    },
     transmission:{
         type:String,
         required:true
@@ -30,6 +34,10 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     type:{
+        type:String,
+        required:true
+    },
+    status:{
         type:String,
         required:true
     },
