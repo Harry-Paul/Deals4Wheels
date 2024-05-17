@@ -77,11 +77,11 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
             </div>
 
           <div className=" mt-20 mx-20 h-24 items-center justify-center grid grid-cols-4 gap-14 bg-white " >
-          {arr2.map((arr2)=>(
+          {cont.map((arr2)=>(
                   <div>
                     <div className='col-span-1 shadow-2xl  md:h-[360px] h-[300px] hover:scale-[1.050] cursor-pointer'>
                       <div className='flex justify-center h-[200px]'>
-                      {arr2.img}
+                      <img className='bg-cover p-5' src={arr2.images[0]}/>
                       </div>
                       <div className=" ml-2 pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white">
                         <p>{`Brand: ${arr2.brand}`}</p>

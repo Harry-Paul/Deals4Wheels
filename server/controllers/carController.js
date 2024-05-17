@@ -7,11 +7,11 @@ const handleCar=async (req,res)=>{
         res.json({"success":true,"cont":cont})
     }
     else if(type==="Auction"){
-        let cont=await Car.find({status:"Auction"})
+        let cont=await Car.find({type:"Auction"})
         res.json({"success":true,"cont":cont})
     }
     else if(type==="Home"){
-        let cont=await Car.find();
+        let cont=await Car.find({status:"Active"});
         cont=cont.slice(0,8)
         res.json({"success":true,"cont":cont})
     }
