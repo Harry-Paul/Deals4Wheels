@@ -25,6 +25,12 @@ const Navbar = () => {
 
     const [option, setOption] = useState("buy");
 
+    useLayoutEffect(()=>{
+      axios.post("/change")
+      .then(result=>console.log(result))
+      .catch(err=>console.log(err))
+    },[])
+
     const buy = (e, type, status) => {
         e.preventDefault()
         console.log(location)

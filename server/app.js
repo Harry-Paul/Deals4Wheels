@@ -33,6 +33,8 @@ app.use('/sell', require('./routes/sell'))
 
 app.use('/car', require('./routes/car'))
 
+app.use('/change', require('./routes/change'))
+
 app.listen(4000,function(){
     console.log("Server is running");
 });

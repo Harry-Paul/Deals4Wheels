@@ -3,11 +3,11 @@ const Car = require('../model/car');
 const handleCar=async (req,res)=>{
     const{type}=req.body;
     if(type==="All"){
-        let cont=await Car.find();
+        let cont=await Car.find({status:"Active"});
         res.json({"success":true,"cont":cont})
     }
     else if(type==="Auction"){
-        let cont=await Car.find({type:"Auction"})
+        let cont=await Car.find({type:"Auction",status:"Active"})
         res.json({"success":true,"cont":cont})
     }
     else if(type==="Home"){

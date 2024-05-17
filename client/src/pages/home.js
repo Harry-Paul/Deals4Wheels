@@ -13,6 +13,7 @@ import santro from '../hooks/santro.jpeg'
 import taigun from '../hooks/taigun.jpg'
 import alto from '../hooks/alto.jpg'
 import { useNavigate } from 'react-router-dom'
+import { FaBorderAll, FaHeart } from "react-icons/fa6";
 
 
 
@@ -66,7 +67,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
                     <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[1].img}{arr[1].button}</div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/predict')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-[60px] lg:h-13 md:h-11 h-9 bg-red-500 text-white  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[2].img}{arr[2].button}</div>
+                    <div onClick={()=>navigate('/predict')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-[70px] lg:h-13 md:h-11 h-9 bg-red-500 text-white  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[2].img}{arr[2].button}</div>
                   </div>
                   <div className="rounded-xl">
                     <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[3].img}{arr[3].button}</div>
@@ -78,21 +79,15 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
 
           <div className=" mt-20 mx-20 h-24 items-center justify-center grid grid-cols-4 gap-14 bg-white " >
           {cont.map((arr2)=>(
-                  <div>
-                    <div className='col-span-1 shadow-2xl  md:h-[360px] h-[300px] hover:scale-[1.050] cursor-pointer'>
-                      <div className='flex justify-center h-[200px]'>
-                      <img className='bg-cover p-5' src={arr2.images[0]}/>
-                      </div>
-                      <div className=" ml-2 pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white">
-                        <p>{`Brand: ${arr2.brand}`}</p>
-                        <p>{`Model: ${arr2.model}`}</p>
-                        <p>{`Varient: ${arr2.varient}`}</p>
-                        <p>{`Transmission Type: ${arr2.transmission}`}</p>
-                        <p>{`Fuel Type: ${arr2.fuel}`}</p>
-                        <p className='mt-3 font-bold md:text-lg text-md'>{`₹ ${arr2.price}`}</p>
+                    <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.020] cursor-pointer rounded-xl'>
+                      <img className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
+                      <div className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
+                        <p className='md:text-lg font-medium truncate pb-1'>{arr2.brand} {arr2.model} {arr2.variant}</p>
+                        <p className='text-gray-600'>{arr2.kilometers} kms &nbsp;&nbsp; &#183; &nbsp;&nbsp;{arr2.transmission} &nbsp;&nbsp;&#183; &nbsp;&nbsp;{arr2.fuel}</p>
+                        <p className='mt-3 font-bold md:text-2xl text-md flex flex-row'>{`₹${arr2.price}`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FaHeart  color='white' style={{ stroke: "red", strokeWidth: "20"}}/></p>
                       </div>
                     </div>
-                  </div>
+                  
               ))}
           </div>
 
