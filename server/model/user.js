@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
     },
     signintype:{
         type:String,
+    },
+    pic:{
+        type:String
     }
 })
 

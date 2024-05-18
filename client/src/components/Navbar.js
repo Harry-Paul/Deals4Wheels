@@ -21,7 +21,6 @@ const Navbar = () => {
   const email = auth?.email;
   const accessToken = auth?.accessToken;
   const pic=auth.pic;
-  console.log(auth)
 
     const [option, setOption] = useState("buy");
 
@@ -110,6 +109,7 @@ const Navbar = () => {
                 }
             </div>
           <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
+          <div onClick={logout} className="cursor-pointer peer px-5 py-2 text-white">LOGOUT</div>
           <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
             <div className="md:px-10">
               <button class="peer px-5 py-2 text-white">BUY</button>

@@ -4,6 +4,8 @@ import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom'
 
 function Form1() {
+  const pic="https://res.cloudinary.com/dstxl4pzw/image/upload/v1715797500/user_3177440_no4g5v.png"
+
   const navigate=useNavigate()
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
@@ -11,7 +13,7 @@ function Form1() {
 
   const check=()=>{
     if(password===repassword){
-      axios.post("/auth/signup",{email,password})
+      axios.post("/auth/signup",{email,password,pic})
       .then(result=>{
         console.log(result.data)
       })

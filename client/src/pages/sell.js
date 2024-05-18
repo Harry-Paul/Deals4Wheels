@@ -95,7 +95,14 @@ export default function Sell() {
             })
             console.log(imgArray)
             console.log({email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
-            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
+            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray},
+            {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                withCredentials: true
+            }
+            )
             .then(result=>{
                 console.log(result.data)
                 navigate("/home")

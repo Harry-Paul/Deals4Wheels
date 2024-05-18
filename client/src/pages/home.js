@@ -1,4 +1,4 @@
-import {React, useLayoutEffect, useState} from 'react'
+import {React, useLayoutEffect, useState, useEffect} from 'react'
 import axios from '../api/axios'
 import buy from '../hooks/buy.png'
 import bg3 from '../hooks/bg3.jpg'
@@ -14,6 +14,9 @@ import taigun from '../hooks/taigun.jpg'
 import alto from '../hooks/alto.jpg'
 import { useNavigate } from 'react-router-dom'
 import { FaBorderAll, FaHeart } from "react-icons/fa6";
+import useAuth from '../hooks/useAuth'
+import Refreshauth from '../components/refreshauth'
+import { AuthProvider } from '../context/AuthProvider'
 
 
 
@@ -21,20 +24,87 @@ import { FaBorderAll, FaHeart } from "react-icons/fa6";
 
 const Home = () => {
   const[cont,setCont]=useState([])
+  const {auth}=useAuth();
+  const {setAuth}=useAuth()
+  let email=auth?.email
+  let accessToken=auth?.accessToken
+  // console.log(auth)
+  const[fav,setFav]=useState([])
+  const navigate=useNavigate()
+  const [color,setColor]=useState({})
+  console.log("auth :",auth)
+  console.log(color)
 
   useLayoutEffect(()=>{
+    console.log("sdf")
+    
+    let fav=auth.email?true:false
+    console.log(fav)
     const type="Home"
-    axios.post("/car",{type})
+    axios.post("/car",{type,fav,email})
     .then(result=>{
       console.log(result.data)
       setCont(result.data.cont)
-    })
+      setColor(result.data.color)})
     .catch(err=>{
       console.log(console.log(err))
     })
+      
   },[])
 
-  const navigate=useNavigate()
+  const favourite=(id,status,seller)=>{
+    send(accessToken)
+    function send(){
+    email=auth?.email
+    console.log("status: ",status)
+    console.log("ert: ",accessToken)
+    axios.post("/favourite",{email,status,id,seller},
+    {
+      headers: {
+          'Authorization': `Bearer ${accessToken}`
+      },
+      withCredentials: true
+    }
+    )
+    .then(result=>console.log(result))
+    .catch(err=>{
+      {
+        console.log(err)
+        if (err.response.data.message === "Forbidden") {
+            axios.post('/auth/refresh', { email },
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                    withCredentials: true
+                })
+                .then(result => {
+                    console.log(result)
+                    const email=result.data.accessToken
+                    accessToken = result.data.accessToken;
+                    const pic = result.data.pic;
+                    console.log(accessToken)
+                    setAuth({ email, accessToken,pic })
+                    send(accessToken);
+                    // submit();
+                    // navigate("/home")
+                })
+                .catch(err => {
+                    if (err.response.data.message === "Forbidden" ) {
+                        setAuth({});
+                        navigate('/login')
+                    }
+                    else if(err.response.data.message === "Unauthorized"){
+                        navigate("/login")
+                    }
+                })
+        }
+        
+    }
+    })
+    }
+    
+  }
+
+  
   const arr=[{img:<img className='w-9 h-9' src={buy}/>,button:"Buy"}, 
 {img: <img className='w-11 h-11' src={sell}/>,button:"Sell"}, 
 {img: <img className='w-10 h-11' src={calculate}/>,button:"Calculate Price"},
@@ -77,14 +147,14 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
                   </div>                                  
             </div>
 
-          <div className=" mt-20 mx-20 h-24 items-center justify-center grid grid-cols-4 gap-14 bg-white " >
+          <div className=" my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 bg-white " >
           {cont.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.020] cursor-pointer rounded-xl'>
                       <img className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
                       <div className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
                         <p className='md:text-lg font-medium truncate pb-1'>{arr2.brand} {arr2.model} {arr2.variant}</p>
-                        <p className='text-gray-600'>{arr2.kilometers} kms &nbsp;&nbsp; &#183; &nbsp;&nbsp;{arr2.transmission} &nbsp;&nbsp;&#183; &nbsp;&nbsp;{arr2.fuel}</p>
-                        <p className='mt-3 font-bold md:text-2xl text-md flex flex-row'>{`₹${arr2.price}`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FaHeart  color='white' style={{ stroke: "red", strokeWidth: "20"}}/></p>
+                        <p className='text-gray-600 flex flex-row truncate'><div className='pr-2 xl:pr-3'>{arr2.kilometers} kms </div> &#183;<div className='px-2 xl:px-3'>{arr2.transmission}</div> &#183; <div className='pl-2 xl:pl-3'>{arr2.fuel}</div></p>
+                        <p className='mt-3 font-bold md:text-2xl text-md flex flex-row'>{`₹${arr2.price}`} <div className='pl-[100px] md:pl-[180px] xl:pl-[180px]'><FaHeart onClick={()=>{var arr=color;if(color[arr2._id]==="red"){favourite(arr2._id,false,arr2.email);arr[arr2._id]="white"}else{favourite(arr2._id,true,arr2.email);arr[arr2._id]="red"};setColor(arr);navigate("/home")}} color={color[arr2._id]} style={{ stroke: "red", strokeWidth: "20"}}/></div></p>
                       </div>
                     </div>
                   

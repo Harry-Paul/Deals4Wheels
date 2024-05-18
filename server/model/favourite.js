@@ -1,8 +1,7 @@
 const mongoose=require("mongoose");
 const ObjectID = require('mongodb').ObjectId;
-const Property = require('./property');
 
-const propSchema = new mongoose.Schema({
+const carSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true
@@ -71,7 +70,9 @@ const favSchema= new mongoose.Schema({
         required: true
     },
     car:{
-        type: propSchema,
+        type: carSchema,
         required:true
     }
 })
+
+module.exports = mongoose.model('Fav', favSchema)

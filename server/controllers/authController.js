@@ -80,8 +80,9 @@ const refresh = (req, res) => {
             );
             const email=foundUser.email
             const password=foundUser.password
+            const pic=foundUser.pic
             console.log("refresh success")
-            res.json({accessToken,email,password})
+            res.json({accessToken,email,pic})
         }
     )
 }
@@ -113,7 +114,7 @@ const logout = async (req, res) => {
 }
 
 const signup=async(req,res)=>{
-    const{email,password}=req.body;
+    const{email}=req.body;
     console.log(req.body)
     User.findOne({email: email})
     .then(user =>{
@@ -132,7 +133,7 @@ const signup=async(req,res)=>{
 }
 
 const googlesignin=async(req,res)=>{
-    const{email}=req.body;
+    const{email,pic}=req.body;
     console.log(email)
     start(email);
     function start(email){
@@ -140,7 +141,7 @@ const googlesignin=async(req,res)=>{
         User.findOne({email:email})
         .then(user=>{
         if(!user){
-            User.create({email:email,password:"abc",signintype:"google"})
+            User.create({email:email,password:"abc",signintype:"google",pic:pic})
             start(email);
         }
         else{
@@ -152,7 +153,7 @@ const googlesignin=async(req,res)=>{
                     }
                 },
                 `${process.env.ACCESS_TOKEN_SECRET}`,
-                {expiresIn: "500s"}
+                {expiresIn: "10s"}
             );
             const rToken = jwt.sign(
                 {id: email},
@@ -171,7 +172,7 @@ const googlesignin=async(req,res)=>{
                     async function run(){
                         await User.updateOne({email:email},{refreshToken:rToken})
                     }
-            return res.json({"auth": true, "token": accessToken});
+            return res.json({"auth": true, "accessToken": accessToken});
         }
         
     })

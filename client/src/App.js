@@ -8,6 +8,7 @@ import { Predict } from "./pages/predict.js";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Googlelogin from "./components/googlelogin.js";
 import Sell from "./pages/sell.js";
+import RequireAuth from './components/RequireAuth';
 
 function App() {
   return (
@@ -20,7 +21,10 @@ function App() {
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
           <Route exact path="/predict" element={<Predict/>}/>
-          <Route exact path="/sell" element={<Sell/>}/>
+
+          <Route element={<RequireAuth/>}>
+            <Route exact path="/sell" element={<Sell/>}/>
+          </Route>
         </Routes>
       </div>
       </Router>

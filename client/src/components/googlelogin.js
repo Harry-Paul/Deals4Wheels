@@ -4,12 +4,14 @@ import { useGoogleOneTapLogin } from '@react-oauth/google';
 import {jwtDecode} from "jwt-decode"
 import axios from "../api/axios"
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 
 const Googlelogin = () => {
 
   const { setAuth } = useAuth();
   const { auth } = useAuth();
   const accessToken = auth?.accessToken;
+  const navigate=useNavigate()
 
   return (
     <div id="signInButton">
@@ -18,19 +20,18 @@ const Googlelogin = () => {
             console.log(jwtDecode(credentialResponse?.credential));
             const email=jwtDecode(credentialResponse?.credential).email
             const pic=jwtDecode(credentialResponse?.credential).picture
-            axios.post('/auth/googlesignin',{email},
-              {
-                headers: {
-                  'Authorization': `Bearer ${accessToken}`
-                },
-                withCredentials: true
-              }
+            axios.post('/auth/googlesignin',{email,pic},
+            {
+              headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+              withCredentials: true
+            }
             )
             .then(result=>{
               console.log(result)
               const accessToken=result.data.accessToken;
               const password=""
               setAuth({email,accessToken,pic})
+              navigate("/home")
             })
             .catch(err=>{
               console.log(err)
