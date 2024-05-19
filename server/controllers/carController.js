@@ -1,5 +1,6 @@
 const Car = require('../model/car');
 const Fav = require('../model/favourite');
+const ObjectID = require('mongodb').ObjectId;
 
 const handleCar=async (req,res)=>{
     console.log(req.body)
@@ -19,16 +20,21 @@ const handleCar=async (req,res)=>{
         const{email}=req.body
         cont=await Car.find({email:email})
     }
+    else if(type==="single"){
+        const{id}=req.body
+        const obj = new ObjectID(id);
+        cont=await Car.find({_id:obj})
+    }
     if(fav===true){
         console.log("dfg")
         const{email}=req.body
         console.log(email)
         const fav= await Fav.find({buyer:email})
-        console.log(fav)
+        // console.log(fav)
         function f1(){
             let id=[]
             let arr={}
-            console.log(fav)
+            // console.log(fav)
             for(let i=0;i<fav.length;i++){
                 id.push(fav[i].car._id.toString())
             }

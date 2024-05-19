@@ -18,13 +18,39 @@ const Navbar = () => {
   const location = useLocation()
   const { auth } = useAuth();
   const { setAuth } = useAuth();
-  const email = auth?.email;
-  const accessToken = auth?.accessToken;
+  let email = auth?.email;
+  let accessToken = auth?.accessToken;
   const pic=auth.pic;
 
     const [option, setOption] = useState("buy");
 
     useLayoutEffect(()=>{
+      if(!auth.email){
+        axios.post('/auth/refresh', { email },
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                    withCredentials: true
+                })
+                .then(result => {
+                    console.log(result)
+                    email=result.data.email
+                    accessToken = result.data.accessToken;
+                    const pic = result.data.pic;
+                    console.log(accessToken)
+                    setAuth({ email, accessToken,pic })
+                    // submit();
+                    // navigate("/home")
+                })
+                .catch(err => {
+                    if (err.response.data.message === "Forbidden" ) {
+                        setAuth({});
+                        // navigate('/login')
+                    }
+                    else if(err.response.data.message === "Unauthorized"){
+                        // navigate("/login")
+                    }
+                })
+      }
       axios.post("/change")
       .then(result=>console.log(result))
       .catch(err=>console.log(err))

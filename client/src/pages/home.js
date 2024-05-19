@@ -29,15 +29,14 @@ const Home = () => {
   let email=auth?.email
   let accessToken=auth?.accessToken
   // console.log(auth)
-  const[fav,setFav]=useState([])
+  const[fav,setFav]=useState(' ')
   const navigate=useNavigate()
   const [color,setColor]=useState({})
   console.log("auth :",auth)
   console.log(color)
 
   useLayoutEffect(()=>{
-    console.log("sdf")
-    
+    // console.log("sdf: ",auth.email)
     let fav=auth.email?true:false
     console.log(fav)
     const type="Home"
@@ -50,14 +49,14 @@ const Home = () => {
       console.log(console.log(err))
     })
       
-  },[])
+  },[email])
 
   const favourite=(id,status,seller)=>{
-    send(accessToken)
+    send(accessToken,email)
     function send(){
-    email=auth?.email
     console.log("status: ",status)
     console.log("ert: ",accessToken)
+    console.log("ert: ",email)
     axios.post("/favourite",{email,status,id,seller},
     {
       headers: {
@@ -78,12 +77,12 @@ const Home = () => {
                 })
                 .then(result => {
                     console.log(result)
-                    const email=result.data.accessToken
+                    email=result.data.email
                     accessToken = result.data.accessToken;
                     const pic = result.data.pic;
                     console.log(accessToken)
                     setAuth({ email, accessToken,pic })
-                    send(accessToken);
+                    send(accessToken,email);
                     // submit();
                     // navigate("/home")
                 })
@@ -102,6 +101,12 @@ const Home = () => {
     })
     }
     
+  }
+
+  const car=(id)=>{
+    return () => {
+      navigate("/car", { state: { id: id} })
+    }
   }
 
   
@@ -150,11 +155,11 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
           <div className=" my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 bg-white " >
           {cont.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.020] cursor-pointer rounded-xl'>
-                      <img className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
-                      <div className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
-                        <p className='md:text-lg font-medium truncate pb-1'>{arr2.brand} {arr2.model} {arr2.variant}</p>
-                        <p className='text-gray-600 flex flex-row truncate'><div className='pr-2 xl:pr-3'>{arr2.kilometers} kms </div> &#183;<div className='px-2 xl:px-3'>{arr2.transmission}</div> &#183; <div className='pl-2 xl:pl-3'>{arr2.fuel}</div></p>
-                        <p className='mt-3 font-bold md:text-2xl text-md flex flex-row'>{`₹${arr2.price}`} <div className='pl-[100px] md:pl-[180px] xl:pl-[180px]'><FaHeart onClick={()=>{var arr=color;if(color[arr2._id]==="red"){favourite(arr2._id,false,arr2.email);arr[arr2._id]="white"}else{favourite(arr2._id,true,arr2.email);arr[arr2._id]="red"};setColor(arr);navigate("/home")}} color={color[arr2._id]} style={{ stroke: "red", strokeWidth: "20"}}/></div></p>
+                      <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
+                      <div  className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
+                        <p onClick={car(arr2._id)} className='md:text-lg font-medium truncate pb-1'>{arr2.brand} {arr2.model} {arr2.variant}</p>
+                        <p onClick={car(arr2._id)} className='text-gray-600 flex flex-row truncate'><div className='pr-2 xl:pr-3'>{arr2.kilometers} kms </div> &#183;<div className='px-2 xl:px-3'>{arr2.transmission}</div> &#183; <div className='pl-2 xl:pl-3'>{arr2.fuel}</div></p>
+                        <p className='mt-3 font-bold md:text-2xl text-md flex flex-row'>{`₹${arr2.price}`} <div className='pl-[100px] md:pl-[180px] xl:pl-[180px]'><FaHeart onClick={()=>{var arr=color;if(color[arr2._id]==="red"){favourite(arr2._id,false,arr2.email);arr[arr2._id]="white"}else{favourite(arr2._id,true,arr2.email);arr[arr2._id]="red"};setColor(arr);fav===" "?setFav("acd"):setFav(" ")}} color={color[arr2._id]} style={{ stroke: "red", strokeWidth: "20"}}/></div></p>
                       </div>
                     </div>
                   

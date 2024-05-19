@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Googlelogin from "./components/googlelogin.js";
 import Sell from "./pages/sell.js";
 import RequireAuth from './components/RequireAuth';
+import Car from "./pages/car.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
           <Route exact path="/predict" element={<Predict/>}/>
+          <Route exact path="/car" element={<Car/>}/>
 
           <Route element={<RequireAuth/>}>
             <Route exact path="/sell" element={<Sell/>}/>
