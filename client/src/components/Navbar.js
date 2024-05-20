@@ -18,12 +18,43 @@ const Navbar = () => {
   const location = useLocation()
   const { auth } = useAuth();
   const { setAuth } = useAuth();
-  const email = auth?.email;
-  const accessToken = auth?.accessToken;
+  let email = auth?.email;
+  let accessToken = auth?.accessToken;
   const pic=auth.pic;
-  console.log(auth)
 
     const [option, setOption] = useState("buy");
+
+    useLayoutEffect(()=>{
+      if(!auth.email){
+        axios.post('/auth/refresh', { email },
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                    withCredentials: true
+                })
+                .then(result => {
+                    console.log(result)
+                    email=result.data.email
+                    accessToken = result.data.accessToken;
+                    const pic = result.data.pic;
+                    console.log(accessToken)
+                    setAuth({ email, accessToken,pic })
+                    // submit();
+                    // navigate("/home")
+                })
+                .catch(err => {
+                    if (err.response.data.message === "Forbidden" ) {
+                        setAuth({});
+                        // navigate('/login')
+                    }
+                    else if(err.response.data.message === "Unauthorized"){
+                        // navigate("/login")
+                    }
+                })
+      }
+      axios.post("/change")
+      .then(result=>console.log(result))
+      .catch(err=>console.log(err))
+    },[])
 
     const buy = (e, type, status) => {
         e.preventDefault()
@@ -104,6 +135,7 @@ const Navbar = () => {
                 }
             </div>
           <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
+          <div onClick={logout} className="cursor-pointer peer px-5 py-2 text-white">LOGOUT</div>
           <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
             <div className="md:px-10">
               <button class="peer px-5 py-2 text-white">BUY</button>

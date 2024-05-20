@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose=require("mongoose");
+const ObjectID = require('mongodb').ObjectId;
 
-const propSchema = new mongoose.Schema({
+const carSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true
@@ -17,10 +18,6 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    fuel:{
-        type:String,
-        required:true
-    },
     transmission:{
         type:String,
         required:true
@@ -30,10 +27,6 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     owner:{
-        type:String,
-        required:true
-    },
-    type:{
         type:String,
         required:true
     },
@@ -67,4 +60,19 @@ const propSchema = new mongoose.Schema({
     }]
 })
 
-module.exports = mongoose.model('Car', propSchema)
+const favSchema= new mongoose.Schema({
+    buyer:{
+        type: String,
+        required: true
+    },
+    seller:{
+        type: String,
+        required: true
+    },
+    car:{
+        type: carSchema,
+        required:true
+    }
+})
+
+module.exports = mongoose.model('Fav', favSchema)

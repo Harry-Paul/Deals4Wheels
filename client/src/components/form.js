@@ -17,7 +17,12 @@ function Form() {
   const pic="https://res.cloudinary.com/dstxl4pzw/image/upload/v1715797500/user_3177440_no4g5v.png"
 
   const submit=()=>{
-    axios.post("/auth/signin",{email,password})
+    axios.post("/auth/signin",{email,password},
+    {
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+      withCredentials: true
+    }
+    )
     .then(result=>{
       console.log(result.data)
       const accessToken=result.data.accessToken

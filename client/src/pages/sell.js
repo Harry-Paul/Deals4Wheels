@@ -17,7 +17,8 @@ export default function Sell() {
     const [transmission, setTransmission] = useState('Manual');
     const [kilometers, setKilometers] = useState('');
     const [owner, setOwner] = useState('First');
-    const [status, setStatus] = useState('Fixed Price');
+    const [type, setType] = useState('Fixed Price');
+    const [fuel, setFuel] = useState('Petrol');
     const [price, setPrice] = useState('');
     const [starttime, setStartTime] = useState('');
     const [endtime, setEndTime] = useState('');
@@ -85,7 +86,7 @@ export default function Sell() {
 
     const submit=(e)=>{
         e.preventDefault()
-        if(brand==='' || model==='' ||variant==='' || kilometers==='' || price==='' || (status==="auction" && starttime==='') || (status==="auction" && endtime==='') ){
+        if(brand==='' || model==='' ||variant==='' || kilometers==='' || price==='' || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
             alert("Fill out required fields")
         }
         else{
@@ -93,15 +94,23 @@ export default function Sell() {
                 imgArray.push(src);
             })
             console.log(imgArray)
-            console.log({email,brand,model,variant,transmission,kilometers,owner,status,price,starttime,endtime,description,imgArray})
-            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,owner,status,price,starttime,endtime,description,imgArray})
+            console.log({email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
+            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray},
+            {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                withCredentials: true
+            }
+            )
             .then(result=>{
                 console.log(result.data)
+                navigate("/home")
             })
             .catch(err=>{
                 console.log(err)
             })
-            navigate()
+            
         }
     }
 
@@ -150,10 +159,23 @@ export default function Sell() {
                         </div>
                     </div>
                     <div className="flex flex-wrap py-[15px]">
-                        <label className="" for="type">&nbsp; Status : </label>
+                        <label className="" for="type">&nbsp; Fuel Type : </label>
                         <div className="">
+                            <select onClick={(e)=>{setFuel(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="Petrol" >Petrol</option>
+                                <option value="Diesel" >Diesel</option>
+                                <option value="Electric" >Electric</option>
+                                <option value="CNG" >CNG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap py-[15px]">
+                        <label className="" for="type">&nbsp; Type : </label>
+                        <div className="">
+
                         <select onClick={(e)=>{setStatus(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px]");setStyle1("mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white")}else if(e.target.value==="fixed"){setStyle('hidden');setStyle1("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white")} }} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Manual" >Fixed Price</option>
+
                                 <option value="Auction" >Auction</option>
                             </select>
                         </div>

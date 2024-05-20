@@ -5,7 +5,7 @@ const Car = require('../model/car');
 const cloudinary = require("../utils/cloudinary");
 
 const handleSell = async (req,res) => {
-    const{email,brand,model,variant,transmission,kilometers,owner,status,price,starttime,endtime,description,imgArray}=req.body;
+    const{email,brand,model,variant,transmission,kilometers,owner,type,fuel,price,starttime,endtime,description,imgArray}=req.body;
     
    
             let images=[];
@@ -28,6 +28,7 @@ const handleSell = async (req,res) => {
             const endTime=new Date(eyear,emonth,eday,ehour,eminute)
             console.log(startTime,"  ",endTime)
             console.log(imgArray.length)
+            const status="Active"
             loop(images);
             function loop(images){
                 imgArray.forEach(async img => {
@@ -53,8 +54,8 @@ const handleSell = async (req,res) => {
             function upload(images){
                 console.log(images);
                 const activity=0
-                console.log({email,activity,date,brand,model,variant,transmission,kilometers,owner,status,price,startTime,endTime,description,images})
-                Car.create({email,activity,date,brand,model,variant,transmission,kilometers,owner,status,price,startTime,endTime,description,images})
+                console.log({email,activity,date,brand,model,variant,transmission,kilometers,owner,fuel,status,type,price,startTime,endTime,description,images})
+                Car.create({email,activity,date,brand,model,variant,transmission,kilometers,owner,fuel,status,type,price,startTime,endTime,description,images})
                 res.json("Created")
             }
 }

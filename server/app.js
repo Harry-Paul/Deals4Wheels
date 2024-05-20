@@ -24,13 +24,22 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 
-// app.use('/', require('./routes/root'))
 
 app.use('/auth', require('./routes/authRoutes'))
 
 app.use('/predict', require('./routes/predict'))
 
 app.use('/sell', require('./routes/sell'))
+
+app.use('/car', require('./routes/car'))
+
+app.use('/change', require('./routes/change'))
+
+app.use('/showcar', require('./routes/showcar'))
+
+app.use('/showfav', require('./routes/showfav'))
+
+app.use('/favourite', require('./routes/fav'))
 
 app.listen(4000,function(){
     console.log("Server is running");

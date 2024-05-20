@@ -4,6 +4,8 @@ import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom'
 
 function Form1() {
+  const pic="https://res.cloudinary.com/dstxl4pzw/image/upload/v1715797500/user_3177440_no4g5v.png"
+
   const navigate=useNavigate()
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
@@ -11,7 +13,7 @@ function Form1() {
 
   const check=()=>{
     if(password===repassword){
-      axios.post("/auth/signup",{email,password})
+      axios.post("/auth/signup",{email,password,pic})
       .then(result=>{
         console.log(result.data)
       })
@@ -41,12 +43,12 @@ function Form1() {
         </div>
         
         <div className='mt-6 flex flex-col gap-y-4'>
-            <button className='active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all py-2 rounded-xl bg-violet-500 text-white xl:text-[17px] lg:text-[16px] md:text-[15px] text-[14px] font-bold'>Sign up</button>
+            <button onClick={check} className='active:scale-[0.98] ease-in-out active:duration-75 hover:scale-[1.01] transition-all py-2 rounded-xl bg-violet-500 text-white xl:text-[17px] lg:text-[16px] md:text-[15px] text-[14px] font-bold'>Sign up</button>
             <Googlelogin/>
         </div>
         <div className=' mt-6 flex justify-center items-center'>
             <p className='font-medium  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] '>Already have an account?</p>
-            <button onClick={check} className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2 onClick={Signup}'>Sign Up</button>
+            <button  className='text-violet-500  xl:text-[15px] lg:text-[14px] md:text-[12px] text-[11.5px] font-medium ml-2 onClick={Signup}'>Sign Up</button>
         </div>
       </div>
     </div>
