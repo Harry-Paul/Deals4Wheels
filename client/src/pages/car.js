@@ -7,22 +7,26 @@ import axios from '../api/axios'
 const Car = () => {
     const location=useLocation()
     const id=location.state.id
+    const navigate=useNavigate()
     console.log("id: ",id)
     const {auth}=useAuth()
+    const {setAuth}=useAuth()
     let email=auth?.email
+    let accessToken=auth?.accessToken
     const[message,setMessage]=useState()
     const[user,setUser]=useState('buyer')
     const[cont,setCont]=useState({})
     const[style,setStyle]=useState([])
-    const arr=["0hi","1hello","1how are you","1whats the price","03 lakhs"];
+    const[arr,setArr]=useState([])
+    const[test,setTest]=useState(' ')
 
 
 
     useLayoutEffect(()=>{
         const type="single"
         const fav=auth.email?true:false
-        console.log({id,type,fav})
-        axios.post("/car",{id,type,fav})
+        console.log({id,type,fav,email})
+        axios.post("/car",{id,type,fav,email})
         .then(result=>{
           console.log(result.data.cont)
           setCont(result.data.cont[0])
@@ -38,6 +42,7 @@ const Car = () => {
             axios.post("/showchat",{id,email,user})
             .then(result=>{
               setStyle(result.data.chat)
+              setArr(result.data.arr)
             })
             console.log(style)
           }
@@ -53,8 +58,50 @@ const Car = () => {
         
     },[])
 
-    const send=()=>{
-
+    const sendChat=()=>{
+      send(email,accessToken)
+      console.log("arr: ",arr)
+      function send(email, accessToken){
+      console.log("wer")
+      axios.post("/sendchat",{email,id,arr},
+      {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        },
+        withCredentials: true
+      }
+      )
+      .then(result=>{console.log(result)})
+      .catch(err=>{
+        if (err.response.data.message === "Forbidden") {
+          axios.post('/auth/refresh', { email },
+              {
+                  headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                  withCredentials: true
+              })
+              .then(result => {
+                  console.log(result)
+                  email=result.data.email
+                  accessToken = result.data.accessToken;
+                  const pic = result.data.pic;
+                  console.log(accessToken)
+                  setAuth({ email, accessToken,pic })
+                  send(email,accessToken);
+                  // submit();
+                  // navigate("/home")
+              })
+              .catch(err => {
+                  if (err.response.data.message === "Forbidden" ) {
+                      setAuth({});
+                      navigate('/login')
+                  }
+                  else if(err.response.data.message === "Unauthorized"){
+                      navigate("/login")
+                  }
+              })
+        }
+      })
+      }
     }
 
     
@@ -69,7 +116,7 @@ const Car = () => {
         </p>
         <div class="mx-[230px] flex flex-row justify-center">
           <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
-          <button className='bg-black text-white px-[10px]' onClick={()=>{}}>Send</button>
+          <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
         </div>
     </div>
   )

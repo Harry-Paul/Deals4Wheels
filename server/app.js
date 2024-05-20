@@ -43,6 +43,8 @@ app.use('/showchat', require('./routes/showchat'))
 
 app.use('/favourite', require('./routes/fav'))
 
+app.use('/sendchat', require('./routes/sendchat'))
+
 app.listen(4000,function(){
     console.log("Server is running");
 });

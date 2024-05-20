@@ -5,46 +5,48 @@ const ObjectID = require('mongodb').ObjectId;
 const handleShowChat=async(req,res)=>{
     const{email,id,user}=req.body
     const obj = new ObjectID(id);
-    const prop=await Car.find({_id:obj})
-    const cont=Int.find({buyer:email,car:prop[0]})
-    let arr;
-    if(cont[0]){
-        arr=cont[0]
+    const prop=await Car.findOne({_id:obj})
+    const cont=await Int.findOne({buyer:email,car:prop})
+    console.log("cont: ",cont)
+    let arr=[];
+    if(cont){
+        arr=cont.messages
     }
     else{
         arr=[]
     }
     function f2(){
+        let a=[]
         if(user==="buyer"){
             let i;
             for(i=0;i<arr.length;i++){
               if(arr[i].slice(0,1)==="0"){
-                arr.push(["flex flex-row justify-start",arr[i].slice(1)])
+                a.push(["flex flex-row justify-start",arr[i].slice(1)])
               }
               else{
-                arr.push(["flex flex-row justify-end",arr[i].slice(1)])
+                a.push(["flex flex-row justify-end",arr[i].slice(1)])
               }
             }
-            return arr
+            return a
           }
           else{
             for(let i=0;i<arr.length;i++){
               if(arr[i].slice(0,1)==="0"){
-                arr.push(["flex flex-row justify-end",arr[i].slice(1)])
+                a.push(["flex flex-row justify-end",arr[i].slice(1)])
               }
               
               else{
-                arr.push(["flex flex-row justify-start",arr[i].slice(1)])
+                a.push(["flex flex-row justify-start",arr[i].slice(1)])
               }
             }
-            return arr
+            return a
           }
     }
     
       async function run(){
         const chat=f2()
         console.log("chat: ",chat)
-        res.json({"chat":chat})
+        res.json({"chat":chat,"arr":arr})
     }
     run()
     
