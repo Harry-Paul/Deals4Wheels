@@ -1,6 +1,5 @@
 const mongoose=require("mongoose");
 const ObjectID = require('mongodb').ObjectId;
-const Property = require('./property');
 
 const carSchema = new mongoose.Schema({
     email:{
@@ -82,4 +81,4 @@ const interestSchema = new mongoose.Schema({
     }]
 })
 
-module.exports = mongoose.model('Interested', interestedSchema);
+module.exports = mongoose.model('Interest', interestSchema);

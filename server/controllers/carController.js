@@ -22,8 +22,10 @@ const handleCar=async (req,res)=>{
     }
     else if(type==="single"){
         const{id}=req.body
+        console.log(id)
         const obj = new ObjectID(id);
         cont=await Car.find({_id:obj})
+        console.log(cont)
     }
     if(fav===true){
         console.log("dfg")
@@ -69,6 +71,7 @@ const handleCar=async (req,res)=>{
         }
         async function run(){
             const arr=f2()
+            console.log(arr)
             res.json({"success":true,"cont":cont,"color":arr})
         }
         run()

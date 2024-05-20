@@ -39,6 +39,8 @@ app.use('/showcar', require('./routes/showcar'))
 
 app.use('/showfav', require('./routes/showfav'))
 
+app.use('/showchat', require('./routes/showchat'))
+
 app.use('/favourite', require('./routes/fav'))
 
 app.listen(4000,function(){

@@ -6,66 +6,65 @@ import axios from '../api/axios'
 
 const Car = () => {
     const location=useLocation()
-    const id=location.id
-    const auth=useAuth()
+    const id=location.state.id
+    console.log("id: ",id)
+    const {auth}=useAuth()
+    let email=auth?.email
     const[message,setMessage]=useState()
-    const[user,setUser]=useState('')
+    const[user,setUser]=useState('buyer')
     const[cont,setCont]=useState({})
     const[style,setStyle]=useState([])
+    const arr=["0hi","1hello","1how are you","1whats the price","03 lakhs"];
 
 
 
     useLayoutEffect(()=>{
         const type="single"
         const fav=auth.email?true:false
+        console.log({id,type,fav})
         axios.post("/car",{id,type,fav})
         .then(result=>{
+          console.log(result.data.cont)
           setCont(result.data.cont[0])
-        })
-        if(auth.email){
-          if(auth.email===cont.email){
-            setUser("seller")
+          console.log(cont)
+          if(auth.email){
+            if(auth.email===cont.email){
+              setUser("seller")
+            }
+            else{
+              setUser("buyer")
+            }
+            email=auth.email
+            axios.post("/showchat",{id,email,user})
+            .then(result=>{
+              setStyle(result.data.chat)
+            })
+            console.log(style)
           }
           else{
             setUser("buyer")
           }
-        }
-        if(user==="buyer"){
-          arr=[]
-          for(let i=0;i<arr.length;i++){
-            if(arr[i].slice(0,1)==="0"){
-              arr.push(["flex flex-row justify-start",arr[i].slice(1)])
-            }
-            else{
-              arr.push(["flex flex-row justify-end",arr[i].slice(1)])
-            }
-          }
-        }
-        else{
-          for(let i=0;i<arr.length;i++){
-            if(arr[i].slice(0,1)==="0"){
-              arr.push(["flex flex-row justify-end",arr[i].slice(1)])
-            }
-            
-            else{
-              arr.push(["flex flex-row justify-start",arr[i].slice(1)])
-            }
-          }
-        }
+          
+          console.log(style)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+        
     },[])
 
     const send=()=>{
 
     }
 
-    const arr=["0hi","1hello","1how are you","1whats the price","03 lakhs"];
+    
 
   return (
     <div>
         <Navbar/>
         <p className='mx-[200px] h-[400px] bg-gray-100 mt-[100px]'>
-          {arr.map((tx)=>
-          <div className={style} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx.slice(1)}</div></div>
+          {style.map((tx)=>
+          <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
           )}
         </p>
         <div class="mx-[230px] flex flex-row justify-center">
