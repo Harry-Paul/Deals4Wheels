@@ -6,7 +6,14 @@ const handleShowChat=async(req,res)=>{
     const{email,id,user}=req.body
     const obj = new ObjectID(id);
     const prop=await Car.findOne({_id:obj})
-    const cont=await Int.findOne({buyer:email,car:prop})
+    const seller=prop.email
+    let cont;
+    if(user==="buyer"){
+      cont=await Int.findOne({buyer:email,car:prop})
+    }
+    else{
+      cont=await Int.findOne({seller:seller,car:prop})
+    }
     console.log("cont: ",cont)
     let arr=[];
     if(cont){

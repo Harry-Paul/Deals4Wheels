@@ -10,6 +10,7 @@ import Googlelogin from "./components/googlelogin.js";
 import Sell from "./pages/sell.js";
 import RequireAuth from './components/RequireAuth';
 import Car from "./pages/car.js";
+import Chat from "./pages/chat.js";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
           <Route element={<RequireAuth/>}>
             <Route exact path="/sell" element={<Sell/>}/>
+            <Route exact path="/chat" element={<Chat/>}/>
           </Route>
         </Routes>
       </div>

@@ -37,14 +37,14 @@ const Car = () => {
             }
             else{
               setUser("buyer")
+              email=auth.email
+              axios.post("/showchat",{id,email,user})
+              .then(result=>{
+                setStyle(result.data.chat)
+                setArr(result.data.arr)
+              })
+              console.log(style)
             }
-            email=auth.email
-            axios.post("/showchat",{id,email,user})
-            .then(result=>{
-              setStyle(result.data.chat)
-              setArr(result.data.arr)
-            })
-            console.log(style)
           }
           else{
             setUser("buyer")

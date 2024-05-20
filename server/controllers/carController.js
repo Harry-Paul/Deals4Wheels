@@ -15,6 +15,7 @@ const handleCar=async (req,res)=>{
     else if(type==="Home"){
         cont=await Car.find({status:"Active"});
         cont=cont.slice(0,8)
+        console.log("home: ",cont)
     }
     else if(type==="User"){
         const{email}=req.body
