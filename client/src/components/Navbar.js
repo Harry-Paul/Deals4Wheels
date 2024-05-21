@@ -14,7 +14,7 @@ import {HiMenu} from "react-icons/hi"
 import {IoIosCloseCircleOutline} from "react-icons/io"
 
 const Navbar = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const location = useLocation()
   const { auth } = useAuth();
   const { setAuth } = useAuth();
@@ -107,7 +107,7 @@ const Navbar = () => {
       }
 
       const home=()=>{
-        navigate("/home")
+        navigate("/")
       }
 
       const [navbarOpen, setNavbarOpen]=useState(false)
@@ -135,6 +135,8 @@ const Navbar = () => {
                 }
             </div>
           <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
+          <div onClick={()=>{navigate("/chat")
+          }} className="cursor-pointer peer px-5 py-2 text-white">CHATS</div>
           <div onClick={logout} className="cursor-pointer peer px-5 py-2 text-white">LOGOUT</div>
           <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
             <div className="md:px-10">

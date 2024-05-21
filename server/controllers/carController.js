@@ -8,6 +8,7 @@ const handleCar=async (req,res)=>{
     let cont;
     if(type==="All"){
         cont=await Car.find({status:"Active"});
+        console.log(fav)
     }
     else if(type==="Auction"){
         cont=await Car.find({type:"Auction",status:"Active"})
@@ -28,6 +29,8 @@ const handleCar=async (req,res)=>{
         cont=await Car.find({_id:obj})
         console.log(cont)
     }
+    else{}
+
     if(fav===true){
         console.log("dfg")
         const{email}=req.body
@@ -62,6 +65,7 @@ const handleCar=async (req,res)=>{
         run()
     }
     else{
+        console.log("iop")
         let i=0;
         let f2=function(){
             let arr={}

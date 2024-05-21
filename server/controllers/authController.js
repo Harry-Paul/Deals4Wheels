@@ -153,7 +153,7 @@ const googlesignin=async(req,res)=>{
                     }
                 },
                 `${process.env.ACCESS_TOKEN_SECRET}`,
-                {expiresIn: "10s"}
+                {expiresIn: "500s"}
             );
             const rToken = jwt.sign(
                 {id: email},

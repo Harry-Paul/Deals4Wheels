@@ -11,19 +11,20 @@ import Sell from "./pages/sell.js";
 import RequireAuth from './components/RequireAuth';
 import Car from "./pages/car.js";
 import Chat from "./pages/chat.js";
+import Buy from "./pages/buy.js";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<Root/>}/>
           <Route exact path="/login" element={<Login/>}/>
           <Route exact path="/signup" element={<Signup/>}/>
-          <Route exact path="/home" element={<Home/>}/>
+          <Route exact path="/" element={<Home/>}/>
           <Route exact path="/googlelogin" element={<Googlelogin/>}/>
           <Route exact path="/predict" element={<Predict/>}/>
           <Route exact path="/car" element={<Car/>}/>
+          <Route exact path="/buy" element={<Buy/>}/>
 
           <Route element={<RequireAuth/>}>
             <Route exact path="/sell" element={<Sell/>}/>

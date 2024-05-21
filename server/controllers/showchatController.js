@@ -3,17 +3,12 @@ const Car = require('../model/car');
 const ObjectID = require('mongodb').ObjectId;
 
 const handleShowChat=async(req,res)=>{
-    const{email,id,user}=req.body
+    const{buyer,id,user}=req.body
     const obj = new ObjectID(id);
     const prop=await Car.findOne({_id:obj})
     const seller=prop.email
     let cont;
-    if(user==="buyer"){
-      cont=await Int.findOne({buyer:email,car:prop})
-    }
-    else{
-      cont=await Int.findOne({seller:seller,car:prop})
-    }
+    cont=await Int.findOne({buyer:buyer,car:prop})
     console.log("cont: ",cont)
     let arr=[];
     if(cont){

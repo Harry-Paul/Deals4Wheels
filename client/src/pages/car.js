@@ -38,7 +38,15 @@ const Car = () => {
             else{
               setUser("buyer")
               email=auth.email
-              axios.post("/showchat",{id,email,user})
+              let buyer=email
+              axios.post("/showchat",{id,buyer,user},
+              {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                withCredentials: true
+              }
+              )
               .then(result=>{
                 setStyle(result.data.chat)
                 setArr(result.data.arr)
@@ -63,7 +71,8 @@ const Car = () => {
       console.log("arr: ",arr)
       function send(email, accessToken){
       console.log("wer")
-      axios.post("/sendchat",{email,id,arr},
+      let buyer=email
+      axios.post("/sendchat",{buyer,id,arr},
       {
         headers: {
             'Authorization': `Bearer ${accessToken}`

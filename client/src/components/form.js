@@ -28,7 +28,7 @@ function Form() {
       const accessToken=result.data.accessToken
       if(result.data.auth===true){
         setAuth({email,accessToken,pic})
-        navigate("/home")
+        navigate("/")
       }
       else if(result.data.auth==false){
         alert("Wrong Credentials")

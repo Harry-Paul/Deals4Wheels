@@ -136,7 +136,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
           <img className='w-full' src={bg3} alt=""></img>
             <div className=" -mt-12 absolute mx-28 h-24 w-5/6 items-center justify-center grid grid-cols-5 gap-4 bg-white rounded-2xl shadow-lg">
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[0].img}{arr[0].button}</div>
+                    <div onClick={()=>navigate('/buy')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[0].img}{arr[0].button}</div>
                   </div>
                   <div className="rounded-xl">
                     <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[1].img}{arr[1].button}</div>

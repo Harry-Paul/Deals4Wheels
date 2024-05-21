@@ -31,7 +31,7 @@ const Googlelogin = () => {
               const accessToken=result.data.accessToken;
               const password=""
               setAuth({email,accessToken,pic})
-              navigate("/home")
+              navigate("/")
             })
             .catch(err=>{
               console.log(err)

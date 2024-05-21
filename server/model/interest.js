@@ -74,7 +74,11 @@ const interestSchema = new mongoose.Schema({
     },
     car:{
         type:carSchema,
-        require:true
+        required:true
+    },
+    lastTime:{
+        type:Date,
+        required:true
     },
     messages:[{
         type:String
