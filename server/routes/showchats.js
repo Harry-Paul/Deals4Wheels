@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const showsellerchatsController = require('../controllers/showsellerchatsController');
+const showchatsController = require('../controllers/showchatsController');
 const verifyJWT = require('../middleware/verifyJWT')
 
 router.use(verifyJWT)
 
-router.post('/',showsellerchatsController.handleShowSellerChats);
+router.post('/',showchatsController.handleShowChats);
 
 module.exports=router;

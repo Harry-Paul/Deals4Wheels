@@ -2,9 +2,15 @@ const Int = require('../model/interest');
 const Car = require('../model/car');
 const ObjectID = require('mongodb').ObjectId;
 
-const handleShowSellerChats = async(req,res)=>{
-    const{email}=req.body
-    const cont=await Int.find({seller:email})
+const handleShowChats = async(req,res)=>{
+    const{email,user}=req.body
+    let cont;
+    if(user==="buyer"){
+        cont=await Int.find({buyer:email})
+    }
+    else{
+        cont=await Int.find({seller:email})
+    }
     function send(){
         let arr=[]
         for(let i=0;i<cont.length;i++){
@@ -21,4 +27,4 @@ const handleShowSellerChats = async(req,res)=>{
     run()
 }
 
-module.exports={handleShowSellerChats}
+module.exports={handleShowChats}

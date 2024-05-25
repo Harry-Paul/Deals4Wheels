@@ -2,12 +2,15 @@ import {React, useState, useLayoutEffect} from 'react'
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import Navbar from '../components/Navbar'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
-const Chat = () => {
+const ChatSellers = () => {
     const {auth}=useAuth()
     const navigate=useNavigate()
+    const location=useLocation()
+    console.log("location: ",location)
+    const user="buyer"
     let email=auth?.email
     let accessToken=auth?.accessToken
     const {setAuth}=useAuth()
@@ -20,14 +23,13 @@ const Chat = () => {
     const[test,setTest]=useState(' ')
     const[buyer,setBuyer]=useState('')
     const[id,setId]=useState('')
-    const user="seller"
-    console.log("abc")
+    console.log("jkl")
 
 
     useLayoutEffect(()=>{
       console.log("bnm")
-      navigate("/chat")
-        axios.post("/showsellerchats",{email},
+      navigate("/chatsellers")
+        axios.post("/showchats",{email,user},
         {
           headers: {
               'Authorization': `Bearer ${accessToken}`
@@ -145,7 +147,7 @@ const Chat = () => {
         <div className='flex flex-col col-span-1 '>
         {cont.map((arr2)=>(
                     <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('')}} className='cursor-pointer h-[100px] border-b-2 border-black'>
-                      <p className='mx-auto max-w-fit mt-[20px]'>{arr2.buyer}</p>
+                      <p className='mx-auto max-w-fit mt-[20px]'>{arr2.seller}</p>
                     </div>
                   
               ))}
@@ -169,4 +171,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default ChatSellers

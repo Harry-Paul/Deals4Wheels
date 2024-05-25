@@ -45,7 +45,7 @@ app.use('/favourite', require('./routes/fav'))
 
 app.use('/sendchat', require('./routes/sendchat'))
 
-app.use('/showsellerchats', require('./routes/showsellerchats'))
+app.use('/showchats', require('./routes/showchats'))
 
 app.listen(4000,function(){
     console.log("Server is running");

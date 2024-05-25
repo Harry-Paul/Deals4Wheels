@@ -56,16 +56,6 @@ const Navbar = () => {
       .catch(err=>console.log(err))
     },[])
 
-    const buy = (e, type, status) => {
-        e.preventDefault()
-        console.log(location)
-        if(location.pathname==="/buy"){
-          navigate('/home', { state: { type: type, status: status } });
-        }
-        else{
-          navigate('/buy', { state: { type: type, status: status } });
-        }
-      }
     
       const sell = () => {
         navigate('/sell');
@@ -135,31 +125,18 @@ const Navbar = () => {
                 }
             </div>
           <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
-          <div onClick={()=>{navigate("/chat")
-          }} className="cursor-pointer peer px-5 py-2 text-white">CHATS</div>
+          <div className="md:px-10">
+              <button class="peer px-5 py-2 text-white">CHAT</button>
+              <div class="hidden absolute peer-hover:flex hover:flex w-[200px] flex-col bg-white drop-shadow-lg">
+                <a onClick={()=>{navigate("/chatsellers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Sellers</a>
+                <a onClick={()=>{navigate("/chatbuyers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Buyers</a>
+              </div>
+            </div>
           <div onClick={logout} className="cursor-pointer peer px-5 py-2 text-white">LOGOUT</div>
           <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
-            <div className="md:px-10">
-              <button class="peer px-5 py-2 text-white">BUY</button>
-              <div class="hidden absolute peer-hover:flex hover:flex
-         w-[200px]
-         flex-col bg-white drop-shadow-lg">
-                <a onClick={(e) => buy(e, "house", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy house</a>
-                <a onClick={(e) => buy(e, "apartment", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy apartment</a>
-                <a onClick={(e) => buy(e, "none", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
-              </div>
-            </div>
+            
 
-            <div className="md:px-10">
-              <button class="peer px-5 py-2 text-white">RENT</button>
-              <div class="hidden absolute peer-hover:flex hover:flex
-         w-[200px]
-         flex-col bg-white drop-shadow-lg">
-                <a onClick={(e) => buy(e, "house", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent house</a>
-                <a onClick={(e) => buy(e, "apartment", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent apartment</a>
-                <a onClick={(e) => buy(e, "none", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
-              </div>
-            </div>
+            
 
             <div className="md:px-10">
               <button class="peer px-5 py-2 text-white">SELL</button>

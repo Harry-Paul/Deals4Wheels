@@ -1,6 +1,7 @@
 import {React, useState, useLayoutEffect} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Dialog from "@material-ui/core/Dialog";
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 
@@ -19,7 +20,7 @@ const Car = () => {
     const[style,setStyle]=useState([])
     const[arr,setArr]=useState([])
     const[test,setTest]=useState(' ')
-
+    const[open,setOpen]=useState(false)
 
 
     useLayoutEffect(()=>{
@@ -113,20 +114,28 @@ const Car = () => {
       }
     }
 
+    const handleToClose = () => {
+      setOpen(false);
+  };
+
     
 
   return (
     <div>
         <Navbar/>
-        <p className='mx-[200px] h-[400px] bg-gray-100 mt-[100px]'>
-          {style.map((tx)=>
-          <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
-          )}
-        </p>
-        <div class="mx-[230px] flex flex-row justify-center">
-          <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
-          <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
-        </div>
+        <button className='mt-[500px]' onClick={()=>{setOpen(true)}}>SEND MESSAGE</button>
+        
+        <Dialog class="dialog-desc" open={open} onClose={handleToClose}>
+          <p className='w-[600px] h-[400px] bg-gray-100 '>
+            {style.map((tx)=>
+            <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
+            )}
+          </p>
+          <div class="mx-[30px] flex flex-row justify-center">
+            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
+            <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
+          </div>
+        </Dialog>
     </div>
   )
 }
