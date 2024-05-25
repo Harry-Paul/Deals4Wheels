@@ -6,10 +6,10 @@ const handleShowChats = async(req,res)=>{
     const{email,user}=req.body
     let cont;
     if(user==="buyer"){
-        cont=await Int.find({buyer:email})
+        cont=await Int.find({buyer:email}).sort({lastTime:-1});
     }
     else{
-        cont=await Int.find({seller:email})
+        cont=await Int.find({seller:email}).sort({lastTime:-1});
     }
     function send(){
         let arr=[]

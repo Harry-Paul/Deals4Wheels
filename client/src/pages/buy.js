@@ -88,7 +88,7 @@ const Buy = () => {
   return (
     <div>
         <Navbar/>
-        <div className="mt-[130px] my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 bg-white " >
+        <div className="mt-[130px] my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.020] cursor-pointer rounded-xl'>
                       <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>

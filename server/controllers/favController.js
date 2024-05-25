@@ -3,7 +3,8 @@ const Car = require('../model/car');
 const ObjectID = require('mongodb').ObjectId;
 
 const handleFav=async(req,res)=>{
-    const{email,id,status,seller}=req.body
+    const email=req.user
+    const{id,status,seller}=req.body
     console.log(req.body)
     run().catch(error => console.log(error.stack));
     async function run(){

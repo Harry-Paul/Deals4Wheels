@@ -25,7 +25,7 @@ const Car = () => {
 
     useLayoutEffect(()=>{
         const type="single"
-        const fav=auth.email?true:false
+          const fav=auth.email?true:false
         console.log({id,type,fav,email})
         axios.post("/car",{id,type,fav,email})
         .then(result=>{
@@ -37,7 +37,9 @@ const Car = () => {
               setUser("seller")
             }
             else{
-              setUser("buyer")
+              send(email,accessToken)
+              function send(email,accessToken){
+                setUser("buyer")
               email=auth.email
               let buyer=email
               axios.post("/showchat",{id,buyer,user},
@@ -52,6 +54,37 @@ const Car = () => {
                 setStyle(result.data.chat)
                 setArr(result.data.arr)
               })
+              .catch(err=>{
+                if (err.response.data.message === "Forbidden") {
+                  axios.post('/auth/refresh', { email },
+                      {
+                          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                          withCredentials: true
+                      })
+                      .then(result => {
+                          console.log(result)
+                          email=result.data.email
+                          accessToken = result.data.accessToken;
+                          const pic = result.data.pic;
+                          console.log(accessToken)
+                          setAuth({ email, accessToken,pic })
+                          send(email,accessToken);
+                          // submit();
+                          // navigate("/home")
+                      })
+                      .catch(err => {
+                          if (err.response.data.message === "Forbidden" ) {
+                              setAuth({});
+                              navigate('/login')
+                          }
+                          else if(err.response.data.message === "Unauthorized"){
+                              navigate("/login")
+                          }
+                      })
+                }
+              })
+              }
+              
               console.log(style)
             }
           }
@@ -61,9 +94,8 @@ const Car = () => {
           
           console.log(style)
         })
-        .catch(err=>{
-          console.log(err)
-        })
+        .catch(err=>console.log(err))
+        
         
     },[])
 

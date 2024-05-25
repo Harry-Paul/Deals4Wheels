@@ -134,23 +134,26 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
         <div>
           <div className='mt-5 bg-white'>
           <img className='w-full' src={bg3} alt=""></img>
-            <div className=" -mt-12 absolute mx-28 h-24 w-5/6 items-center justify-center grid grid-cols-5 gap-4 bg-white rounded-2xl shadow-lg">
+          <div className='flex justify-center '>
+          <div className=" -mt-12 absolute  h-24 items-center justify-center grid grid-cols-5 gap-0 bg-white rounded-2xl shadow-lg">
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/buy')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[0].img}{arr[0].button}</div>
+                    <div onClick={()=>navigate('/buy')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[0].img}{arr[0].button}</div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[1].img}{arr[1].button}</div>
+                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[1].img}{arr[1].button}</div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/predict')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-[70px] lg:h-13 md:h-11 h-9 bg-red-500 text-white  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[2].img}{arr[2].button}</div>
+                    <div onClick={()=>navigate('/predict')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-[70px] h-16  bg-red-500 text-white  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[2].img}{arr[2].button}</div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[3].img}{arr[3].button}</div>
+                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[22px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[3].img}<div className='w-[70px]'>{arr[3].button}</div></div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center xl:w-full lg:w- md:w-32 w-20 xl:h-16 lg:h-13 md:h-11 h-9 text-red-700  xl:text-[22px] lg:text-[16px] md:text-[12px] text-[11.5px] font-medium ml-2 rounded-2xl'>{arr[4].img}{arr[4].button}</div>
+                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:px-7 mx-3 p-2'>{arr[4].img}<div className='w-[100px]'>{arr[4].button}</div></div>
                   </div>                                  
             </div>
+          </div>
+            
 
           <div className=" my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont.map((arr2)=>(

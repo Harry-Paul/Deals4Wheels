@@ -16,9 +16,10 @@ const handleSendChat=async(req,res)=>{
         const buyer=email
         Int.create({buyer,seller,car})
     }
+    const date=new Date()
     run();
     async function run(){
-        await Int.updateOne({buyer:buyer,car:car},{messages:arr})
+        await Int.updateOne({buyer:buyer,car:car},{messages:arr,lastTime:date})
     }
     res.json({"success":true})
 }
