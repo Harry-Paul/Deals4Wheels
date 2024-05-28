@@ -9,7 +9,6 @@ const ChatSellers = () => {
     const {auth}=useAuth()
     const navigate=useNavigate()
     const location=useLocation()
-    console.log("location: ",location)
     const user="buyer"
     let email=auth?.email
     let accessToken=auth?.accessToken
@@ -39,7 +38,7 @@ const ChatSellers = () => {
         )
         .then(result=>{
             setCont(result.data.cont)
-            console.log(cont)
+            console.log('cont: ',cont)
         })
         .catch(err=>{console.log(err)})
     },[])
@@ -148,6 +147,7 @@ const ChatSellers = () => {
         {cont.map((arr2)=>(
                     <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('')}} className='cursor-pointer h-[100px] border-b-2 border-black'>
                       <p className='mx-auto max-w-fit mt-[20px]'>{arr2.seller}</p>
+                      <p>{arr2.car.brand} {arr2.car.model} {arr2.car.variant} {arr2.car.year}</p>
                     </div>
                   
               ))}

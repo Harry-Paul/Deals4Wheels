@@ -148,6 +148,7 @@ const ChatBuyers = () => {
         {cont.map((arr2)=>(
                     <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('')}} className='cursor-pointer h-[100px] border-b-2 border-black'>
                       <p className='mx-auto max-w-fit mt-[20px]'>{arr2.buyer}</p>
+                      <p>{arr2.car.brand} {arr2.car.model} {arr2.car.variant}</p>
                     </div>
                   
               ))}

@@ -20,18 +20,25 @@ const Car = () => {
     const[style,setStyle]=useState([])
     const[arr,setArr]=useState([])
     const[test,setTest]=useState(' ')
-    const[open,setOpen]=useState(false)
+    const[open1,setOpen1]=useState(false)
+    const[s,setS]=useState('hidden')
+    const[open2,setOpen2]=useState(false)
+    const[price,setPrice]=useState(0)
 
 
     useLayoutEffect(()=>{
         const type="single"
-          const fav=auth.email?true:false
+        const fav=auth.email?true:false
         console.log({id,type,fav,email})
         axios.post("/car",{id,type,fav,email})
         .then(result=>{
           console.log(result.data.cont)
           setCont(result.data.cont[0])
-          console.log(cont)
+          setPrice(parseInt(result.data.cont[0].price))
+          console.log("type: ",cont)
+          if(result.data.cont[0].type==="Auction"){
+            setS("bg-black text-white")
+          }
           if(auth.email){
             if(auth.email===cont.email){
               setUser("seller")
@@ -146,18 +153,22 @@ const Car = () => {
       }
     }
 
-    const handleToClose = () => {
-      setOpen(false);
+    const handleToClose1 = () => {
+      setOpen1(false);
   };
+
+  const handleToClose2 = () => {
+    setOpen2(false);
+};
 
     
 
   return (
     <div>
         <Navbar/>
-        <button className='mt-[500px]' onClick={()=>{setOpen(true)}}>SEND MESSAGE</button>
-        
-        <Dialog class="dialog-desc" open={open} onClose={handleToClose}>
+        <button className='mt-[500px]' onClick={()=>{setOpen1(true)}}>SEND MESSAGE</button>
+        <button className={s} onClick={()=>{setOpen2(true)}}>BID</button>
+        <Dialog class="dialog-desc" open={open1} onClose={handleToClose1}>
           <p className='w-[600px] h-[400px] bg-gray-100 '>
             {style.map((tx)=>
             <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
@@ -167,6 +178,11 @@ const Car = () => {
             <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
             <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
           </div>
+        </Dialog>
+        <Dialog class="dialog-desc" open={open2} onClose={handleToClose2}>
+          <div className='text-xl text-center m-3'>{price}</div>
+          <div><button className=' mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x+5000;setPrice(x)}}>+</button><button className='mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x-5000;if(x>=cont.price){setPrice(x)}}}>-</button></div>
+          <button className='bg-gray-500 py-1 px-15 m-1'>SUBMIT</button>
         </Dialog>
     </div>
   )

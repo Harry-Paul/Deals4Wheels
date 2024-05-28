@@ -45,6 +45,10 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    year:{
+        type:String,
+        required: true
+    },
     startTime:{
         type:Date,
     },
@@ -64,7 +68,10 @@ const propSchema = new mongoose.Schema({
     },
     images:[{
         type:String
-    }]
+    }],
+    bidder:{
+        type:String
+    }
 })
 
 module.exports = mongoose.model('Car', propSchema)

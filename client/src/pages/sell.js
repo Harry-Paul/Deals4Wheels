@@ -22,6 +22,7 @@ export default function Sell() {
     const [price, setPrice] = useState('');
     const [starttime, setStartTime] = useState('');
     const [endtime, setEndTime] = useState('');
+    const [year, setYear] = useState('');
     const [description, setDescription] = useState('');
     const [currentTime, setCurrentTime]=useState('')
     const [style,setStyle]=useState('py-[10px] hidden')
@@ -86,7 +87,7 @@ export default function Sell() {
 
     const submit=(e)=>{
         e.preventDefault()
-        if(brand==='' || model==='' ||variant==='' || kilometers==='' || price==='' || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
+        if(brand==='' || model==='' ||variant==='' || kilometers==='' || year==='' || price==='' || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
             alert("Fill out required fields")
         }
         else{
@@ -94,8 +95,8 @@ export default function Sell() {
                 imgArray.push(src);
             })
             console.log(imgArray)
-            console.log({email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
-            axios.post('/sell',{email,brand,model,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray},
+            console.log({email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
+            axios.post('/sell',{email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray},
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
@@ -137,6 +138,10 @@ export default function Sell() {
                     <div class="py-[10px]">
                         <label className="" for="beds">&nbsp; Kilometers : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
+                    </div>
+                    <div class="py-[10px]">
+                        <label className="" for="beds">&nbsp; Year : </label>
+                        <input className="border-2 px-2" type="text" onChange={(e) => { setYear(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
                     </div>
                     <div className="flex flex-wrap py-[15px]">
                         <label className="" for="type">&nbsp; Transmission Type : </label>

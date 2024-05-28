@@ -11,15 +11,14 @@ const handleSendChat=async(req,res)=>{
     console.log("car: ",car)
     const int=await Int.find({buyer:buyer,car:car})
     console.log("int",int)
+    const lastTime=new Date()
     if(int.length===0){
         const seller=car.email
-        const buyer=email
-        Int.create({buyer,seller,car})
+        Int.create({buyer,seller,car,lastTime})
     }
-    const date=new Date()
     run();
     async function run(){
-        await Int.updateOne({buyer:buyer,car:car},{messages:arr,lastTime:date})
+        await Int.updateOne({buyer:buyer,car:car},{messages:arr,lastTime:lastTime})
     }
     res.json({"success":true})
 }

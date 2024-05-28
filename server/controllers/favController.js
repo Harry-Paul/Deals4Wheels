@@ -9,8 +9,8 @@ const handleFav=async(req,res)=>{
     run().catch(error => console.log(error.stack));
     async function run(){
         const obj = new ObjectID(id);
-        const prop=await Car.find({_id:obj})
-        const car=prop[0]
+        const car=await Car.findOne({_id:obj})
+        console.log(car)
         if(status===true){
             const buyer=email
             Fav.create({buyer,seller,car})
@@ -18,6 +18,7 @@ const handleFav=async(req,res)=>{
         }
         else{
             await Fav.findOneAndRemove({buyer:email,car:car})
+            console.log("cvb")
             res.json({"success":true})
         }
     }
