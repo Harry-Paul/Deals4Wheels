@@ -28,7 +28,10 @@ const handleSell = async (req,res) => {
             const endTime=new Date(eyear,emonth,eday,ehour,eminute)
             console.log(startTime,"  ",endTime)
             console.log(imgArray.length)
-            const status="Active"
+            let status="Active"
+            if(type==="Auction" && date<startTime){
+                status="Upcoming"
+            }
             loop(images);
             function loop(images){
                 imgArray.forEach(async img => {

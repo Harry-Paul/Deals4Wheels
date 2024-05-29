@@ -2,7 +2,8 @@ const Car = require('../model/car');
 
 const handleChange=async(req,res)=>{
     const date=new Date()
-    Car.updateMany({type:"Auction",endTime:{$gte:date}},{status:"sold"})
+    await Car.updateMany({type:"Auction",status:"Upcoming",startTime:{$lte:date}},{status:"Active"})
+    await Car.updateMany({type:"Auction",endTime:{$lte:date}},{status:"sold"})
     res.json({"success":true})
 }
 

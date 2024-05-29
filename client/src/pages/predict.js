@@ -41,26 +41,34 @@ export const Predict = () => {
   return (
     <div>
       <Navbar/>
-        <form className="grid lg:grid-cols-2 md:mt-[80px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50">
-          <div className="py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
-            <div class="py-[10px]">
+        <form className="grid lg:grid-cols-2 md:mt-[40px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50 text-xl">
+          <div className="py-[17px] mt-[55px] mb-[10px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
+            <div class="py-[10px] md:ml-[175px]">
               <label className="" >Year : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setYear(e.target.value) }} placeholder="Year" name="Year" id="" required />
+                <input className="border-2 px-2" type="text" onChange={(e) => {let x=e.target.value.slice(3); setYear(x) }} placeholder="Year" name="Year" id="" required />
             </div>
-            <div className="py-[10px]">
-              <label className="" >kilometers : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
+            <div className="py-[10px] ">
+              <label className="" >Distance Travelled (Km) : </label>
+                <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Distance Travelled" name="Kilometers" id="" required />
             </div>
-            <div className="py-[10px]">
-              <label className="" >Mileage : </label>
+            <div className="py-[10px] md:ml-[78px]">
+              <label className="" >Mileage (Km/L) : </label>
                 <input className="border-2 px-2" type="text" onChange={(e) => { setMileage(e.target.value) }} placeholder="Mileage" name="Mileage" id="" required />
             </div>
-            <div className="py-[10px]">
-              <label className="" >Seats : </label>
+            <div className="py-[10px] md:ml-[105px]">
+              <label className="" >No. of Seats : </label>
                 <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
             </div>
-            <div className="flex flex-wrap py-[15px]">
-              <label className="" for="type">&nbsp; Manufacturer : </label>
+            <div className="py-[10px] md:ml-[25px]">
+              <label className="" >Engine Capacity (Cc) : </label>
+                <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
+            </div>
+            <div className="py-[10px] md:ml-[100px]">
+              <label className="" >Power (Bhp) : </label>
+                <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
+            </div>
+            <div className="flex flex-wrap py-[15px] md:ml-[95px]">
+              <label className="" for="type">Manufacturer : </label>
               <div className="">
                   <select onChange={(e)=>setManufacturer(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       {/* <option selected>{option}</option> */}
@@ -95,8 +103,8 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px]">
-              <label className="" for="type">&nbsp; Fuel Type : </label>
+            <div className="flex flex-wrap py-[15px] md:ml-[60px]">
+              <label className="" for="type">Fuel Type : </label>
               <div className="">
                   <select onChange={(e)=>setFuel(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       {/* <option selected>{option}</option> */}
@@ -108,8 +116,8 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px]">
-              <label className="" for="type">&nbsp; Transmission : </label>
+            <div className="flex flex-wrap py-[15px] md:ml-[20px]">
+              <label className="" for="type">&nbsp; Transmission Type: </label>
               <div className="">
                   <select onChange={(e)=>setTransmission(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       {/* <option selected>{option}</option> */}
@@ -118,7 +126,7 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px]">
+            <div className="flex flex-wrap py-[15px] md:ml-[30px]">
               <label className="" for="type">&nbsp; Owner Type: </label>
               <div className="">
                   <select onChange={(e)=>setOwner(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -130,13 +138,14 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <button onClick={Submit}>SUBMIT</button>
+            <div className='flex justify-center'><button className='bg-black text-white py-2 px-3 rounded-xl mt-[10px] hover:bg-gray-700' onClick={Submit}>SUBMIT</button></div>
+            <div className='mt-[20px] flex justify-center'>Predicted Result: {pred}</div>
           </div>
           <div>
-          <img className='' src={robo} alt=""></img>
+          <img className='h-[500px]' src={robo} alt=""></img>
           </div>
         </form>
-        <div>Predicted Result: {pred}</div>
+        
     </div>
   )
 }
