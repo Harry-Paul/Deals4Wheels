@@ -5,7 +5,7 @@ import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom'
 import { FaBorderAll, FaHeart } from "react-icons/fa6";
 
-const Buy = () => {
+const Liveauction = () => {
     const navigate=useNavigate()
     const {auth}=useAuth()
     const {setAuth}=useAuth()
@@ -88,7 +88,13 @@ const Buy = () => {
   return (
     <div>
         <Navbar/>
-        <div className="mt-[130px] my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
+        <div className='mt-[0px] flex flex-row pl-[80px]  bg-gray-700 fixed z-10 w-full'>
+            <p className=' py-2 text-white text-4xl'>Live Auctions</p>
+            <button className='bg-black text-white my-3 rounded-lg ml-20 px-4'>Latest</button>
+            <button className='bg-white my-3 rounded-lg ml-5 px-4'>Ending Soon</button>
+            <button className='bg-white my-3 rounded-lg ml-5 px-4'>Trending</button>
+        </div>
+        <div className="pt-[100px] my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.010] cursor-pointer rounded-xl'>
                       <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
@@ -105,4 +111,4 @@ const Buy = () => {
   )
 }
 
-export default Buy
+export default Liveauction

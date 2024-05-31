@@ -146,7 +146,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
                     <div onClick={()=>navigate('/predict')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-[70px] h-16  bg-red-500 text-white  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[2].img}{arr[2].button}</div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[22px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[3].img}<div className='w-[70px]'>{arr[3].button}</div></div>
+                    <div onClick={()=>navigate('/liveauction')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[22px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[3].img}<div className='w-[70px]'>{arr[3].button}</div></div>
                   </div>
                   <div className="rounded-xl">
                     <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:px-7 mx-3 p-2'>{arr[4].img}<div className='w-[100px]'>{arr[4].button}</div></div>
@@ -157,7 +157,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
 
           <div className=" my-20 mx-20  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont.map((arr2)=>(
-                    <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.020] cursor-pointer rounded-xl'>
+                    <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.010] cursor-pointer rounded-xl'>
                       <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
                       <div  className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
                         <p onClick={car(arr2._id)} className='md:text-lg font-medium truncate pb-1'>{arr2.brand} {arr2.model} {arr2.variant}</p>

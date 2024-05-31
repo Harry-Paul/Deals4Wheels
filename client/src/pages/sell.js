@@ -120,31 +120,31 @@ export default function Sell() {
         <>
             {<Navbar />}
 
-            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:pt-[42px] mt-[50px] bg-gray-300">
+            <form onSubmit={submit} className="grid  lg:grid-cols-2 md:pt-[42px] mt-[20px] bg-gray-300">
                 <div className={style1} >
 
-                    <div class="py-[10px]">
-                        <label className="" for="propname">&nbsp; Brand : </label>
+                    <div class="py-[10px] md:ml-[125px]">
+                        <label className="" for="propname">Brand : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder="Brand" name="Brand" id="" required />
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="street">&nbsp; Model : </label>
+                    <div class="py-[10px] md:ml-[125px]">
+                        <label className="" for="street"> Model : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setModel(e.target.value) }} placeholder="Model" name="Model" id="" required />
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="city">&nbsp;  Variant : </label>
+                    <div class="py-[10px] md:ml-[120px]">
+                        <label className="" for="city"> Variant : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setVariant(e.target.value) }} placeholder="Variant" name="Variant" id="" required />
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="beds">&nbsp; Kilometers : </label>
+                    <div class="py-[10px] ">
+                        <label className="" for="beds">Distance Travelled (Km) : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="beds">&nbsp; Year : </label>
+                    <div class="py-[10px] md:ml-[140px]">
+                        <label className="" for="beds"> Year : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setYear(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
                     </div>
-                    <div className="flex flex-wrap py-[15px]">
-                        <label className="" for="type">&nbsp; Transmission Type : </label>
+                    <div className="flex flex-wrap py-[15px] md:ml-[40px]">
+                        <label className="" for="type"> Transmission Type : </label>
                         <div className="">
                             <select onClick={(e)=>{setTransmission(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Manual" >Manual</option>
@@ -152,8 +152,8 @@ export default function Sell() {
                             </select>
                         </div>
                     </div>
-                    <div className="flex flex-wrap py-[15px]">
-                        <label className="" for="type">&nbsp; Owner Type : </label>
+                    <div className="flex flex-wrap py-[15px] md:ml-[88px]">
+                        <label className="" for="type"> Owner Type : </label>
                         <div className="">
                             <select onClick={(e)=>{setOwner(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Manual" >First</option>
@@ -163,8 +163,8 @@ export default function Sell() {
                             </select>
                         </div>
                     </div>
-                    <div className="flex flex-wrap py-[15px]">
-                        <label className="" for="type">&nbsp; Fuel Type : </label>
+                    <div className="flex flex-wrap py-[15px] md:ml-[105px]">
+                        <label className="" for="type"> Fuel Type : </label>
                         <div className="">
                             <select onClick={(e)=>{setFuel(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Petrol" >Petrol</option>
@@ -174,11 +174,11 @@ export default function Sell() {
                             </select>
                         </div>
                     </div>
-                    <div className="flex flex-wrap py-[15px]">
-                        <label className="" for="type">&nbsp; Type : </label>
+                    <div className="flex flex-wrap py-[15px] md:ml-[140px]">
+                        <label className="" for="type">Type : </label>
                         <div className="">
 
-                        <select onClick={(e)=>{setType(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px]");setStyle1("mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white")}else if(e.target.value==="fixed"){setStyle('hidden');setStyle1("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white")} }} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select onClick={(e)=>{setType(e.target.value);if(e.target.value==="Auction"){setStyle("py-[10px] md:ml-[103px]");setStyle1("mt-[25px] mb-[40px] mx-auto px-8  rounded-3xl bg-white")}else if(e.target.value==="Fixed Price"){setStyle('hidden');setStyle1("py-[17px] mt-[55px] mb-[77px] mx-auto px-8  rounded-3xl bg-white")} }} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="Fixed Price" >Fixed Price</option>
 
                                 <option value="Auction" >Auction</option>
@@ -187,8 +187,8 @@ export default function Sell() {
                     </div>
                     
                     <div class={style}>
-                        <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Start Time : </label>
-                        <input onChange={(e)=>setStartTime(e.target.value)}
+                        <label className="" for="price">Start Time : </label>
+                        <input className="cursor-pointer" onChange={(e)=>setStartTime(e.target.value)}
                             type="datetime-local"
                             id="meeting-time"
                             name="meeting-time"
@@ -196,20 +196,20 @@ export default function Sell() {
                             min={currentTime} />
                     </div>
                     <div class={style}>
-                        <label className="" for="price">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;End Time : </label>
-                        <input onChange={(e)=>{setEndTime(e.target.value)}}
+                        <label className="" for="price">&nbsp;End Time : </label>
+                        <input className="cursor-pointer" onChange={(e)=>{setEndTime(e.target.value)}}
                             type="datetime-local"
                             id="meeting-time"
                             name="meeting-time"
                             value={endtime}
                             min={currentTime} />
                     </div>
-                    <div class="py-[10px]">
-                        <label className="" for="price">&nbsp; &nbsp; &nbsp; Price : </label>
+                    <div class="py-[10px] md:ml-[140px]">
+                        <label className="" for="price"> Price : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setPrice(e.target.value) }} placeholder="Price" name="Price" id="" required />
                     </div>
-                    <div class="py-[10px] flex flex-wrap">
-                        <label className="" for="description">&nbsp; &nbsp; &nbsp; Description : </label>
+                    <div class="py-[10px] flex flex-wrap md:ml-[95px]">
+                        <label className="" for="description">Description : </label>
                         <textarea className="p-4 mx-1 border-2" type="text" onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" name="Description" id="" required />
                     </div>
 
