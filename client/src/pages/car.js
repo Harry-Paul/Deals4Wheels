@@ -160,6 +160,8 @@ const Car = () => {
       }
     }
 
+    
+
     const handleToClose1 = () => {
       setOpen1(false);
   };
@@ -259,7 +261,7 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
         <Dialog class="dialog-desc" open={open2} onClose={handleToClose2}>
           <div className='text-xl text-center m-3'>{price}</div>
           <div><button className=' mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x+5000;setPrice(x)}}>+</button><button className='mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x-5000;if(x>=cont.price){setPrice(x)}}}>-</button></div>
-          <button className='bg-gray-500 py-1 px-15 m-1'>SUBMIT</button>
+          <button className='bg-gray-500 py-1 px-15 m-1' >PLACE BID</button>
         </Dialog>
     </div>
   )

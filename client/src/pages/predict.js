@@ -18,6 +18,7 @@ export const Predict = () => {
     const [transmission, setTransmission]=useState('Manual')
     const [owner, setOwner]=useState('First')
     const { auth } = useAuth();
+    const[style,setStyle]=useState('hidden')
     const accessToken = auth?.accessToken;
 
     const Submit=(e)=>{
@@ -31,7 +32,8 @@ export const Predict = () => {
       })
       .then(result=>{
         console.log(result)
-        setPred(result.data.data)
+        setPred(parseFloat(result.data.data).toFixed(2))
+        setStyle('mt-[20px] flex justify-center bg-black text-[25px] rounded-lg')
       })
 
     }
@@ -41,33 +43,35 @@ export const Predict = () => {
   return (
     <div>
       <Navbar/>
-        <form className="grid lg:grid-cols-2 md:mt-[40px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50 text-xl">
-          <div className="py-[17px] mt-[55px] mb-[10px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
+      <div className='flex justify-center pl-[80px] text-white bg-gray-700 text-4xl '><p className='mt-[80px] py-2'>AI Powered Price Calculation</p></div>
+      
+        <form className="grid lg:grid-cols-2 md:mt-[10px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50 text-lg md:text-xl">
+          <div className="py-[17px] mt-[10px] mb-[10px] mx-auto px-8  rounded-3xl bg-white shadow-xl">
             <div class="py-[10px] md:ml-[175px]">
               <label className="" >Year : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => {let x=e.target.value.slice(3); setYear(x) }} placeholder="Year" name="Year" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => {let x=e.target.value.slice(2); setYear(x) }} placeholder="Year" name="Year" id="" required />
             </div>
             <div className="py-[10px] ">
               <label className="" >Distance Travelled (Km) : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Distance Travelled" name="Kilometers" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => { setKilometers(e.target.value) }} placeholder="Distance Travelled" name="Kilometers" id="" required />
             </div>
             <div className="py-[10px] md:ml-[78px]">
               <label className="" >Mileage (Km/L) : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setMileage(e.target.value) }} placeholder="Mileage" name="Mileage" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => { setMileage(e.target.value) }} placeholder="Mileage" name="Mileage" id="" required />
             </div>
-            <div className="py-[10px] md:ml-[105px]">
+            <div className="py-[10px] md:ml-[103px]">
               <label className="" >No. of Seats : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="No. of Seats" name="Seats" id="" required />
             </div>
-            <div className="py-[10px] md:ml-[25px]">
+            <div className="py-[10px] md:ml-[23px]">
               <label className="" >Engine Capacity (Cc) : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => { setEngine(e.target.value) }} placeholder="Engine Capacity" name="Seats" id="" required />
             </div>
             <div className="py-[10px] md:ml-[100px]">
               <label className="" >Power (Bhp) : </label>
-                <input className="border-2 px-2" type="text" onChange={(e) => { setSeats(e.target.value) }} placeholder="Seats" name="Seats" id="" required />
+                <input className="border-2 md:px-2" type="text" onChange={(e) => { setPower(e.target.value) }} placeholder="Power" name="Seats" id="" required />
             </div>
-            <div className="flex flex-wrap py-[15px] md:ml-[95px]">
+            <div className="flex flex-wrap py-[8px] md:ml-[93px]">
               <label className="" for="type">Manufacturer : </label>
               <div className="">
                   <select onChange={(e)=>setManufacturer(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -103,7 +107,7 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px] md:ml-[60px]">
+            <div className="flex flex-wrap py-[8px] md:ml-[123px]">
               <label className="" for="type">Fuel Type : </label>
               <div className="">
                   <select onChange={(e)=>setFuel(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -116,8 +120,8 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px] md:ml-[20px]">
-              <label className="" for="type">&nbsp; Transmission Type: </label>
+            <div className="flex flex-wrap py-[8px] md:ml-[33px]">
+              <label className="" for="type">&nbsp; Transmission Type : </label>
               <div className="">
                   <select onChange={(e)=>setTransmission(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       {/* <option selected>{option}</option> */}
@@ -126,8 +130,8 @@ export const Predict = () => {
                   </select>
               </div>
             </div>
-            <div className="flex flex-wrap py-[15px] md:ml-[30px]">
-              <label className="" for="type">&nbsp; Owner Type: </label>
+            <div className="flex flex-wrap py-[8px] md:ml-[103px]">
+              <label className="" for="type">Owner Type : </label>
               <div className="">
                   <select onChange={(e)=>setOwner(e.target.value)} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       {/* <option selected>{option}</option> */}
@@ -139,10 +143,11 @@ export const Predict = () => {
               </div>
             </div>
             <div className='flex justify-center'><button className='bg-black text-white py-2 px-3 rounded-xl mt-[10px] hover:bg-gray-700' onClick={Submit}>SUBMIT</button></div>
-            <div className='mt-[20px] flex justify-center'>Predicted Result: {pred}</div>
+            <div className={style}><div className='text-white pt-3'>Price : </div> <div className='bg-white text-black my-2 rounded-lg px-2 py-1 ml-3'> {pred} Lakhs</div></div>
           </div>
           <div>
-          <img className='h-[500px]' src={robo} alt=""></img>
+            
+          <div className='flex justify-center'><img className='h-[600px]' src={robo} alt=""></img></div>
           </div>
         </form>
         
