@@ -27,6 +27,7 @@ const Car = () => {
 
 
     useLayoutEffect(()=>{
+        axios.post("/updatetrend",{id,email})
         const type="single"
         const fav=auth.email?true:false
         console.log({id,type,fav,email})
