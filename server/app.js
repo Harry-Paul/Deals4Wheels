@@ -47,6 +47,10 @@ app.use('/sendchat', require('./routes/sendchat'))
 
 app.use('/showchats', require('./routes/showchats'))
 
+app.use('/filter', require('./routes/filter'))
+
+app.use('/updatetrend', require('./routes/updatetrend'))
+
 app.listen(4000,function(){
     console.log("Server is running");
 });

@@ -3,6 +3,7 @@ import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import Navbar from '../components/Navbar'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { FaArrowLeft } from "react-icons/fa";
 
 
 const ChatSellers = () => {
@@ -16,12 +17,16 @@ const ChatSellers = () => {
     const[cont,setCont]=useState([])
     const[arr,setArr]=useState([])
     const[style,setStyle]=useState([])
-    const[s1,setS1]=useState('text-9xl')
+    const[s1,setS1]=useState('md:text-9xl md:h-[730px] md:block hidden ')
     const[s2,setS2]=useState('hidden')
+    const[s3,setS3]=useState('hidden')
+    const[s4,setS4]=useState('flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]')
     const[message,setMessage]=useState('')
     const[test,setTest]=useState(' ')
     const[buyer,setBuyer]=useState('')
     const[id,setId]=useState('')
+    const[car,setCar]=useState('')
+    const[user1,setUser1]=useState('')
     console.log("jkl")
 
 
@@ -141,28 +146,35 @@ const ChatSellers = () => {
 
   return (
     <div>
-      <Navbar/>
-      <div className='grid grid-cols-4 h-[800px] mt-[75px]'>
-        <div className='flex flex-col col-span-1 '>
+      <Navbar/> 
+      <div className='grid md:grid-cols-4 grid-cols-1 md:h-[700px] md:mt-[80px]  mt-[60px]'>
+        <div className={s4}>
         {cont.map((arr2)=>(
-                    <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('')}} className='cursor-pointer h-[100px] border-b-2 border-black'>
-                      <p className='mx-auto max-w-fit mt-[20px]'>{arr2.seller}</p>
-                      <p>{arr2.car.brand} {arr2.car.model} {arr2.car.variant} {arr2.car.year}</p>
+                    <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('bg-gray-200');setCar(arr2.car.brand+" "+arr2.car.model+" "+arr2.car.variant+" ("+arr2.car.year+")");setUser1(arr2.seller);setS3('flex flex-row  bg-gray-800 text-white ');setS4('hidden md:flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]')}} className='cursor-pointer h-[100px] mx-[2px] mt-[2px] bg-gray-800 rounded-lg'>
+                      <p className=' pt-[20px] truncate ml-[20px] text-lg text-white'>{arr2.seller}</p>
+                      <p className='truncate mx-[20px] mt-1 text-sm text-gray-400'>{arr2.car.brand} {arr2.car.model} {arr2.car.variant} ({arr2.car.year})</p>
                     </div>
                   
               ))}
         </div>
-        <div className='col-span-3 bg-gray-200 '>
+        <div className=' md:col-span-3 col-span-1 '>
           <p className={s1}>send chat</p>
+          <div className={s3}>
+            <div className='md:hidden block mx-[10px] my-[20px] border-2 border-gray-600 p-2' onClick={()=>{setS3('hidden');setS2('hidden');setS4('flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[900px]')}}>< FaArrowLeft size="30px"/></div>
+            <div className='py-[10px] flex flex-col justify-center align-middle md:px-[50px] pl-[20px]'>
+            <p className='pb-2 text-2xl'>{user1}</p>
+            <p className='pb-2 text-md text-gray-400 truncate'>{car}</p>
+            </div>
+          </div>
           <div className={s2}>
-          <p className='mx-[200px] h-[400px] bg-gray-100 mt-[100px]'>
+          <p className='md:h-[580px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
             {style.map((tx)=>
-            <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
+            <div className={tx[0]} ><div className='bg-gray-800 text-white max-w-fit rounded-md my-1 px-3 py-1 text-2xl mx-2'>{tx[1]}</div></div>
             )}
           </p>
-          <div class="mx-[230px] flex flex-row justify-center">
-            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
-            <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("0"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
+          <div class="mx-[35px] flex flex-row justify-center">
+            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text" onfocus="this.value=''"  placeholder="Enter Message" name="Description" id="" required />
+            <button className='bg-black text-white px-[15px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("0"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
           </div>
           </div>
         </div>
