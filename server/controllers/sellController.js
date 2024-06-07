@@ -32,6 +32,9 @@ const handleSell = async (req,res) => {
             if(type==="Auction" && date<startTime){
                 status="Upcoming"
             }
+            year=parseInt(year)
+            kilometers=parseInt(kilometers)
+            price=parseInt(price)
             loop(images);
             function loop(images){
                 imgArray.forEach(async img => {

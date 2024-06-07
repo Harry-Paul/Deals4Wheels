@@ -26,7 +26,7 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     kilometers:{
-        type:String,
+        type:Number,
         required:true
     },
     owner:{
@@ -42,11 +42,11 @@ const propSchema = new mongoose.Schema({
         required:true
     },
     price:{
-        type:String,
+        type:Number,
         required:true
     },
     year:{
-        type:String,
+        type:Number,
         required: true
     },
     startTime:{

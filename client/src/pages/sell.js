@@ -87,7 +87,7 @@ export default function Sell() {
 
     const submit=(e)=>{
         e.preventDefault()
-        if(brand==='' || model==='' ||variant==='' || kilometers==='' || year==='' || price==='' || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
+        if(brand==='' || model==='' ||variant==='' || +kilometers!=NaN || +year!=NaN || +price!=NaN || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
             alert("Fill out required fields")
         }
         else{

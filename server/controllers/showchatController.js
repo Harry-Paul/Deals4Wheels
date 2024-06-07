@@ -4,6 +4,7 @@ const ObjectID = require('mongodb').ObjectId;
 
 const handleShowChat=async(req,res)=>{
     const{buyer,id,user}=req.body
+    console.log(req.body)
     const obj = new ObjectID(id);
     const prop=await Car.findOne({_id:obj})
     const seller=prop.email
