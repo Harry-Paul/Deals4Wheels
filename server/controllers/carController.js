@@ -13,6 +13,9 @@ const handleCar=async (req,res)=>{
     else if(type==="Auction"){
         cont=await Car.find({type:"Auction",status:"Active"})
     }
+    else if(type==="Upcoming"){
+        cont=await Car.find({type:"Auction",status:"Upcoming"})
+    }
     else if(type==="Home"){
         cont=await Car.find({status:"Active"});
         cont=cont.slice(0,8)
@@ -42,7 +45,7 @@ const handleCar=async (req,res)=>{
             let arr={}
             // console.log(fav)
             for(let i=0;i<fav.length;i++){
-                id.push(fav[i].car._id.toString())
+                id.push(fav[i].car_id)
             }
             console.log(id)
             for(let i=0;i<cont.length;i++){

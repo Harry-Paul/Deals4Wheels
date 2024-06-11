@@ -8,16 +8,15 @@ const handleFav=async(req,res)=>{
     console.log(req.body)
     run().catch(error => console.log(error.stack));
     async function run(){
-        const obj = new ObjectID(id);
-        const car=await Car.findOne({_id:obj})
-        console.log(car)
+        car_id=id
+        console.log(car_id)
         if(status===true){
             const buyer=email
-            Fav.create({buyer,seller,car})
+            Fav.create({buyer,seller,car_id})
             res.json({"success":true})
         }
         else{
-            await Fav.findOneAndRemove({buyer:email,car:car})
+            await Fav.findOneAndRemove({buyer:email,car_id:car_id})
             console.log("cvb")
             res.json({"success":true})
         }

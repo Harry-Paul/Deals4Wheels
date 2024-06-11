@@ -68,10 +68,7 @@ const propSchema = new mongoose.Schema({
     },
     images:[{
         type:String
-    }],
-    bidder:{
-        type:String
-    }
+    }]
 })
 
 module.exports = mongoose.model('Car', propSchema)

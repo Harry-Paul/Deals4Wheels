@@ -47,72 +47,76 @@ const Car = () => {
           if(result.data.cont[0].type==="Auction"){
             setS("items-center justify-center   text-lg font-semibold  bg-black hover:bg-blue-500 text-white md:py-1 mt-5 text-black rounded-xl w-1/4 flex")
           }
-          if(auth.email){
-            if(auth.email===cont.email){
-              setUser("seller")
-            }
-            else{
-              send(email,accessToken)
-              function send(email,accessToken){
-                setUser("buyer")
-              email=auth.email
-              let buyer=email
-              axios.post("/showchat",{id,buyer,user},
-              {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                },
-                withCredentials: true
-              }
-              )
-              .then(result=>{
-                setStyle(result.data.chat)
-                setArr(result.data.arr)
-              })
-              .catch(err=>{
-                if (err.response.data.message === "Forbidden") {
-                  axios.post('/auth/refresh', { email },
-                      {
-                          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
-                          withCredentials: true
-                      })
-                      .then(result => {
-                          console.log(result)
-                          email=result.data.email
-                          accessToken = result.data.accessToken;
-                          const pic = result.data.pic;
-                          console.log(accessToken)
-                          setAuth({ email, accessToken,pic })
-                          send(email,accessToken);
-                          // submit();
-                          // navigate("/home")
-                      })
-                      .catch(err => {
-                          if (err.response.data.message === "Forbidden" ) {
-                              setAuth({});
-                              navigate('/login')
-                          }
-                          else if(err.response.data.message === "Unauthorized"){
-                              navigate("/login")
-                          }
-                      })
-                }
-              })
-              }
-              
-              console.log(style)
-            }
-          }
-          else{
-            setUser("buyer")
-          }
-          
-          console.log(style)
         })
         .catch(err=>console.log(err))
         
         
     },[])
+
+    const openmessage=()=>{
+      setOpen1(true)
+      if(auth.email){
+        if(auth.email===cont.email){
+          setUser("seller")
+        }
+        else{
+          send(email,accessToken)
+          function send(email,accessToken){
+            setUser("buyer")
+          email=auth.email
+          let buyer=email
+          axios.post("/showchat",{id,buyer,user},
+          {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+            withCredentials: true
+          }
+          )
+          .then(result=>{
+            setStyle(result.data.chat)
+            setArr(result.data.arr)
+          })
+          .catch(err=>{
+            if (err.response.data.message === "Forbidden") {
+              axios.post('/auth/refresh', { email },
+                  {
+                      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                      withCredentials: true
+                  })
+                  .then(result => {
+                      console.log(result)
+                      email=result.data.email
+                      accessToken = result.data.accessToken;
+                      const pic = result.data.pic;
+                      console.log(accessToken)
+                      setAuth({ email, accessToken,pic })
+                      send(email,accessToken);
+                      // submit();
+                      // navigate("/home")
+                  })
+                  .catch(err => {
+                      if (err.response.data.message === "Forbidden" ) {
+                          setAuth({});
+                          navigate('/login')
+                      }
+                      else if(err.response.data.message === "Unauthorized"){
+                          navigate("/login")
+                      }
+                  })
+            }
+          })
+          }
+          
+          console.log(style)
+        }
+      }
+      else{
+        setUser("buyer")
+      }
+      
+      console.log(style)
+    }
 
     const sendChat=()=>{
       send(email,accessToken)
@@ -231,7 +235,7 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
           <p className='text-gray-600 truncate text-lg mt-[8px]'>Mumbai</p>
           </div>
           <div className='items-center justify-center flex flex-col '>
-            <button className=' items-center justify-center flex text-xl font-semibold bg-purple-800 hover:bg-blue-500 md:py-1 mt-5 text-white rounded-xl w-2/5' onClick={()=>{setOpen1(true)}}> Send Message <IoChatboxEllipsesOutline size={26} className='ml-[10px]' /></button>
+            <button className=' items-center justify-center flex text-xl font-semibold bg-purple-800 hover:bg-blue-500 md:py-1 mt-5 text-white rounded-xl w-2/5' onClick={()=>{openmessage()}}> Send Message <IoChatboxEllipsesOutline size={26} className='ml-[10px]' /></button>
             <button className={s} onClick={()=>{setOpen2(true)}}>Bid <RiAuctionLine size={26} className='ml-[15px]'/></button>
           </div>
           <div className='flex flex-row mb-[10px]'>

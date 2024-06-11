@@ -78,6 +78,39 @@ const handleFilter = async(req,res)=>{
             res.json({"cont":cont})
         }
     }
+    else if(type==="upcoming"){
+        console.log(filter)
+        if(filter==="soon"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({startTime:1});
+            console.log(cont)
+            res.json({"cont":cont})
+        }
+        else if(filter==="pricelow"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({price:1})
+            res.json({"cont":cont})
+        }
+        else if(filter==="pricehigh"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({price:-1})
+            res.json({"cont":cont})
+        }
+        else if(filter==="distancelow"){
+            console.log("acv")
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({kilometers:1})
+            res.json({"cont":cont})
+        }
+        else if(filter==="distancehigh"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({kilometers:-1})
+            res.json({"cont":cont})
+        }
+        else if(filter==="yearlow"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({year:1})
+            res.json({"cont":cont})
+        }
+        else if(filter==="yearhigh"){
+            const cont=await Car.find({type:"Auction",status:"Upcoming"}).sort({year:-1})
+            res.json({"cont":cont})
+        }
+    }
 }
 
 module.exports={handleFilter}

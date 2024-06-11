@@ -1,9 +1,11 @@
-import {React, useState, useLayoutEffect} from 'react'
+import {React, useState, useLayoutEffect,useEffect} from 'react'
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import Navbar from '../components/Navbar'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from "react-icons/fa";
+import io from 'socket.io-client'
+const socket = io.connect("http://localhost:3001")
 
 
 const ChatBuyers = () => {
@@ -28,7 +30,19 @@ const ChatBuyers = () => {
     const[id,setId]=useState('')
     const[car,setCar]=useState('')
     const[user1,setUser1]=useState('')
+    const [room, setRoom] = useState("");
+    const [mes, setMes] = useState([]);
+
+  // Messages States
+  const [messageReceived, setMessageReceived] = useState("");
     console.log("abc")
+
+    useEffect(()=>{
+      if (room !== "") {
+        console.log("joined")
+        socket.emit("join_room", room);
+      }
+    },[room])
 
 
     useLayoutEffect(()=>{
@@ -81,7 +95,7 @@ const ChatBuyers = () => {
                     const pic = result.data.pic;
                     console.log(accessToken)
                     setAuth({ email, accessToken,pic })
-                    send(accessToken,email);
+                    send(email,accessToken);
                     // submit();
                     // navigate("/home")
                 })
@@ -100,6 +114,7 @@ const ChatBuyers = () => {
     }
 
     const sendChat=()=>{
+      
       send(email,accessToken)
       console.log("arr: ",arr)
       function send(email, accessToken){
@@ -112,7 +127,7 @@ const ChatBuyers = () => {
         withCredentials: true
       }
       )
-      .then(result=>{console.log(result)})
+      .then(result=>{console.log(result);socket.emit("send_message", { mes, room });})
       .catch(err=>{
         if (err.response.data.message === "Forbidden") {
           axios.post('/auth/refresh', { email },
@@ -145,15 +160,29 @@ const ChatBuyers = () => {
       }
     }
 
+  
+    useEffect(() => {
+      socket.on("receive_message", (data) => {
+        console.log(data)
+        let s=style
+        s.push(data.mes)
+        setStyle(s)
+        if(test===' '){
+          setTest("abc")
+        }
+        else{setTest(' ')}
+      });
+    }, [socket]);
+
   return (
     <div>
       <Navbar/> 
       <div className='grid md:grid-cols-4 grid-cols-1 md:h-[700px] md:mt-[80px]  mt-[60px]'>
         <div className={s4}>
         {cont.map((arr2)=>(
-                    <div onClick={()=>{select(arr2.car._id,arr2.buyer);setS1('hidden');setS2('bg-gray-200');setCar(arr2.car.brand+" "+arr2.car.model+" "+arr2.car.variant+" ("+arr2.car.year+")");setUser1(arr2.seller);setS3('flex flex-row  bg-gray-800 text-white ');setS4('hidden md:flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]')}} className='cursor-pointer h-[100px] mx-[2px] mt-[2px] bg-gray-800 rounded-lg'>
-                      <p className=' pt-[20px] truncate ml-[20px] text-lg text-white'>{arr2.seller}</p>
-                      <p className='truncate mx-[20px] mt-1 text-sm text-gray-400'>{arr2.car.brand} {arr2.car.model} {arr2.car.variant} ({arr2.car.year})</p>
+                    <div onClick={()=>{setRoom(arr2._id);select(arr2.car_id,arr2.buyer);setS1('hidden');setS2('bg-gray-200');setCar(arr2.car_name+" ("+arr2.year+")");setUser1(arr2.buyer);setS3('flex flex-row  bg-gray-800 text-white ');setS4('hidden md:flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]');}} className='cursor-pointer h-[100px] mx-[2px] mt-[2px] bg-gray-800 rounded-lg'>
+                      <p className=' pt-[20px] truncate ml-[20px] text-lg text-white'>{arr2.buyer}</p>
+                      <p className='truncate mx-[20px] mt-1 text-sm text-gray-400'>{arr2.car_name} ({arr2.year})</p>
                     </div>
                   
               ))}
@@ -170,11 +199,11 @@ const ChatBuyers = () => {
           <div className={s2}>
           <p className='md:h-[580px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
             {style.map((tx)=>
-            <div className={tx[0]} ><div className='bg-gray-800 text-white max-w-fit rounded-md my-1 px-3 py-1 text-2xl mx-2'>{tx[1]}</div></div>
+            <div className={tx[0]} ><div className='bg-gray-800 text-white lg:max-w-[500px] md:max-w-[400px] max-w-[275px] rounded-md my-1 px-3 py-1 text-2xl mx-2'>{tx[1]}</div></div>
             )}
           </p>
           <div class="mx-[35px] flex flex-row justify-center">
-            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text" onfocus="this.value=''"  placeholder="Enter Message" name="Description" id="" required />
+            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>{setMes(['flex flex-row justify-start',e.target.value]);setMessage(e.target.value);console.log(message)}} type="text" onfocus="this.value=''"  placeholder="Enter Message" name="Description" id="" required />
             <button className='bg-black text-white px-[15px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("0"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
           </div>
           </div>

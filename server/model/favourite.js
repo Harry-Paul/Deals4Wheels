@@ -18,19 +18,23 @@ const carSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    fuel:{
+        type:String,
+        required:true
+    },
     transmission:{
         type:String,
         required:true
     },
-    year:{
-        type:String,
-        required:true
-    },
     kilometers:{
-        type:String,
+        type:Number,
         required:true
     },
     owner:{
+        type:String,
+        required:true
+    },
+    type:{
         type:String,
         required:true
     },
@@ -39,8 +43,12 @@ const carSchema = new mongoose.Schema({
         required:true
     },
     price:{
-        type:String,
+        type:Number,
         required:true
+    },
+    year:{
+        type:Number,
+        required: true
     },
     startTime:{
         type:Date,
@@ -73,8 +81,8 @@ const favSchema= new mongoose.Schema({
         type: String,
         required: true
     },
-    car:{
-        type: carSchema,
+    car_id:{
+        type: String,
         required:true
     }
 })

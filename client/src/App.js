@@ -14,6 +14,7 @@ import ChatBuyers from "./pages/chatbuyers.js";
 import ChatSellers from "./pages/chatsellers.js";
 import Buy from "./pages/buy.js";
 import Liveauction from "./pages/liveauction.js";
+import Upcomingauction from "./pages/upcomingauction.js";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/car" element={<Car/>}/>
           <Route exact path="/buy" element={<Buy/>}/>
           <Route exact path="/liveauction" element={<Liveauction/>}/>
+          <Route exact path="/upcomingauction" element={<Upcomingauction/>}/>
 
           <Route element={<RequireAuth/>}>
             <Route exact path="/sell" element={<Sell/>}/>

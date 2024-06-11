@@ -34,6 +34,7 @@ const Home = () => {
   const [color,setColor]=useState({})
   console.log("auth :",auth)
   console.log(color)
+  
 
   useLayoutEffect(()=>{
     // console.log("sdf: ",auth.email)
@@ -127,6 +128,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
 
 
 
+
     return (
       <div>
         <Navbar/>
@@ -149,7 +151,7 @@ const arr2=[{img:<img className='bg-cover p-5' src={swift}/>,model:"Swift",brand
                     <div onClick={()=>navigate('/liveauction')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[22px] font-medium ml-2 rounded-2xl lg:p-7 mx-3 p-2'>{arr[3].img}<div className='w-[70px]'>{arr[3].button}</div></div>
                   </div>
                   <div className="rounded-xl">
-                    <div onClick={()=>navigate('/sell')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:px-7 mx-3 p-2'>{arr[4].img}<div className='w-[100px]'>{arr[4].button}</div></div>
+                    <div onClick={()=>navigate('/upcomingauction')} className='flex hover:scale-[1.050] cursor-pointer gap-4 justify-center  items-center w-full  xl:h-16 h-16  text-red-700  xl:text-[22px] lg:text-[16px] md:text-[16px] text-[11.5px] font-medium ml-2 rounded-2xl lg:px-7 mx-3 p-2'>{arr[4].img}<div className='w-[100px]'>{arr[4].button}</div></div>
                   </div>                                  
             </div>
           </div>

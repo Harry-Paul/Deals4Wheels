@@ -8,8 +8,9 @@ const handleShowChat=async(req,res)=>{
     const obj = new ObjectID(id);
     const prop=await Car.findOne({_id:obj})
     const seller=prop.email
+    const car_id=id
     let cont;
-    cont=await Int.findOne({buyer:buyer,car:prop})
+    cont=await Int.findOne({buyer:buyer,car_id:car_id})
     console.log("cont: ",cont)
     let arr=[];
     if(cont){
