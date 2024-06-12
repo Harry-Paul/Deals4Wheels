@@ -21,36 +21,42 @@ const handleShowChat=async(req,res)=>{
     }
     function f2(){
         let a=[]
+        let a1=[]
         if(user==="buyer"){
             let i;
             for(i=0;i<arr.length;i++){
               if(arr[i].slice(0,1)==="0"){
                 a.push(["flex flex-row justify-start",arr[i].slice(1)])
+                a1.push(["flex flex-row justify-end",arr[i].slice(1)])
               }
               else{
                 a.push(["flex flex-row justify-end",arr[i].slice(1)])
+                a1.push(["flex flex-row justify-start",arr[i].slice(1)])
               }
             }
-            return a
+            return [a,a1]
           }
           else{
             for(let i=0;i<arr.length;i++){
               if(arr[i].slice(0,1)==="0"){
                 a.push(["flex flex-row justify-end",arr[i].slice(1)])
+                a1.push(["flex flex-row justify-start",arr[i].slice(1)])
               }
               
               else{
                 a.push(["flex flex-row justify-start",arr[i].slice(1)])
+                a1.push(["flex flex-row justify-end",arr[i].slice(1)])
               }
             }
-            return a
+            return [a,a1]
           }
     }
     
       async function run(){
-        const chat=f2()
+        const chat=f2()[0]
+        const chat1=f2()[1]
         console.log("chat: ",chat)
-        res.json({"chat":chat,"arr":arr})
+        res.json({"chat":chat,"chat1":chat1,"arr":arr})
     }
     run()
     

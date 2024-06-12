@@ -20,6 +20,7 @@ const ChatBuyers = () => {
     const[cont,setCont]=useState([])
     const[arr,setArr]=useState([])
     const[style,setStyle]=useState([])
+    const[style1,setStyle1]=useState([])
     const[s1,setS1]=useState('md:text-9xl md:h-[730px] md:block hidden ')
     const[s2,setS2]=useState('hidden')
     const[s3,setS3]=useState('hidden')
@@ -31,7 +32,7 @@ const ChatBuyers = () => {
     const[car,setCar]=useState('')
     const[user1,setUser1]=useState('')
     const [room, setRoom] = useState("");
-    const [mes, setMes] = useState([]);
+    const [mes, setMes] = useState(false);
 
   // Messages States
   const [messageReceived, setMessageReceived] = useState("");
@@ -76,7 +77,8 @@ const ChatBuyers = () => {
         }
         )
         .then(result=>{
-          setStyle(result.data.chat)
+          setStyle(result.data.chat1)
+          setStyle1(result.data.chat)
           setArr(result.data.arr)
           setId(id)
           setBuyer(buyer)
@@ -114,7 +116,7 @@ const ChatBuyers = () => {
     }
 
     const sendChat=()=>{
-      
+      socket.emit("send_message", { style1,style, room });
       send(email,accessToken)
       console.log("arr: ",arr)
       function send(email, accessToken){
@@ -127,7 +129,7 @@ const ChatBuyers = () => {
         withCredentials: true
       }
       )
-      .then(result=>{console.log(result);socket.emit("send_message", { mes, room });})
+      .then(result=>{console.log(result);})
       .catch(err=>{
         if (err.response.data.message === "Forbidden") {
           axios.post('/auth/refresh', { email },
@@ -163,14 +165,16 @@ const ChatBuyers = () => {
   
     useEffect(() => {
       socket.on("receive_message", (data) => {
-        console.log(data)
-        let s=style
-        s.push(data.mes)
-        setStyle(s)
+        console.log( "data: ",data)
+        if(!mes){
+          setStyle(data.style)
+          setStyle1(data.style1)
+        }
         if(test===' '){
           setTest("abc")
         }
         else{setTest(' ')}
+        setMes(false)
       });
     }, [socket]);
 
@@ -198,13 +202,13 @@ const ChatBuyers = () => {
           </div>
           <div className={s2}>
           <p className='md:h-[580px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
-            {style.map((tx)=>
+            {style1.map((tx)=>
             <div className={tx[0]} ><div className='bg-gray-800 text-white lg:max-w-[500px] md:max-w-[400px] max-w-[275px] rounded-md my-1 px-3 py-1 text-2xl mx-2'>{tx[1]}</div></div>
             )}
           </p>
           <div class="mx-[35px] flex flex-row justify-center">
-            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>{setMes(['flex flex-row justify-start',e.target.value]);setMessage(e.target.value);console.log(message)}} type="text" onfocus="this.value=''"  placeholder="Enter Message" name="Description" id="" required />
-            <button className='bg-black text-white px-[15px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("0"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
+            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>{setMessage(e.target.value);console.log(message)}} type="text" onfocus="this.value=''"  placeholder="Enter Message" name="Description" id="" required />
+            <button className='bg-black text-white px-[15px]' onClick={()=>{let a=arr;let s=style;let s1=style1;a.push("0"+message);s1.push(['flex flex-row justify-end',message]);s.push(['flex flex-row justify-start',message]);setArr(a);setStyle(s);setMes(true);setStyle1(s1);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
           </div>
           </div>
         </div>
