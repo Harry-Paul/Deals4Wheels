@@ -84,6 +84,30 @@ const favSchema= new mongoose.Schema({
     car_id:{
         type: String,
         required:true
+    },
+    car_name:{
+        type:String,
+        required:true
+    },
+    kilometers:{
+        type:String,
+        required:true
+    },
+    transmission:{
+        type:String,
+        required:true
+    },
+    fuel:{
+        type:String,
+        required:true
+    },
+    price:{
+        type:String,
+        required:true
+    },
+    image:{
+        type:String,
+        required:true
     }
 })
 

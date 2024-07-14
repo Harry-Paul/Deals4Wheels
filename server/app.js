@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 
+const PORT = process.env.PORT || 4000
 
 app.use('/auth', require('./routes/authRoutes'))
 
@@ -51,6 +52,10 @@ app.use('/filter', require('./routes/filter'))
 
 app.use('/updatetrend', require('./routes/updatetrend'))
 
-app.listen(4000,function(){
+app.use('/bid', require('./routes/bid'))
+
+app.use('/showbids', require('./routes/showbids'))
+
+app.listen(PORT,function(){
     console.log("Server is running");
 });

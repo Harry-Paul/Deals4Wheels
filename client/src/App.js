@@ -15,6 +15,9 @@ import ChatSellers from "./pages/chatsellers.js";
 import Buy from "./pages/buy.js";
 import Liveauction from "./pages/liveauction.js";
 import Upcomingauction from "./pages/upcomingauction.js";
+import Owncars from "./pages/owncars.js";
+import Favourites from "./pages/favourites.js";
+import Interests from "./pages/interests.js";
 
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
             <Route exact path="/sell" element={<Sell/>}/>
             <Route exact path="/chatbuyers" element={<ChatBuyers/>}/>
             <Route exact path="/chatsellers" element={<ChatSellers/>}/>
+            <Route exact path="/owncars" element={<Owncars/>}/>
+            <Route exact path="/favourites" element={<Favourites/>}/>
+            <Route exact path="/interests" element={<Interests/>}/>
           </Route>
         </Routes>
       </div>

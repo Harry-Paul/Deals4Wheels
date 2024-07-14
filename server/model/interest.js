@@ -97,8 +97,28 @@ const interestSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    kilometers:{
+        type:String,
+        required:true
+    },
+    transmission:{
+        type:String,
+        required:true
+    },
+    fuel:{
+        type:String,
+        required:true
+    },
+    price:{
+        type:String,
+        required:true
+    },
     lastTime:{
         type:Date,
+        required:true
+    },
+    image:{
+        type:String,
         required:true
     },
     messages:[{

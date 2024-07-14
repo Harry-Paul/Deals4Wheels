@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 
 export default function Sell() {
     const navigate = useNavigate();
-    const location = useLocation();
     const { auth } = useAuth();
     const { setAuth } = useAuth();
     const email = auth?.email;
@@ -23,6 +22,9 @@ export default function Sell() {
     const [starttime, setStartTime] = useState('');
     const [endtime, setEndTime] = useState('');
     const [year, setYear] = useState('');
+    const [location, setLocation] = useState('');
+    const [rto, setRto] = useState('');
+    const [insurance, setInsurance] = useState('Valid');
     const [description, setDescription] = useState('');
     const [currentTime, setCurrentTime]=useState('')
     const [style,setStyle]=useState('py-[10px] hidden')
@@ -87,7 +89,8 @@ export default function Sell() {
 
     const submit=(e)=>{
         e.preventDefault()
-        if(brand==='' || model==='' ||variant==='' || +kilometers!=NaN || +year!=NaN || +price!=NaN || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
+        console.log({email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,insurance,rto,location,imgArray})
+        if(brand==='' || model==='' || location==='' || rto==='' ||variant==='' || kilometers==='' || year==='' || price==='' || (type==="auction" && starttime==='') || (type==="auction" && endtime==='') ){
             alert("Fill out required fields")
         }
         else{
@@ -95,8 +98,8 @@ export default function Sell() {
                 imgArray.push(src);
             })
             console.log(imgArray)
-            console.log({email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray})
-            axios.post('/sell',{email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,imgArray},
+            console.log({email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,description,insurance,rto,location,imgArray})
+            axios.post('/sell',{email,brand,model,year,variant,transmission,kilometers,fuel,owner,type,price,starttime,endtime,insurance,rto,location,description,imgArray},
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
@@ -143,6 +146,14 @@ export default function Sell() {
                         <label className="" for="beds"> Year : </label>
                         <input className="border-2 px-2" type="text" onChange={(e) => { setYear(e.target.value) }} placeholder="Kilometers" name="Kilometers" id="" required />
                     </div>
+                    <div class="py-[10px] md:ml-[110px]">
+                        <label className="" for="beds"> Location : </label>
+                        <input className="border-2 px-2" type="text" onChange={(e) => { setLocation(e.target.value) }} placeholder="Location" name="Kilometers" id="" required />
+                    </div>
+                    <div class="py-[10px] md:ml-[140px]">
+                        <label className="" for="beds"> RTO : </label>
+                        <input className="border-2 px-2" type="text" onChange={(e) => { setRto(e.target.value) }} placeholder="RTO" name="Kilometers" id="" required />
+                    </div>
                     <div className="flex flex-wrap py-[15px] md:ml-[40px]">
                         <label className="" for="type"> Transmission Type : </label>
                         <div className="">
@@ -182,6 +193,15 @@ export default function Sell() {
                                 <option value="Fixed Price" >Fixed Price</option>
 
                                 <option value="Auction" >Auction</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap py-[15px] md:ml-[40px]">
+                        <label className="" for="type"> Insurance : </label>
+                        <div className="">
+                            <select onClick={(e)=>{setInsurance(e.target.value)}} className="cursor-pointer mx-1 px-5  bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="Valid" >Valid</option>
+                                <option value="Expired" >Expired</option>
                             </select>
                         </div>
                     </div>

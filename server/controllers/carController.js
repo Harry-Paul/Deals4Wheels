@@ -1,5 +1,6 @@
 const Car = require('../model/car');
 const Fav = require('../model/favourite');
+const Int = require('../model/interest');
 const ObjectID = require('mongodb').ObjectId;
 
 const handleCar=async (req,res)=>{
@@ -24,6 +25,16 @@ const handleCar=async (req,res)=>{
     else if(type==="User"){
         const{email}=req.body
         cont=await Car.find({email:email})
+    }
+    else if(type==="Favourites"){
+        const{email}=req.body
+        cont=[]
+        cont=await Fav.find({buyer:email})
+    }
+    else if(type==="Interests"){
+        const{email}=req.body
+        cont=
+        cont=await Int.find({buyer:email})
     }
     else if(type==="single"){
         const{id}=req.body

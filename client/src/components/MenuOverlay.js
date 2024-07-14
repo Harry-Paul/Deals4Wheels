@@ -54,60 +54,48 @@ const MenuOverlay = () => {
       }
     
       const properties = () => {
-        navigate("/ownprop")
+        navigate("/owncars")
       }
     
-      const interested = () => {
-        navigate("/interested")
-      }
     
       const interests = () => {
         navigate("/interests")
       }
 
   return (
-    <div className="z-10">
+    <div className="z-20">
         {auth.email && 
         <div className="flex flex-row bg-black z-20 items-center">
-          <div className="mx-auto">
+          <div className="mx-auto my-4">
             <div className="">
-              <button class="peer w-[75px] py-2 my-2 text-white border-2">BUY</button>
+              <button class="peer w-[95px]  py-2 my-2 text-white border-2">CHAT</button>
               <div class="hidden absolute peer-hover:flex hover:flex
          w-[200px]
          flex-col bg-white drop-shadow-lg">
-                <a onClick={(e) => buy(e, "house", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy house</a>
-                <a onClick={(e) => buy(e, "apartment", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy apartment</a>
-                <a onClick={(e) => buy(e, "none", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
+                <a onClick={()=>{navigate("/chatsellers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Sellers</a>
+                <a onClick={()=>{navigate("/chatbuyers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Buyers</a>
               </div>
             </div>
 
             <div className="">
-              <button class="peer w-[75px] py-2 my-2 text-white border-2">RENT</button>
-              <div class="hidden absolute peer-hover:flex hover:flex
-         w-[200px]
-         flex-col bg-white drop-shadow-lg">
-                <a onClick={(e) => buy(e, "house", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent house</a>
-                <a onClick={(e) => buy(e, "apartment", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent apartment</a>
-                <a onClick={(e) => buy(e, "none", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
-              </div>
+              <button onClick={()=>{navigate("/predict")}} class="peer w-[95px] py-2 my-2 text-white border-2">PREDICT</button>
             </div>
 
             <div className="">
-              <button class="peer w-[75px] py-2 my-2 text-white border-2">SELL</button>
+              <button class="peer w-[95px] py-2 my-2 text-white border-2">SELL</button>
               <div class="hidden absolute peer-hover:flex hover:flex
          w-[200px]
          flex-col bg-white drop-shadow-lg">
-                <a onClick={sell} class="px-5 py-3 hover:bg-gray-200" href="#">Sell Property</a>
-                <a onClick={properties} class="px-5 py-3 hover:bg-gray-200" href="#">Your Properties</a>
+                <a onClick={()=>{navigate("/sell")}} class="px-5 py-3 hover:bg-gray-200" href="#">Sell Cars</a>
+                <a onClick={()=>{navigate("/owncars")}} class="px-5 py-3 hover:bg-gray-200" href="#">My Cars</a>
               </div>
             </div>
             </div>
 
-            <div className="text-white border-2 mx-auto px-5 py-[9px] text-lg cursor-pointer text-center">
+            <div className="text-white border-2 mx-auto px-10 py-[4px] text-2xl cursor-pointer text-center">
                 <div className="hover:text-blue-300" onClick={favourites}>Favourites</div>
-                <div className="hover:text-blue-300" onClick={properties}>Your Properties</div>
-                <div className="hover:text-blue-300" onClick={interested}>Your interests</div>
-                <div className="hover:text-blue-300" onClick={interests}>Interests on owned properties</div>
+                <div className="hover:text-blue-300" onClick={properties}>My Cars</div>
+                <div className="hover:text-blue-300" onClick={interests}>My interests</div>
                 <div className="hover:text-blue-300" onClick={logout}>Logout</div>
             </div>
 

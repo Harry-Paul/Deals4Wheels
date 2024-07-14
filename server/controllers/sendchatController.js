@@ -15,8 +15,13 @@ const handleSendChat=async(req,res)=>{
         const cont=await Car.findOne({ _id : obj});
         const car_name=cont.brand+" "+cont.model+" "+cont.variant
         const year=cont.year
+        const kilometers=cont.kilometers
+        const transmission=cont.transmission
+        const fuel=cont.fuel
+        const price=cont.price
         const seller=cont.email
-        Int.create({buyer,seller,car_id,lastTime,car_name,year})
+        const image=cont.images[0]
+        Int.create({buyer,seller,car_id,lastTime,car_name,year,car_name,kilometers,transmission,fuel,price,image})
     }
     run();
     async function run(){

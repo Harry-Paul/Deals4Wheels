@@ -43,7 +43,7 @@ export const Predict = () => {
   return (
     <div>
       <Navbar/>
-      <div className='flex justify-center pl-[80px] text-white bg-gray-700 text-4xl '><p className='mt-[80px] py-2'>AI Powered Price Calculation</p></div>
+      <div className='flex justify-center pl-[80px] text-white bg-gray-700 text-4xl '><p className='md:mt-[80px] mt-[60px] py-2'>AI Powered Price Calculation</p></div>
       
         <form className="grid lg:grid-cols-2 md:mt-[10px] mt-[50px] bg-gradient-to-r from-neutral-300 to-slate-50 text-lg md:text-xl">
           <div className="py-[17px] mt-[10px] mb-[10px] mx-auto px-8  rounded-3xl bg-white shadow-xl">

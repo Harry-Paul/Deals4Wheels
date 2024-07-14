@@ -57,9 +57,7 @@ const Navbar = () => {
     },[])
 
     
-      const sell = () => {
-        navigate('/sell');
-      }
+     
 
       const login=()=>{
         navigate("/login")
@@ -79,22 +77,6 @@ const Navbar = () => {
           })
           .catch(err => console.log(err))
       }
-    
-      const favourites = () => {
-        navigate("/favourites")
-      }
-    
-      const properties = () => {
-        navigate("/ownprop")
-      }
-    
-      const interested = () => {
-        navigate("/interested")
-      }
-    
-      const interests = () => {
-        navigate("/interests")
-      }
 
       const home=()=>{
         navigate("/")
@@ -104,67 +86,66 @@ const Navbar = () => {
     
       
   return (
-    <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-gray-900 md:h-[80px] h-[60px] ">
-        <header className="flex flex-row md:h-[60px] h-[40px] px-5 items-center">
+    <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-black md:h-[80px] h-[60px] ">
+        <header className="flex flex-row md:h-[80px] h-[40px] px-5 items-center">
         <div className=' lg:text-2xl lg:py-[10px] text-white cursor-pointer' onClick={home}>
-        <div className='ms-10 mt-4 xl:text-[44px] lg:text-[37px] md:text-[35px] text-[29px] text-blue-500 font-medium'>
-      Deal<a className='text-red-700'>4</a>Wheels
-      </div>
+       <img className="h-[60px] md:mt-0 mt-4" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1720879773/Deals_2_ptlgol.png"/>
         </div>
         
         <div className="mobile-menu block md:hidden ml-auto">
                 {!navbarOpen ? (
-                    <button onClick={()=>setNavbarOpen(true)} className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white">
-                        <HiMenu className='h5 w-5'/>
+                    <button onClick={()=>setNavbarOpen(true)} className="flex items-center  border rounded border-white text-slate-200 hover:text-white hover:border-white">
+                        <HiMenu className='h-8 w-8 mt-4 'v color="white"/>
                     </button>
                 ) : (
-                    <button onClick={()=>setNavbarOpen(false)} className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white">
-                        <IoIosCloseCircleOutline className="h-5 w-5"/>
+                    <button onClick={()=>setNavbarOpen(false)} className="flex items-center px-3 py-2 border rounded border-white text-slate-200 hover:text-white hover:border-white">
+                        <IoIosCloseCircleOutline className="h-6 w-5 mt-1" color="white"/>
                     </button>
                 )
                 }
             </div>
-          <div className="md:flex md:flex-row py-[5px]  md:ml-auto md:mr-0 hidden ">
-          <div className="md:px-10">
-              <button class="peer px-5 py-2 text-white">CHAT</button>
-              <div class="hidden absolute peer-hover:flex hover:flex w-[200px] flex-col bg-white drop-shadow-lg">
+          <div className="md:flex md:flex-row lg:text-xl text-lg  md:ml-auto md:mr-0 hidden ">
+          <div className="md:px-5">
+              <button class="peer lg:px-5 px-2 py-2 text-white">CHAT</button>
+              <div class="hidden absolute peer-hover:flex hover:flex w-[200px] px-2 lg:px-5 flex-col bg-white drop-shadow-lg">
                 <a onClick={()=>{navigate("/chatsellers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Sellers</a>
                 <a onClick={()=>{navigate("/chatbuyers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Buyers</a>
               </div>
             </div>
-          <div onClick={logout} className="cursor-pointer peer px-5 py-2 text-white">LOGOUT</div>
-          <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-5 py-2 text-white">PREDICT</div>
+          <div onClick={()=>{navigate("/predict")}} className="cursor-pointer peer px-2 lg:px-5 py-2 text-white">PREDICT</div>
             
 
             
 
             <div className="md:px-10">
-              <button class="peer px-5 py-2 text-white">SELL</button>
+              <button class="peer px-2 lg:px-5 py-2 text-white">SELL</button>
               <div class="hidden absolute peer-hover:flex hover:flex
          w-[200px]
          flex-col bg-white drop-shadow-lg">
-                <a onClick={sell} class="px-5 py-3 hover:bg-gray-200" href="#">Sell Property</a>
-                <a onClick={properties} class="px-5 py-3 hover:bg-gray-200" href="#">Your Properties</a>
+                <a onClick={()=>{navigate("/sell")}} class="px-5 py-3 hover:bg-gray-200" href="#">Sell Car</a>
+                <a onClick={()=>{navigate("/owncars")}} class="px-5 py-3 hover:bg-gray-200" href="#">MY Cars</a>
               </div>
             </div>
 
             {auth.email && 
             <Menu className="ml-auto ">
               <MenuHandler>
-                <img className="h-10 rounded-3xl mt-3" src={pic}></img>
+                <img className="h-10 rounded-3xl mt-1" src={pic}></img>
               </MenuHandler>
               <MenuList className="z-20  text-xl">
-                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={favourites}>Favourites</MenuItem>
-                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={properties}>Your Properties</MenuItem>
-                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={interested}>Your interests</MenuItem>
-                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={interests}>Interests on owned properties</MenuItem>
+                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={()=>{navigate("/favourites")}}>Favourites</MenuItem>
+                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={()=>{navigate("/owncars")}}>My Cars</MenuItem>
+                <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={()=>{navigate("/interests")}}>My Interests</MenuItem>
                 <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={logout}>Logout</MenuItem>
               </MenuList>
             </Menu>
             }
 
-            {!auth.email &&
-              <buttton className="bg-white text-black my-2 px-2 hover:bg-slate-300 cursor-pointer" onClick={login}>LOGIN</buttton>
+            {!auth.email && <div className="mt-2">
+              <buttton className="bg-white text-black my-2 px-3 py-1 hover:bg-slate-300 cursor-pointer rounded-l-xl rouned-r-lg hover:bg-gray-600" onClick={login}>LOGIN</buttton>
+              <buttton className=" ml-1 bg-white text-black my-2 px-2 py-1 hover:bg-slate-300 cursor-pointer rounded-r-xl hover:bg-gray-600" onClick={()=>{navigate("/signup")}}>SIGN UP</buttton>
+            </div>
+              
             }
 
           </div>

@@ -41,6 +41,18 @@ const propSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    location:{
+        type:String,
+        required:true
+    },
+    rto:{
+        type:String,
+        required:true
+    },
+    insurance:{
+        type:String,
+        required:true
+    },
     price:{
         type:Number,
         required:true
@@ -67,6 +79,9 @@ const propSchema = new mongoose.Schema({
         type:String,
     },
     images:[{
+        type:String
+    }],
+    bidders:[{
         type:String
     }]
 })

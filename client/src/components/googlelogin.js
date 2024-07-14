@@ -40,7 +40,7 @@ const Googlelogin = () => {
           onError={() => {
             console.log('Login Failed');
           }}
-        />;
+        />
     </div>
   )
 }
