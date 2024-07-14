@@ -1,7 +1,8 @@
 import {React, useState, useLayoutEffect} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import Dialog from "@material-ui/core/Dialog";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import { Carousel } from "@material-tailwind/react";
