@@ -205,7 +205,7 @@ const ChatSellers = () => {
             </div>
           </div>
           <div className={s2}>
-          <p className='md:h-[580px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
+          <p className='md:h-[480px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
             {style.map((tx)=>
             <div className={tx[0]} ><div className='bg-gray-800 text-white lg:max-w-[500px] md:max-w-[400px] max-w-[275px] rounded-md my-1 px-3 py-1 text-2xl mx-2 '>{tx[1]}</div></div>
             )}
