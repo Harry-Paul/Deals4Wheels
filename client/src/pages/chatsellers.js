@@ -196,7 +196,7 @@ const ChatSellers = () => {
               ))}
         </div>
         <div className=' md:col-span-3 col-span-1 '>
-          <p className={s1}>send chat</p>
+          
           <div className={s3}>
             <div className='md:hidden block mx-[10px] my-[20px] border-2 border-gray-600 p-2' onClick={()=>{setS3('hidden');setS2('hidden');setS4('flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[900px]')}}>< FaArrowLeft size="30px"/></div>
             <div className='py-[10px] flex flex-col justify-center align-middle md:px-[50px] pl-[20px]'>
