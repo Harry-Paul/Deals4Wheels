@@ -14,7 +14,7 @@ const jwt = require("jsonwebtoken");
 const connectDB = require("./config/dbConn");
 const fsPromises = require("fs").promises;
 const path = require("path")
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: 'https://deals4wheels-dxzg.onrender.com/'}));
 connectDB();
 app.use(bodyParser.json({limit: '50mb', type: 'application/json'}));
 app.use(bodyParser.urlencoded({extended: true}));
