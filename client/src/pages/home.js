@@ -17,6 +17,8 @@ import { FaBorderAll, FaHeart } from "react-icons/fa6";
 import useAuth from '../hooks/useAuth'
 import Refreshauth from '../components/refreshauth'
 import { AuthProvider } from '../context/AuthProvider'
+import io from 'socket.io-client'
+const socket = io.connect("https://deals4wheelssocketserver.onrender.com")
 
 
 

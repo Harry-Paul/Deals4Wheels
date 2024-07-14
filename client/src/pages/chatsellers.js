@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from "react-icons/fa";
 import io from 'socket.io-client'
-const socket = io.connect("http://localhost:3001")
+const socket = io.connect("https://deals4wheelssocketserver.onrender.com")
 
 
 
