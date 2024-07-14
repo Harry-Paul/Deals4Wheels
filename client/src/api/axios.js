@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://deals4wheelsserver.com'
+    baseURL: 'https://deals4wheelsserver.onrender.com'
 })
