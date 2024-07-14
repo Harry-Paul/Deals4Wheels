@@ -233,7 +233,7 @@ const Buy = () => {
     <div>
         <Navbar/>
         <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-5 w-full'>
-            <p className=' text-white text-4xl mr-40'>Fixed Price</p>
+            <p className=' text-white text-4xl md:mr-40 mr-10'>Fixed Price</p>
             <button onClick={()=>change("latest")} className={s1}>Latest</button>
             <button onClick={()=>change("trending")} className={s2}>Trending</button>
             <div className='py-[5px]'>
@@ -261,7 +261,7 @@ const Buy = () => {
             
             
         </div>
-        <div className="xl:pt-[100px] md:pt-[150px] pt-[170px] md:my-20 my-[60px] md:mx-20 mx-10  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
+        <div className="xl:pt-[100px] md:pt-[150px] pt-[250px] md:my-20 my-[60px] md:mx-20 mx-10  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.010] cursor-pointer rounded-xl'>
                       <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.images[0]}/>
