@@ -89,7 +89,7 @@ const Favourites = () => {
   return (
     <div>
         <Navbar/>
-        <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-10 w-full'>
+        <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-5 w-full'>
             <p className=' text-white text-4xl '>My Favourites</p>
  
         </div>
