@@ -1,10 +1,10 @@
-const Fav = require('../model/favourite');
+const Int = require('../model/interest');
 const Car = require('../model/car');
 const ObjectID = require('mongodb').ObjectId;
 
-const handleFav=async(req,res)=>{
+const handleInt=async(req,res)=>{
     const email=req.user
-    const{id,status}=req.body
+    const{id}=req.body
     console.log(req.body)
     run().catch(error => console.log(error.stack));
     async function run(){
@@ -18,21 +18,17 @@ const handleFav=async(req,res)=>{
         const fuel=cont.fuel
         const price=cont.price
         const seller=cont.email
+        const year=cont.year
+        const lastTime=cont.lastTime
         const image=cont.images[0]
-        if(status===true){
             const buyer=email
-            const fav= await Fav.findOne({buyer:email,car_id:id})
-            if(!fav){
-                Fav.create({buyer,seller,car_id,car_name,kilometers,transmission,fuel,price,image})
+            const int=await Int.findOne({buyer:email,car_id:id})
+            if(!int){
+                const messages=["0Interested"]
+                Int.create({buyer,seller,car_id,year,lastTime,car_name,kilometers,transmission,fuel,price,image})
             }
             res.json({"success":true})
-        }
-        else{
-            await Fav.findOneAndRemove({buyer:email,car_id:car_id})
-            console.log("cvb")
-            res.json({"success":true})
-        }
     }
 }
 
-module.exports={handleFav}
+module.exports={handleInt}

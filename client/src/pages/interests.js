@@ -94,7 +94,7 @@ const Interests = () => {
         <div className="xl:pt-[100px] md:pt-[150px] pt-[100px] md:my-20 my-[60px] md:mx-20 mx-10  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont?.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.010] cursor-pointer rounded-xl'>
-                      <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.image}/>
+                      <img onClick={car(arr2.car_id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.image}/>
                       <div  className=" pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px] bg-white rounded-xl">
                         <p onClick={car(arr2._id)} className='md:text-lg font-medium truncate pb-1'>{arr2.car_name}</p>
                         <p onClick={car(arr2._id)} className='text-gray-600 flex flex-row truncate'><div className='pr-2 xl:pr-3'>{arr2.kilometers} kms </div> &#183;<div className='px-2 xl:px-3'>{arr2.transmission}</div> &#183; <div className='pl-2 xl:pl-3'>{arr2.fuel}</div></p>

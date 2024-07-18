@@ -14,6 +14,7 @@ import { BiLike } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 
 
+
 const Car = () => {
     const loc=useLocation()
     const id=loc.state.id
@@ -268,6 +269,109 @@ const Car = () => {
     setOpen2(false);
 };
 
+const favourite=(id,status)=>{
+  send(accessToken,email)
+  function send(){
+  console.log("status: ",status)
+  console.log("ert: ",accessToken)
+  console.log("ert: ",email)
+  axios.post("/favourite",{email,status,id},
+  {
+    headers: {
+        'Authorization': `Bearer ${accessToken}`
+    },
+    withCredentials: true
+  }
+  )
+  .then(result=>{console.log(result)})
+  .catch(err=>{
+    {
+      console.log(err)
+      if (err.response.data.message === "Forbidden") {
+          axios.post('/auth/refresh', { email },
+              {
+                  headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                  withCredentials: true
+              })
+              .then(result => {
+                  console.log(result)
+                  email=result.data.email
+                  accessToken = result.data.accessToken;
+                  const pic = result.data.pic;
+                  console.log(accessToken)
+                  setAuth({ email, accessToken,pic })
+                  send(accessToken,email);
+                  // submit();
+                  // navigate("/home")
+              })
+              .catch(err => {
+                  if (err.response.data.message === "Forbidden" ) {
+                      setAuth({});
+                      navigate('/login')
+                  }
+                  else if(err.response.data.message === "Unauthorized"){
+                      navigate("/login")
+                  }
+              })
+      }
+      
+  }
+  })
+  }}
+
+  const int=(id)=>{
+    send(accessToken,email)
+    function send(){
+    console.log("ert: ",accessToken)
+    console.log("ert: ",email)
+    axios.post("/interest",{email,id},
+    {
+      headers: {
+          'Authorization': `Bearer ${accessToken}`
+      },
+      withCredentials: true
+    }
+    )
+    .then(result=>{console.log(result);alert("Added to Interests")})
+    .catch(err=>{
+      {
+        console.log(err)
+        if (err.response.data.message === "Forbidden") {
+            axios.post('/auth/refresh', { email },
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+                    withCredentials: true
+                })
+                .then(result => {
+                    console.log(result)
+                    email=result.data.email
+                    accessToken = result.data.accessToken;
+                    const pic = result.data.pic;
+                    console.log(accessToken)
+                    setAuth({ email, accessToken,pic })
+                    send(accessToken,email);
+                    // submit();
+                    // navigate("/home")
+                })
+                .catch(err => {
+                    if (err.response.data.message === "Forbidden" ) {
+                        setAuth({});
+                        navigate('/login')
+                    }
+                    else if(err.response.data.message === "Unauthorized"){
+                        navigate("/login")
+                    }
+                })
+        }
+        
+    }
+    })
+    }
+    
+  }
+  
+
+
 const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c5196951aa3ce07.jpg?auto=format&fit=crop&ar=16:9&w=2258",
   "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
   "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
@@ -332,8 +436,8 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
             <button className={s} onClick={()=>{setOpen2(true)}}>Bid <RiAuctionLine size={26} className='ml-[15px]'/></button>
           </div>
           <div className='flex flex-row justify-center my-[10px]'>
-          <button type="submit" className=" flex text-md font-medium md:py-1 mt-5 text-blue-900 dark:text-blue-900  hover:underline rounded-xl ">Wishlist <FaHeart className='ml-[10px] mt-[3px]'/></button>
-          <button type="submit" className=" md:ml-20 ml-4 flex text-md font-medium md:py-1 mt-5 text-blue-900 dark:text-blue-900  hover:underline rounded-xl ">Sent "Interested<BiLike className='ml-[5px] mt-[3px]' />"</button>
+          <button type="submit" onClick={()=>{favourite(id,true)}} className=" flex text-md font-medium md:py-1 mt-5 text-blue-900 dark:text-blue-900  hover:underline rounded-xl ">Wishlist <FaHeart className='ml-[10px] mt-[3px]'/></button>
+          <button type="submit" onClick={()=>{int(id)}} className=" md:ml-20 ml-4 flex text-md font-medium md:py-1 mt-5 text-blue-900 dark:text-blue-900  hover:underline rounded-xl ">Sent "Interested<BiLike className='ml-[5px] mt-[3px]' />"</button>
         
           </div>
           
@@ -366,7 +470,7 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
         </Dialog>
         <Dialog class="dialog-desc" open={open2} onClose={handleToClose2}>
           <div className='text-xl text-center m-3'>{price1}</div>
-          <div><button className=' mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price1;x=x+5000;setPrice1(x)}}>+</button><button className='mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x-5000;if(x>=cont.price){setPrice(x)}}}>-</button></div>
+          <div><button className=' mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price1;x=x+5000;setPrice1(x)}}>+</button><button className='mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price1;x=x-5000;if(x>=price){setPrice1(x)}}}>-</button></div>
           <button onClick={()=>{if(price1>price){bid(id,email)}}}  className='bg-gray-500 py-1 px-15 m-1' >PLACE BID</button>
         </Dialog>
     </div>

@@ -5,8 +5,10 @@ const ObjectID = require('mongodb').ObjectId;
 
 const handleCar=async (req,res)=>{
     console.log(req.body)
-    const{type,fav}=req.body;
+    const{type,fav,email}=req.body;
     let cont;
+    let favst=[];
+    let intst=[];
     if(type==="All"){
         cont=await Car.find({status:"Active"});
         console.log(fav)
@@ -41,7 +43,8 @@ const handleCar=async (req,res)=>{
         console.log(id)
         const obj = new ObjectID(id);
         cont=await Car.find({_id:obj})
-        console.log(cont)
+        favst=await Fav.find({buyer:email,car_id:id})
+        intst=await Int.find({buyer:email,car_id:id})
     }
     else{}
 
@@ -74,7 +77,7 @@ const handleCar=async (req,res)=>{
             console.log("jkl")
             const arr=f1()
             console.log(arr)
-            res.json({"success":true,"cont":cont,"color":arr})
+            res.json({"success":true,"cont":cont,"color":arr,"fav":favst,"int":intst})
         }
         run()
     }
@@ -91,7 +94,7 @@ const handleCar=async (req,res)=>{
         async function run(){
             const arr=f2()
             console.log(arr)
-            res.json({"success":true,"cont":cont,"color":arr})
+            res.json({"success":true,"cont":cont,"color":arr,"fav":[],"int":[]})
         }
         run()
     }

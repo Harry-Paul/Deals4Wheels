@@ -115,7 +115,6 @@ const interestSchema = new mongoose.Schema({
     },
     lastTime:{
         type:Date,
-        required:true
     },
     image:{
         type:String,
