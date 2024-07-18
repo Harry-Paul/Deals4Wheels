@@ -319,7 +319,7 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
       
     </div>
     </div>
-      <div className='px-[50px] py-[30px]  2xl:mx-[20px] shadow-xl rounded-xl 2xl:mt-[120px] mt-[80px] h-[450px] 2xl:w-2/5 2xl:fixed 2xl:right-8 bg-gray-100'>
+      <div className='px-[50px] py-[30px]  2xl:mx-[20px] shadow-xl rounded-xl 2xl:mt-[100px] mt-[80px] h-[450px] 2xl:w-2/5 2xl:fixed 2xl:right-8 bg-gray-100'>
         <div  className="ml-[10px] pb-6 md:pl-5 md:py-[5px] px-[9px] py-[3px]  rounded-xl">
           <p className='text-3xl font-[650] truncate pb-1 mt-5'>{brand} {model} {variant}</p>
           <p className='text-gray-600 flex flex-row truncate text-xl'><div className='pr-2 xl:pr-3'>{kilometers} kms </div> &#183;<div className='px-2 xl:px-3'>{transmission}</div> &#183; <div className='pl-2 xl:pl-3'>{fuel}</div></p>
