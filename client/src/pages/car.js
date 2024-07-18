@@ -351,20 +351,23 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
   </div>
         
         <Dialog class="dialog-desc" open={open1} onClose={handleToClose1}>
-          <p className='w-[600px] h-[400px] bg-gray-100 '>
+          <p className='w-full h-[400px] bg-gray-100 '>
             {style.map((tx)=>
             <div className={tx[0]} ><div className='bg-gray-300 max-w-fit rounded-md my-1 px-1 text-xl mx-2'>{tx[1]}</div></div>
             )}
           </p>
           <div class="mx-[30px] flex flex-row justify-center">
-            <textarea className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
+            <input onKeyDown={(e) => {
+        if (e.key === "Enter"){
+          let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)
+        }}} className="min-w-full  mb-0 border-4 justify-self-end" onChange={(e)=>setMessage(e.target.value)} type="text"  placeholder="Enter Message" name="Description" id="" required />
             <button className='bg-black text-white px-[10px]' onClick={()=>{let a=arr;let s=style;if(user==="buyer"){a.push("1"+message)}else{a.push("1"+message)};s.push(['flex flex-row justify-end',message]);setArr(a);setStyle(s);sendChat();if(test===' '){setTest("abc")}else{setTest(' ')};console.log(arr)}}>Send</button>
           </div>
         </Dialog>
         <Dialog class="dialog-desc" open={open2} onClose={handleToClose2}>
           <div className='text-xl text-center m-3'>{price1}</div>
           <div><button className=' mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price1;x=x+5000;setPrice1(x)}}>+</button><button className='mx-1 py-1 px-10 bg-gray-500' onClick={()=>{let x=price;x=x-5000;if(x>=cont.price){setPrice(x)}}}>-</button></div>
-          <button onClick={()=>{if(price1>price){bid(id,email)}}} className='bg-gray-500 py-1 px-15 m-1' >PLACE BID</button>
+          <button onClick={()=>{if(price1>price){bid(id,email)}}}  className='bg-gray-500 py-1 px-15 m-1' >PLACE BID</button>
         </Dialog>
     </div>
   )
