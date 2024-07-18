@@ -104,25 +104,15 @@ const MenuOverlay = () => {
           {!auth.email &&
           <div className="flex flex-row bg-black text-white justify-center py-8">
             <div className="">
-              <button class="peer w-[75px] mx-3 p-3 text-white border-2">BUY</button>
+              <button class="peer w-[75px] mx-3 p-3 text-white border-2">CHAT</button>
               <div class="hidden absolute peer-hover:flex hover:flex
          w-[200px]
          flex-col bg-white drop-shadow-lg text-black">
-                <a onClick={(e) => buy(e, "house", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy house</a>
-                <a onClick={(e) => buy(e, "apartment", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">Buy apartment</a>
-                <a onClick={(e) => buy(e, "none", "buy")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
+                <a onClick={()=>{navigate("/chatsellers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Sellers</a>
+                <a onClick={()=>{navigate("/chatbuyers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Buyers</a>
               </div>
             </div>
-            <div className="">
-              <button class="peer w-[75px] p-3 mx-3 text-white border-2">RENT</button>
-              <div class="hidden absolute peer-hover:flex hover:flex
-         w-[200px]
-         flex-col bg-white drop-shadow-lg text-black">
-                <a onClick={(e) => buy(e, "house", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent house</a>
-                <a onClick={(e) => buy(e, "apartment", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">Rent apartment</a>
-                <a onClick={(e) => buy(e, "none", "rent")} class="px-5 py-3 hover:bg-gray-200" href="#">All Listings</a>
-              </div>
-            </div>
+            <button className=" w-[75px] text-white border-2 p-3 mx-3 hover:bg-slate-300" onClick={()=>{navigate("/predict")}}>PREDICT</button>
             <button className="bg-white w-[75px] text-black p-3 mx-3 hover:bg-slate-300" onClick={login}>LOGIN</button>
           </div>
           }
