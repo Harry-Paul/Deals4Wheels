@@ -232,7 +232,7 @@ const Buy = () => {
   return (
     <div>
         <Navbar/>
-        <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-5 w-full'>
+        <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-10 w-full'>
             <p className=' text-white text-4xl md:mr-40 mr-10'>Fixed Price</p>
             <button onClick={()=>change("latest")} className={s1}>Latest</button>
             <button onClick={()=>change("trending")} className={s2}>Trending</button>

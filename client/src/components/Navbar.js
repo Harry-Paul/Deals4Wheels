@@ -86,7 +86,7 @@ const Navbar = () => {
     
       
   return (
-    <div className="fixed shadow-xl left-0 right-0 top-0 z-10 bg-black md:h-[80px] h-[60px] ">
+    <div className="fixed shadow-xl left-0 right-0 top-0 z-20 bg-black md:h-[80px] h-[60px] ">
         <header className="flex flex-row md:h-[80px] h-[40px] px-5 items-center">
         <div className=' lg:text-2xl lg:py-[10px] text-white cursor-pointer' onClick={home}>
        <img className="h-[60px] md:mt-0 mt-4" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1720879773/Deals_2_ptlgol.png"/>
@@ -130,7 +130,7 @@ const Navbar = () => {
             {auth.email && 
             <Menu className="ml-auto ">
               <MenuHandler>
-                <img className="h-10 rounded-3xl mt-1" src={pic}></img>
+                <img className="h-10 rounded-3xl mt-1 cursor-pointer" src={pic}></img>
               </MenuHandler>
               <MenuList className="z-20  text-xl">
                 <MenuItem className="py-[6px] cursor-pointer hover:bg-slate-200 w-full text-left" onClick={()=>{navigate("/favourites")}}>Favourites</MenuItem>
