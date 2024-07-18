@@ -279,7 +279,7 @@ const gallery=["https://images.classic.com/vehicles/36380d8bc6a0f92dbed9ce879c51
         <Navbar/>
         <div className='xl:mt-[100px] md:mx-[70px] mx-[10px] md:mt-[50px] flex flex-col-reverse 2xl:grid 2xl:grid-cols-2 2xl:gap-2'>
           <div className='mt-[50px] mr-[20px]'>
-          <Carousel className="rounded-xl 2xl:h-[450px] md:h-[400px]">
+          <Carousel className="rounded-xl 2xl:h-[430px] md:h-[380px]">
 
           {images.map((pic)=>(
                     <img
