@@ -112,7 +112,7 @@ const MenuOverlay = () => {
                 <a onClick={()=>{navigate("/chatbuyers")}} class="px-5 py-3 hover:bg-gray-200" href="#">To Buyers</a>
               </div>
             </div>
-            <button className=" w-[75px] text-white border-2 p-3 mx-3 hover:bg-slate-300" onClick={()=>{navigate("/predict")}}>PREDICT</button>
+            <button className="  text-white border-2 p-3 mx-3 hover:bg-slate-300" onClick={()=>{navigate("/predict")}}>PREDICT</button>
             <button className="bg-white w-[75px] text-black p-3 mx-3 hover:bg-slate-300" onClick={login}>LOGIN</button>
           </div>
           }

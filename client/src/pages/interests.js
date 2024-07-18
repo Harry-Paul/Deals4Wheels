@@ -88,10 +88,10 @@ const Interests = () => {
     <div>
         <Navbar/>
         <div className=' flex-wrap  flex md:pl-[80px] pl-[50px] py-[10px]  bg-gray-700 fixed z-10 w-full'>
-            <p className=' text-white text-4xl mr-40'>My Interests</p>
+            <p className=' text-white text-4xl '>My Interests</p>
  
         </div>
-        <div className="xl:pt-[100px] md:pt-[150px] pt-[250px] md:my-20 my-10 md:mx-20 mx-10  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
+        <div className="xl:pt-[100px] md:pt-[150px] pt-[100px] md:my-20 my-[60px] md:mx-20 mx-10  items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-white " >
           {cont?.map((arr2)=>(
                     <div className='col-span-1 shadow-xl  md:h-[360px] h-[300px] hover:scale-[1.010] cursor-pointer rounded-xl'>
                       <img onClick={car(arr2._id)} className='h-4/6 object-cover w-full rounded-t-xl' src={arr2.image}/>

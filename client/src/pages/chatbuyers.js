@@ -24,7 +24,7 @@ const ChatBuyers = () => {
     const[s1,setS1]=useState('md:text-9xl md:h-[730px] md:block hidden ')
     const[s2,setS2]=useState('hidden')
     const[s3,setS3]=useState('hidden')
-    const[s4,setS4]=useState('flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]')
+    const[s4,setS4]=useState('flex flex-col col-span-1 text-white overflow-y-scroll h-[750px]')
     const[message,setMessage]=useState('')
     const[test,setTest]=useState(' ')
     const[buyer,setBuyer]=useState('')
@@ -181,10 +181,10 @@ const ChatBuyers = () => {
   return (
     <div>
       <Navbar/> 
-      <div className='grid md:grid-cols-4 grid-cols-1 md:h-[700px] md:mt-[80px]  mt-[60px]'>
+      <div className='grid md:grid-cols-4 grid-cols-1 md:h-[700px] md:mt-[80px]  mt-[60px] '>
         <div className={s4}>
         {cont.map((arr2)=>(
-                    <div onClick={()=>{setRoom(arr2._id);select(arr2.car_id,arr2.buyer);setS1('hidden');setS2('bg-gray-200');setCar(arr2.car_name+" ("+arr2.year+")");setUser1(arr2.buyer);setS3('flex flex-row  bg-gray-800 text-white ');setS4('hidden md:flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[750px]');}} className='cursor-pointer h-[100px] mx-[2px] mt-[2px] bg-gray-800 rounded-lg'>
+                    <div onClick={()=>{setRoom(arr2._id);select(arr2.car_id,arr2.buyer);setS1('hidden');setS2('bg-white');setCar(arr2.car_name+" ("+arr2.year+")");setUser1(arr2.buyer);setS3('flex flex-row  bg-gray-800 text-white ');setS4('hidden md:flex flex-col col-span-1 text-white overflow-y-scroll h-[750px]');}} className='cursor-pointer h-[100px] mx-[2px] mt-[2px] bg-gray-800 rounded-lg'>
                       <p className=' pt-[20px] truncate ml-[20px] text-lg text-white'>{arr2.buyer}</p>
                       <p className='truncate mx-[20px] mt-1 text-sm text-gray-400'>{arr2.car_name} ({arr2.year})</p>
                     </div>
@@ -194,14 +194,14 @@ const ChatBuyers = () => {
         <div className=' md:col-span-3 col-span-1 '>
           
           <div className={s3}>
-            <div className='md:hidden block mx-[10px] my-[20px] border-2 border-gray-600 p-2' onClick={()=>{setS3('hidden');setS2('hidden');setS4('flex flex-col col-span-1 bg-gray-500 text-white overflow-y-scroll h-[900px]')}}>< FaArrowLeft size="30px"/></div>
+            <div className='md:hidden block mx-[10px] my-[20px] border-2 border-gray-600 p-2' onClick={()=>{setS3('hidden');setS2('hidden');setS4('flex flex-col col-span-1 bg-white text-white overflow-y-scroll h-[900px]')}}>< FaArrowLeft size="30px"/></div>
             <div className='py-[10px] flex flex-col justify-center align-middle md:px-[50px] pl-[20px]'>
             <p className='pb-2 text-2xl'>{user1}</p>
             <p className='pb-2 text-md text-gray-400 truncate'>{car}</p>
             </div>
           </div>
           <div className={s2}>
-          <p className='md:h-[480px] h-[700px] bg-gray-300 overflow-y-scroll overscroll-y-contain'>
+          <p className='md:h-[480px] h-[700px] bg-white overflow-y-scroll '>
             {style1.map((tx)=>
             <div className={tx[0]} ><div className='bg-gray-800 text-white lg:max-w-[500px] md:max-w-[400px] max-w-[275px] rounded-md my-1 px-3 py-1 text-2xl mx-2'>{tx[1]}</div></div>
             )}
