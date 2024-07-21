@@ -32,9 +32,9 @@ Find the app here -> <a href="https://deals4wheels-dxzg.onrender.com/">Live link
 
 # Images of pages:
 
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574021/i1_nt10rd.png" height="200" style="margin: 10px;"/>
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574643/i2_mcu5op.png" height="200" style="margin: 10px;"/>
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574125/i3_e7uk8t.png" height="200" style="margin: 10px;"/>
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574188/i4_rm1bre.png" height="200" style="margin: 10px;"/>
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574249/i5_vppadw.png" height="200" style="margin: 10px;"/>
-<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574373/i6_pp8u0p.png" height="200" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574021/i1_nt10rd.png" height="250" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574643/i2_mcu5op.png" height="250" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574125/i3_e7uk8t.png" height="250" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574188/i4_rm1bre.png" height="250" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574249/i5_vppadw.png" height="250" style="margin: 10px;"/>
+<img align="center" src="https://res.cloudinary.com/dstxl4pzw/image/upload/v1721574373/i6_pp8u0p.png" height="250" style="margin: 10px;"/>
