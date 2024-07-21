@@ -8,12 +8,12 @@ Find the app here -> <a href="https://deals4wheels-dxzg.onrender.com/">Live link
     * Login
     * Logout
 * Backend authentication by storing JWT tokens in cookies.
-* Rate limiter in backend.
+* Rate limiter in the backend.
 * Vehicle price predictor using Machine Learning.
 * Chat feature between interested buyer and seller enabled using Socket.io.
 * Auction feature with live bidding.
 * Multiple filter options to view cars.
-* Add cars to favourites
+* Add cars to favorites
 * Sell cars along with uploading images.
 
 ***
@@ -23,7 +23,7 @@ Find the app here -> <a href="https://deals4wheels-dxzg.onrender.com/">Live link
 * Node.js
 * MongoDB
 * Socket.io
-* TensroFlow
+* TensorFlow
 * FireBase
 * React Context API
 * Axios
